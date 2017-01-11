@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">河南信用</string>
+
+    <string name="internet_error">没有可用网络,请检查网络连接</string>
+</resources>
