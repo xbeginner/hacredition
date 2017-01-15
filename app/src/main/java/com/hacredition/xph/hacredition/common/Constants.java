@@ -18,7 +18,7 @@ package com.hacredition.xph.hacredition.common;
 
 /**
  * @author 咖枯
- * @version 1.0 2016/5/31
+ * @version 1.0 2017/1/11
  */
 public class Constants {
     public static final String DB_NAME = "NewsChannelTable";

@@ -1,6 +1,7 @@
 package com.hacredition.xph.hacredition.mvp.view.base;
 
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import com.hacredition.xph.hacredition.mvp.presenter.base.BasePresenter;
 
@@ -8,7 +9,7 @@ import com.hacredition.xph.hacredition.mvp.presenter.base.BasePresenter;
  * Created by pc on 2017/1/9.
  */
 
-public interface BaseView {
+public interface BaseView{
 
     void showProgress();
 

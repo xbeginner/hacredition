@@ -105,6 +105,7 @@ public class App extends Application {
         mApplicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();
+
     }
 
 
@@ -112,5 +113,9 @@ public class App extends Application {
         return MyUtils.getSharedPreferences().getBoolean(Constants.SHOW_NEWS_PHOTO,true);
     }
 
+
+    public ApplicationComponent getApplicationComponent() {
+        return mApplicationComponent;
+    }
 
 }

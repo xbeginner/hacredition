@@ -14,4 +14,8 @@
 
     </style>
 
+    <style name="StatusBarTranslucentTheme" parent="AppTheme">
+
+    </style>
+
 </resources>
