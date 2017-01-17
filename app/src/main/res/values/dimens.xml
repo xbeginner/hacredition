@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="toolbar_padding_top">0dp</dimen>
     <dimen name="toolbar_leyout_height">55dp</dimen>
+
+    <dimen name="item_margin">8dp</dimen>
 </resources>

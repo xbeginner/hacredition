@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
+import com.hacredition.xph.hacredition.mvp.presenter.base.BasePresenter;
 import com.hacredition.xph.hacredition.mvp.ui.activity.base.BaseActivity;
 import com.hacredition.xph.hacredition.mvp.ui.adapter.MyViewPagerAdatper;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.NewsFragment;
@@ -22,7 +23,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements BaseView,NewsFragment.OnFragmentInteractionListener {
+public class MainActivity extends BaseActivity  {
 
 
     @BindView(R.id.toolbar) Toolbar toolbar;
@@ -62,20 +63,9 @@ public class MainActivity extends BaseActivity implements BaseView,NewsFragment.
         super.onCreate(savedInstanceState);
     }
 
-    @Override
-    public void showProgress() {
 
-    }
 
-    @Override
-    public void hideProgress() {
 
-    }
-
-    @Override
-    public void showMsg(String message) {
-
-    }
 
 
     /**
@@ -84,8 +74,8 @@ public class MainActivity extends BaseActivity implements BaseView,NewsFragment.
      */
     private List<Fragment> initFragmentList(){
         List<Fragment> viewList = new ArrayList<Fragment>();
-        NewsFragment newsFragment = NewsFragment.newInstance("1","2");
-        viewList.add(newsFragment);
+//        NewsFragment newsFragment = NewsFragment.newInstance("1","2");
+//        viewList.add(newsFragment);
         return viewList;
     }
 
@@ -98,8 +88,5 @@ public class MainActivity extends BaseActivity implements BaseView,NewsFragment.
         return titles;
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
-    }
 }

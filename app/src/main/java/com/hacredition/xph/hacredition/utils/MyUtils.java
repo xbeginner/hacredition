@@ -8,6 +8,8 @@ import android.provider.SyncStateContract;
 import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.common.Constants;
 
+import org.reactivestreams.Subscription;
+
 /**
  * Created by pc on 2017/1/9.
  */
@@ -24,5 +26,9 @@ public class MyUtils {
         return App.getAppContext()
                 .getSharedPreferences(Constants.HA_CREDITION_SETTINGS, Context.MODE_PRIVATE);
     }
+
+
+
+
 
 }
