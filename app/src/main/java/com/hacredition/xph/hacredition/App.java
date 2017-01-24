@@ -9,9 +9,13 @@ import com.hacredition.xph.hacredition.common.Constants;
 import com.hacredition.xph.hacredition.di.component.ApplicationComponent;
 import com.hacredition.xph.hacredition.di.component.DaggerApplicationComponent;
 import com.hacredition.xph.hacredition.di.module.ApplicationModule;
+import com.hacredition.xph.hacredition.mvp.entity.DaoMaster;
+import com.hacredition.xph.hacredition.mvp.entity.DaoSession;
 import com.hacredition.xph.hacredition.utils.MyUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+
+import org.greenrobot.greendao.database.Database;
 
 /**
  * Created by pc on 2017/1/9.
@@ -22,6 +26,8 @@ public class App extends Application {
 
 
     private ApplicationComponent mApplicationComponent;
+
+    private static final String DB_NAME = "hacredition_db";
 
 
 
@@ -36,6 +42,9 @@ public class App extends Application {
 
 
     private static Context mApplicationContext;
+
+
+    protected static DaoSession mDaoSession;
 
     public static Context getAppContext(){
         return mApplicationContext;
@@ -52,6 +61,8 @@ public class App extends Application {
         initDayNightMode();
         //初始化注入
         initApplicationComponent();
+        //初始化数据库
+        initDB();
     }
 
     /**
@@ -118,4 +129,15 @@ public class App extends Application {
         return mApplicationComponent;
     }
 
+
+    private void initDB(){
+        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(mApplicationContext,DB_NAME);
+        Database db = openHelper.getWritableDb();
+        DaoMaster daoMaster = new DaoMaster(db);
+        mDaoSession = daoMaster.newSession();
+    }
+
+    public static DaoSession getmDaoSession(){
+        return mDaoSession;
+    }
 }

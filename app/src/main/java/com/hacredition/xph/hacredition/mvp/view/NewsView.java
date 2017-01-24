@@ -1,5 +1,7 @@
 package com.hacredition.xph.hacredition.mvp.view;
 
+import com.hacredition.xph.hacredition.common.LoadNewsType;
+import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 
 import java.util.List;
@@ -9,5 +11,10 @@ import java.util.List;
  */
 
 public interface NewsView extends BaseView{
-    void initViewPager(List<String> newsTitles);
+    /**
+     * 设置List
+     * @param newsSummary
+     * @param loadType  对结果进行设置
+     */
+    void setNewsList(List<NewsSummary> newsSummary, @LoadNewsType.checker int loadType);
 }

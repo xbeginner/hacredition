@@ -11,7 +11,8 @@ import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 
 public class BasePresenterImpl<T extends BaseView,E> implements BasePresenter,RequestCallBack<E> {
 
-    protected T myView;
+    protected T mView;
+
 
     @Override
     public void onCreate() {
@@ -25,22 +26,22 @@ public class BasePresenterImpl<T extends BaseView,E> implements BasePresenter,Re
 
     @Override
     public void attachView(@NonNull BaseView view) {
-        myView = (T) view;
+        mView = (T) view;
     }
 
     @Override
     public void beforeRequest() {
-        myView.showProgress();
+        mView.showProgress();
     }
 
     @Override
     public void success(E data) {
-        myView.hideProgress();
+        mView.hideProgress();
     }
 
     @Override
     public void onError(String errorMsg) {
-        myView.hideProgress();
-        myView.showMsg(errorMsg);
+        mView.hideProgress();
+        mView.showMsg(errorMsg);
     }
 }

@@ -33,11 +33,11 @@
         android:visibility="gone"
         tools:visibility="visible"/>
 
-    <ProgressBar
-        android:id="@+id/progress_bar_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+    <!--<ProgressBar-->
+        <!--android:id="@+id/progress_bar_id"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"/>-->
 
 
 </FrameLayout>

@@ -1,9 +1,13 @@
 package com.hacredition.xph.hacredition.mvp.entity;
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
+
 /**
  * Created by pc on 2017/1/16.
  */
 
+@Entity
 public class NewsSummary {
 
     //对应id
@@ -32,6 +36,25 @@ public class NewsSummary {
 
     //内容简述
     private String summaryContent;
+
+    @Generated(hash = 464203901)
+    public NewsSummary(int newsId, boolean hasImg, boolean hasSubTitle,
+            String title, String subTitle, String time, String imgSrc, int readTime,
+            String summaryContent) {
+        this.newsId = newsId;
+        this.hasImg = hasImg;
+        this.hasSubTitle = hasSubTitle;
+        this.title = title;
+        this.subTitle = subTitle;
+        this.time = time;
+        this.imgSrc = imgSrc;
+        this.readTime = readTime;
+        this.summaryContent = summaryContent;
+    }
+
+    @Generated(hash = 466711892)
+    public NewsSummary() {
+    }
 
     public int getNewsId() {
         return newsId;
@@ -103,5 +126,13 @@ public class NewsSummary {
 
     public void setSummaryContent(String summaryContent) {
         this.summaryContent = summaryContent;
+    }
+
+    public boolean getHasImg() {
+        return this.hasImg;
+    }
+
+    public boolean getHasSubTitle() {
+        return this.hasSubTitle;
     }
 }

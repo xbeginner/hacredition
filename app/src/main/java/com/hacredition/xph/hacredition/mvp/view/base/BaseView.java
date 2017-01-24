@@ -17,6 +17,6 @@ public interface BaseView{
 
     void showMsg(String message);
 
-    void initPresenter(BasePresenter presenter);
+    void initPresenter();
 
 }

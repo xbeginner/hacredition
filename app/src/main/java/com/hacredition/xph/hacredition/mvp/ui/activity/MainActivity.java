@@ -74,8 +74,8 @@ public class MainActivity extends BaseActivity  {
      */
     private List<Fragment> initFragmentList(){
         List<Fragment> viewList = new ArrayList<Fragment>();
-//        NewsFragment newsFragment = NewsFragment.newInstance("1","2");
-//        viewList.add(newsFragment);
+       NewsFragment newsFragment = new NewsFragment();
+         viewList.add(newsFragment);
         return viewList;
     }
 
