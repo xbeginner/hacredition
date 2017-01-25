@@ -10,5 +10,5 @@ import org.reactivestreams.Subscription;
 
 public interface NewsInteractor<T> {
 
-    Subscription loadNews(RequestCallBack<T> listener, String type, String id, int startPage);
+    Subscription loadNews(RequestCallBack<T> listener, int lastNewsId);
 }

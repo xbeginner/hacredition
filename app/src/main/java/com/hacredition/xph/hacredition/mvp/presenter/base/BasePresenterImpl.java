@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import com.hacredition.xph.hacredition.listener.RequestCallBack;
 import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 
+import org.reactivestreams.Subscription;
+
 /**
  * Created by pc on 2017/1/16.
  */
@@ -12,6 +14,7 @@ import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 public class BasePresenterImpl<T extends BaseView,E> implements BasePresenter,RequestCallBack<E> {
 
     protected T mView;
+    protected Subscription mSubscription;
 
 
     @Override

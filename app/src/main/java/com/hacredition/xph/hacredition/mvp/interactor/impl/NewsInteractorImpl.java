@@ -3,6 +3,7 @@ package com.hacredition.xph.hacredition.mvp.interactor.impl;
 import com.hacredition.xph.hacredition.listener.RequestCallBack;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.interactor.NewsInteractor;
+import com.hacredition.xph.hacredition.repository.network.RetrofitManager;
 
 import org.reactivestreams.Subscription;
 
@@ -18,9 +19,12 @@ import javax.inject.Inject;
 public class NewsInteractorImpl implements NewsInteractor<List<NewsSummary>> {
     @Inject
     public NewsInteractorImpl() {
+
     }
     @Override
-    public Subscription loadNews(RequestCallBack<List<NewsSummary>> listener, String type, String id, int startPage) {
+    public Subscription loadNews(RequestCallBack<List<NewsSummary>> listener, int lastNewsId) {
+        RetrofitManager manager = new RetrofitManager();
+
         return null;
     }
 }

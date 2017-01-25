@@ -15,6 +15,7 @@ import com.hacredition.xph.hacredition.utils.NetUtil;
 
 import org.greenrobot.greendao.query.Query;
 import org.greenrobot.greendao.query.QueryBuilder;
+import org.greenrobot.greendao.query.WhereCondition;
 
 import java.security.acl.LastOwnerException;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
         implements NewsPresenter,RequestCallBack<List<NewsSummary>> {
 
     private NewsInteractor<List<NewsSummary>> mNewsInteractor;
+
     private boolean misFirstLoad;
 
     private boolean mIsRefresh = true;
@@ -38,9 +40,12 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
 
    @Inject
    public NewsPresenterImpl(NewsInteractorImpl newsInteractorImpl ){
-       this.mNewsInteractor = newsInteractorImpl;
-
+       mNewsInteractor = newsInteractorImpl;
    }
+
+    public NewsInteractor getInteractor(){
+        return mNewsInteractor;
+    }
 
     /**
      * 有网络的情况下加载更多
@@ -120,30 +125,19 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
     }
 
     /**
-     * 所有data加载
+     * 加载从现在开始新增的信息保存进数据库
      */
     private void loadNewsData() {
-        List<NewsSummary>  summaryList;
+       int existId = getExistMaxNewsId();
+        mNewsInteractor.loadNews(this,existId);
+    }
+
+
+    private int getExistMaxNewsId(){
         DaoSession session = App.getmDaoSession();
-        session.getNewsSummaryDao().deleteAll();
-//        if(NetUtil.isNetworkAvailable()){
-//            //获取增量数据存进数据库
-//            for(int i=0;i<20;i++){
-//                NewsSummary summary = new NewsSummary();
-//                summary.setTitle("title"+i);
-//                summary.setSubTitle("subtitle"+i);
-//                summary.setTime("2019-01-01");
-//                summary.setHasImg(false);
-//                session.getNewsSummaryDao().insert(summary);
-//            }
-//        }
-
-
-//        QueryBuilder builder = session.getNewsSummaryDao().queryBuilder();
-//        Query<NewsSummary> query = builder.where(NewsSummaryDao.Properties.Time.between("2016-01-01","2018-01-01")).build();
-//         summaryList = query.list();
-//        mView.setNewsList(summaryList,LoadNewsType.TYPE_INIT_SUCCESS);
-
+        List<NewsSummary> maxNewsId = session.getNewsSummaryDao().queryBuilder().where(NewsSummaryDao.Properties.NewsId.isNotNull()).orderDesc(NewsSummaryDao.Properties.NewsId).limit(1).list();
+        int maxId = maxNewsId.get(0).getNewsId();
+        return maxId;
     }
 
 }
