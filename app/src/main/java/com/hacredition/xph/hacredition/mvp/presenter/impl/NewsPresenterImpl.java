@@ -128,8 +128,13 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
      * 加载从现在开始新增的信息保存进数据库
      */
     private void loadNewsData() {
-       int existId = getExistMaxNewsId();
-        mNewsInteractor.loadNews(this,existId);
+        if(NetUtil.isNetworkAvailable()){
+            int existId = getExistMaxNewsId();
+            mNewsInteractor.loadNewsFromNet(this,existId);
+        }else{
+            mNewsInteractor.loadNewsFromDB(0,10);
+        }
+
     }
 
 

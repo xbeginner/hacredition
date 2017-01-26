@@ -5,7 +5,8 @@ import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import java.util.List;
 import java.util.Map;
 
-import io.reactivex.Observable;
+import rx.Observable;
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Path;
@@ -18,8 +19,9 @@ import retrofit2.http.Query;
 public interface NewsService {
 
     @GET("getNewsList.do")
-    Observable<Map<String, List<NewsSummary>>> getNewsList(
-            @Header("Cache-Control") String cacheControl,
+    Observable<List<NewsSummary>> getNewsList(
             @Query("sort") int existNewsId);
+
+
 
 }
