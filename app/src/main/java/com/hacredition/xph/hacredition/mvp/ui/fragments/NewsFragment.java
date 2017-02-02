@@ -49,9 +49,9 @@ public class NewsFragment extends BaseFragment implements NewsView
     @BindView(R.id.news_recyclerview_id)
     RecyclerView recyclerView;
     @BindView(R.id.empty_view_id)
-    TextView textView;
-//    @BindView(R.id.progress_bar_id)
-//    ProgressBar progressBar;
+    TextView emptyTextView;
+    @BindView(R.id.progress_bar_id)
+    ProgressBar progressBar;
     @BindView(R.id.swipe_refresh_layout_id)
     SwipeRefreshLayout swipeRefreshLayout;
 
@@ -96,7 +96,6 @@ public class NewsFragment extends BaseFragment implements NewsView
                 LinearLayoutManager.VERTICAL, false));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        initNewsList();
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -116,8 +115,9 @@ public class NewsFragment extends BaseFragment implements NewsView
 
         });
 
-        newsRecyclerAdapter.setOnItemClickListener(this);
+
         recyclerView.setAdapter(newsRecyclerAdapter);
+        newsRecyclerAdapter.setOnItemClickListener(this);
         recyclerView.addItemDecoration(new RecyclerItemDecoration(2,2,getResources().getColor(R.color.dividerColor)));
     }
 
@@ -129,11 +129,22 @@ public class NewsFragment extends BaseFragment implements NewsView
 
     @Override
     public void showProgress() {
-
+        newsFragmentActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progressBar.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     @Override
     public void hideProgress() {
+        newsFragmentActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
 
     }
 
@@ -180,6 +191,7 @@ public class NewsFragment extends BaseFragment implements NewsView
             }
             case LoadNewsType.TYPE_LOAD_MORE_SUCCESS:{
                 newsRecyclerAdapter.hideFooter();
+                swipeRefreshLayout.setRefreshing(false);
                 if(newsSummaryList==null||newsSummaryList.size()==0){
                     Toast.makeText(activityContext,"没有更多了",Toast.LENGTH_SHORT).show();
                     recyclerView.scrollToPosition(newsRecyclerAdapter.getItemCount() - 1);
@@ -190,27 +202,36 @@ public class NewsFragment extends BaseFragment implements NewsView
                 break;
             }
         }
+        checkIsEmpty(newsSummaryList);
     }
 
-    /**
-     * 初始化List
-     * @return
-     */
-    private void initNewsList(){
-        List<NewsSummary> summaryList = new ArrayList<NewsSummary>();
-        //从缓存中取数据
-        newsRecyclerAdapter.setList(summaryList);
-    }
+
 
     @Override
-    public void onItemClick(View view, int position, boolean hasImg) {
-        Toast.makeText(activityContext,"img clicked",Toast.LENGTH_LONG).show();
+    public void onItemClick(View view, int newsId, boolean hasImg) {
+        if(hasImg){
+            goToImgNewsDetailActivity(newsId);
+        }else{
+            goToNewsDetailActivity(newsId);
+        }
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(activityContext,"clicked",Toast.LENGTH_LONG).show();
+
     }
+
+
+    private void checkIsEmpty(List<NewsSummary> newsSummary) {
+        if (newsSummary == null && newsRecyclerAdapter.getList() == null) {
+            recyclerView.setVisibility(View.GONE);
+            emptyTextView.setVisibility(View.VISIBLE);
+        } else {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyTextView.setVisibility(View.GONE);
+        }
+    }
+
 
 
 }

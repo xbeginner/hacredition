@@ -2,6 +2,8 @@ package com.hacredition.xph.hacredition.repository.network;
 
 import android.support.annotation.NonNull;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.utils.NetUtil;
@@ -16,6 +18,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import rx.Observable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.Cache;
@@ -39,7 +42,7 @@ public class RetrofitManager {
     private NewsService mNewsService;
 
 
-    private static final String BASE_URL = "http://127.0.0.1:8081/hacredition/";
+    private static final String BASE_URL = "http://192.168.1.108:8081/hacredition/";
 
 
     private static volatile OkHttpClient sOkHttpClient;
@@ -49,11 +52,18 @@ public class RetrofitManager {
 
 
     private RetrofitManager() {
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
         Retrofit retrofit = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())//解析方法
+                .addConverterFactory(GsonConverterFactory.create(gson))//解析方法
                 .client(getOkHttpClient())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl(BASE_URL)//主机地址
                 .build();
+        //定义一个可以调用NewsService的API
         mNewsService = retrofit.create(NewsService.class);
     }
 

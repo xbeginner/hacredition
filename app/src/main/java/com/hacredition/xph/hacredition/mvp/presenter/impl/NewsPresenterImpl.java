@@ -23,6 +23,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import static com.hacredition.xph.hacredition.common.LoadNewsType.TYPE_REFRESH_SUCCESS;
+
 /**
  * Created by pc on 2017/1/16.
  */
@@ -38,6 +40,8 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
 
     private int mStartPage;
 
+    private  DaoSession session;
+
    @Inject
    public NewsPresenterImpl(NewsInteractorImpl newsInteractorImpl ){
        mNewsInteractor = newsInteractorImpl;
@@ -52,22 +56,11 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
      */
     @Override
     public void refreshMore() {
-        //判断数据库中的内容
-
-        //请求新的内容
-        List<NewsSummary> summaryList = new ArrayList<NewsSummary>();
-        for(int i=0;i<20;i++){
-            NewsSummary summary = new NewsSummary();
-            summary.setTitle("title1"+i);
-            summary.setSubTitle("subtitle1"+i);
-            summary.setTime("2017-01-02");
-            summary.setHasImg(false);
-            summaryList.add(summary);
-        }
-
-        mView.setNewsList(summaryList,LoadNewsType.TYPE_REFRESH_SUCCESS);
-
-
+        int existId = getExistMaxNewsId();
+        mNewsInteractor.loadNewsFromNet(this,existId);
+        mIsRefresh = false;
+        mStartPage = 0;
+        loadNewsData();
     }
 
     /**
@@ -75,11 +68,8 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
      */
     @Override
     public void loadMore(){
-
-        List<NewsSummary>  summaryList = new ArrayList<NewsSummary>();
-//
-
-        mView.setNewsList(summaryList,LoadNewsType.TYPE_LOAD_MORE_SUCCESS);
+        mIsRefresh = false;
+        loadNewsData();
     }
 
     /**
@@ -87,14 +77,21 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
      */
     @Override
     public void onCreate() {
+        session = App.getmDaoSession();
+        if(NetUtil.isNetworkAvailable()) {
+            mView.showProgress();
+        }
        if(mView!=null){
            loadNewsData();
+           List<NewsSummary> news = mNewsInteractor.loadNewsFromDB(0,20);
+           mView.setNewsList(news,LoadNewsType.TYPE_REFRESH_SUCCESS);
+           mStartPage = 20;
        }
     }
 
     @Override
     public void beforeRequest() {
-        if(!misFirstLoad){
+        if(!misFirstLoad&&getExistMaxNewsId()==0){
             mView.showProgress();
         }
     }
@@ -105,14 +102,18 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
     @Override
     public void success(List<NewsSummary> items) {
         misFirstLoad = true;
-        if(items!=null){
-            mStartPage += 20;
-        }
-        int loadType = mIsRefresh?LoadNewsType.TYPE_REFRESH_SUCCESS : LoadNewsType.TYPE_LOAD_MORE_SUCCESS;
         if(mView!=null){
-            mView.setNewsList(items,loadType);
             mView.hideProgress();
         }
+        for(NewsSummary n:items){
+            //保存进数据库
+            int i = session.getNewsSummaryDao().queryBuilder().where(NewsSummaryDao.Properties.NewsId.eq(n.getNewsId())).list().size();
+            if(i==0) {
+                session.getNewsSummaryDao().insert(n);
+            }
+        }
+
+
     }
 
     @Override
@@ -125,24 +126,33 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
     }
 
     /**
-     * 加载从现在开始新增的信息保存进数据库
+     * 加载从现在开始新增的信息保存进数据库然后显示
      */
     private void loadNewsData() {
-        if(NetUtil.isNetworkAvailable()){
-            int existId = getExistMaxNewsId();
-            mNewsInteractor.loadNewsFromNet(this,existId);
+        int loadType = mIsRefresh? LoadNewsType.TYPE_REFRESH_SUCCESS : LoadNewsType.TYPE_LOAD_MORE_SUCCESS;
+        if(mIsRefresh == true){
+            mNewsInteractor.loadNewsFromNet(this,0);
         }else{
-            mNewsInteractor.loadNewsFromDB(0,10);
+            List<NewsSummary> news = mNewsInteractor.loadNewsFromDB(mStartPage,20);
+            mView.setNewsList(news,loadType);
+            mStartPage += 20;
         }
 
     }
 
 
+
+
     private int getExistMaxNewsId(){
-        DaoSession session = App.getmDaoSession();
+
         List<NewsSummary> maxNewsId = session.getNewsSummaryDao().queryBuilder().where(NewsSummaryDao.Properties.NewsId.isNotNull()).orderDesc(NewsSummaryDao.Properties.NewsId).limit(1).list();
+        if(maxNewsId==null||maxNewsId.size()==0){
+            return 0;
+        }
         int maxId = maxNewsId.get(0).getNewsId();
         return maxId;
     }
+
+
 
 }

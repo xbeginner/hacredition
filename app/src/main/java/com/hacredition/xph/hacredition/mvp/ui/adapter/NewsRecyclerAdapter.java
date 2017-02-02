@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.listener.OnItemClickListener;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
@@ -47,12 +48,12 @@ public class NewsRecyclerAdapter extends BaseRecyclerViewAdapter<NewsSummary>{
                 view = getView(parent,R.layout.news_item);
                 final NewsItemViewHolder holder = new NewsItemViewHolder(view);
                 setItemOnClickEvent(holder,false);
-                return new NewsItemViewHolder(view);
+                return holder;
             case TYPE_PHOTO_ITEM:
                 view = getView(parent,R.layout.news_item_img);
                 final NewsImgItemViewHolder imgHolder = new NewsImgItemViewHolder(view);
                 setItemOnClickEvent(imgHolder,true);
-                return new NewsImgItemViewHolder(view);
+                return imgHolder;
             case TYPE_FOOTER:
                 view = getView(parent,R.layout.news_item_footer);
                 return new NewsFooterViewHolder(view);
@@ -68,7 +69,8 @@ public class NewsRecyclerAdapter extends BaseRecyclerViewAdapter<NewsSummary>{
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((OnNewsItemClickListener) mOnItemClickListener).onItemClick(v, holder.getLayoutPosition(), hasImg);
+                    System.out.println("holder:"+holder.getLayoutPosition());
+                     ((OnNewsItemClickListener) mOnItemClickListener).onItemClick(v, mList.get(holder.getLayoutPosition()).getNewsId(), hasImg);
                 }
             });
         }
@@ -76,6 +78,7 @@ public class NewsRecyclerAdapter extends BaseRecyclerViewAdapter<NewsSummary>{
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
         if(holder instanceof NewsItemViewHolder){
             setNewsItemValues((NewsItemViewHolder)holder,position);
         }
@@ -158,11 +161,14 @@ public class NewsRecyclerAdapter extends BaseRecyclerViewAdapter<NewsSummary>{
     }
 
 
+
+
     private void setNewsItemValues(NewsItemViewHolder holder, int position) {
         NewsSummary summary = mList.get(position);
         holder.newsTime.setText(summary.getTime());
         holder.newsSubTitle.setText(summary.getSubTitle());
         holder.newsTitle.setText(summary.getTitle());
+
     }
 
     private void setNewsImgItemValues(NewsImgItemViewHolder holder, int position) {
@@ -170,6 +176,11 @@ public class NewsRecyclerAdapter extends BaseRecyclerViewAdapter<NewsSummary>{
         holder.newsImgTime.setText(summary.getTime());
         holder.newsImgSubTitle.setText(summary.getSubTitle());
         holder.newsImgTitle.setText(summary.getTitle());
+        Glide.with(holder.itemView.getContext())
+                .load(summary.getImgSrc())
+                .placeholder(R.drawable.no_pic)
+                .fitCenter()
+                .into(holder.newsImg);
     }
 
 

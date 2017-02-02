@@ -18,9 +18,9 @@ import retrofit2.http.Query;
 
 public interface NewsService {
 
-    @GET("getNewsList.do")
+    @GET("servlet/test")
     Observable<List<NewsSummary>> getNewsList(
-            @Query("sort") int existNewsId);
+            @Query("existNewsId") int existNewsId);
 
 
 

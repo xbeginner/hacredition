@@ -1,6 +1,9 @@
 package com.hacredition.xph.hacredition.mvp.interactor;
 
 import com.hacredition.xph.hacredition.listener.RequestCallBack;
+import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
+
+import java.util.List;
 
 import rx.Subscription;
 
@@ -12,5 +15,6 @@ public interface NewsInteractor<T> {
 
     Subscription loadNewsFromNet(RequestCallBack<T> listener, int lastNewsId);
 
-    Subscription loadNewsFromDB(int start,int limit);
+    List<NewsSummary> loadNewsFromDB(int start,int limit);
+
 }
