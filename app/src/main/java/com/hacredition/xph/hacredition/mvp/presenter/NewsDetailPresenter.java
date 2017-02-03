@@ -6,17 +6,11 @@ import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 import java.util.Collection;
 
 /**
- * Created by pc on 2017/1/16.
+ * Created by xikai on 2017/2/3.
  */
 
-public interface NewsPresenter extends BasePresenter  {
+public interface NewsDetailPresenter extends BasePresenter{
 
-    //上拉刷新
-    void loadMore();
-
-    //下拉加载更多
-    void refreshMore();
-
-
+       void showNewsDetail();
 
 }

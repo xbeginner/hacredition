@@ -12,20 +12,20 @@ import com.hacredition.xph.hacredition.di.component.DaggerFragmentComponent;
 import com.hacredition.xph.hacredition.di.component.FragmentComponent;
 import com.hacredition.xph.hacredition.di.module.FragmentModule;
 import com.hacredition.xph.hacredition.mvp.presenter.base.BasePresenter;
-import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 import com.squareup.leakcanary.RefWatcher;
 
 import org.reactivestreams.Subscription;
 
-import butterknife.ButterKnife;
+import java.util.Collection;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+import butterknife.ButterKnife;
 
 /**
  * Created by pc on 2017/1/16.
  */
 
-public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
+public abstract class BaseFragment<T extends BasePresenter<BaseView, Collection<E>>> extends Fragment {
 
     public FragmentComponent getFragmentComponent() {
         return fragmentComponent;

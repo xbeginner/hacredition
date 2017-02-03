@@ -13,7 +13,6 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
-import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.R;
 
@@ -22,8 +21,11 @@ import com.hacredition.xph.hacredition.di.component.ActivityComponent;
 import com.hacredition.xph.hacredition.di.component.DaggerActivityComponent;
 import com.hacredition.xph.hacredition.di.module.ActivityModule;
 import com.hacredition.xph.hacredition.mvp.presenter.base.BasePresenter;
+import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 import com.hacredition.xph.hacredition.utils.MyUtils;
 import com.hacredition.xph.hacredition.utils.NetUtil;
+
+import java.util.Collection;
 
 import butterknife.ButterKnife;
 
@@ -33,7 +35,7 @@ import butterknife.ButterKnife;
  * Created by pc on 2017/1/9.
  */
 
-public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity {
+public abstract class BaseActivity<T extends BasePresenter<BaseView, Collection<E>>> extends AppCompatActivity {
 
     protected ActivityComponent mActivityComponent;
 
@@ -74,7 +76,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         initInjector();
         ButterKnife.bind(this);
         initToolBar();
-        initBottomBar();
         //设定statusBar颜色，4.4以上
         setStatusBarTranslucent();
         initViews();
@@ -146,13 +147,5 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
 
 
-    private void initBottomBar(){
-        bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar_id);
-        bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.drawable.home_page, "主页"))
-                .addItem(new BottomNavigationItem(R.drawable.pen_book, "录入"))
-                .addItem(new BottomNavigationItem(R.drawable.graphique_statistics, "统计"))
-                .addItem(new BottomNavigationItem(R.drawable.config_set, "设置"))
-                .initialise();
-    }
+
 }

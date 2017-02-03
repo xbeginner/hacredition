@@ -2,6 +2,7 @@ package com.hacredition.xph.hacredition.mvp.ui.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.presenter.base.BasePresenter;
 import com.hacredition.xph.hacredition.mvp.presenter.impl.NewsPresenterImpl;
+import com.hacredition.xph.hacredition.mvp.ui.activity.NewsDetailActivity;
 import com.hacredition.xph.hacredition.mvp.ui.adapter.NewsRecyclerAdapter;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.NewsView;
@@ -232,6 +234,21 @@ public class NewsFragment extends BaseFragment implements NewsView
         }
     }
 
+
+    private void goToImgNewsDetailActivity(int newsId){
+        Bundle bundle = new Bundle();
+        bundle.putInt("newsId",newsId);
+        Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
+        startActivity(intent,bundle);
+
+    }
+
+    private void goToNewsDetailActivity(int newsId){
+        Bundle bundle = new Bundle();
+        bundle.putInt("newsId",newsId);
+        Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
+        startActivity(intent,bundle);
+    }
 
 
 }

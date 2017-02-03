@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
+import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.mvp.presenter.base.BasePresenter;
@@ -61,10 +63,19 @@ public class MainActivity extends BaseActivity  {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        initBottomBar();
     }
 
 
-
+    private void initBottomBar(){
+        bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar_id);
+        bottomNavigationBar
+                .addItem(new BottomNavigationItem(R.drawable.home_page, "主页"))
+                .addItem(new BottomNavigationItem(R.drawable.pen_book, "录入"))
+                .addItem(new BottomNavigationItem(R.drawable.graphique_statistics, "统计"))
+                .addItem(new BottomNavigationItem(R.drawable.config_set, "设置"))
+                .initialise();
+    }
 
 
 

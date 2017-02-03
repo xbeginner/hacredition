@@ -4,11 +4,13 @@ import android.support.annotation.NonNull;
 
 import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 
+import java.util.Collection;
+
 /**
  * Created by pc on 2017/1/9.
  */
 
-public interface BasePresenter {
+public interface BasePresenter  {
 
     void onCreate();
 
