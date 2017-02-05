@@ -4,10 +4,12 @@ import android.support.annotation.NonNull;
 
 import com.hacredition.xph.hacredition.listener.RequestCallBack;
 import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
+import com.hacredition.xph.hacredition.utils.MyUtils;
 
-import org.reactivestreams.Subscription;
 
 import java.util.Collection;
+
+import rx.Subscription;
 
 /**
  * Created by pc on 2017/1/16.
@@ -26,7 +28,7 @@ public class BasePresenterImpl<T extends BaseView,E> implements BasePresenter,Re
 
     @Override
     public void onDestory() {
-
+        MyUtils.cancelSubscription(mSubscription);
     }
 
     @Override

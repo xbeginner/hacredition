@@ -1,5 +1,6 @@
 package com.hacredition.xph.hacredition.repository.network;
 
+import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 
 import java.util.List;
@@ -22,6 +23,8 @@ public interface NewsService {
     Observable<List<NewsSummary>> getNewsList(
             @Query("existNewsId") int existNewsId);
 
-
+    @GET("servlet/test1")
+    Observable<NewsDetail> getNewsDetail(
+         @Query("newsId") int newsId);
 
 }

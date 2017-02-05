@@ -13,7 +13,7 @@ import rx.Subscription;
 
 public interface NewsInteractor<T> {
 
-    Subscription loadNewsFromNet(RequestCallBack<T> listener, int lastNewsId);
+    void loadNewsFromNet(RequestCallBack<T> listener, int lastNewsId);
 
     List<NewsSummary> loadNewsFromDB(int start,int limit);
 

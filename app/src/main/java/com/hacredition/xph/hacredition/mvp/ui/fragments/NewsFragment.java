@@ -39,6 +39,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 
 public class NewsFragment extends BaseFragment implements NewsView
@@ -152,7 +153,7 @@ public class NewsFragment extends BaseFragment implements NewsView
 
     @Override
     public void showMsg(String message) {
-
+         //Toast.makeText(newsFragmentActivity,message,Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -203,6 +204,10 @@ public class NewsFragment extends BaseFragment implements NewsView
                 }
                 break;
             }
+            case LoadNewsType.TYPE_REFRESH_ERROR:{
+                hideProgress();
+                break;
+            }
         }
         checkIsEmpty(newsSummaryList);
     }
@@ -211,11 +216,9 @@ public class NewsFragment extends BaseFragment implements NewsView
 
     @Override
     public void onItemClick(View view, int newsId, boolean hasImg) {
-        if(hasImg){
-            goToImgNewsDetailActivity(newsId);
-        }else{
-            goToNewsDetailActivity(newsId);
-        }
+
+            goToNewsDetailActivity(newsId,hasImg);
+
     }
 
     @Override
@@ -225,29 +228,47 @@ public class NewsFragment extends BaseFragment implements NewsView
 
 
     private void checkIsEmpty(List<NewsSummary> newsSummary) {
-        if (newsSummary == null && newsRecyclerAdapter.getList() == null) {
-            recyclerView.setVisibility(View.GONE);
-            emptyTextView.setVisibility(View.VISIBLE);
+        if (newsSummary == null && newsRecyclerAdapter.getList().size() == 0) {
+            newsFragmentActivity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    recyclerView.setVisibility(View.GONE);
+                    emptyTextView.setVisibility(View.VISIBLE);
+                    emptyTextView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mPresenter.onCreate();
+                        }
+                    });
+                }
+            });
+
         } else {
-            recyclerView.setVisibility(View.VISIBLE);
-            emptyTextView.setVisibility(View.GONE);
+            newsFragmentActivity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    recyclerView.setVisibility(View.VISIBLE);
+                    emptyTextView.setVisibility(View.GONE);
+                }
+            });
+
         }
     }
 
 
-    private void goToImgNewsDetailActivity(int newsId){
-        Bundle bundle = new Bundle();
-        bundle.putInt("newsId",newsId);
-        Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
-        startActivity(intent,bundle);
 
-    }
 
-    private void goToNewsDetailActivity(int newsId){
-        Bundle bundle = new Bundle();
-        bundle.putInt("newsId",newsId);
-        Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
-        startActivity(intent,bundle);
+    private void goToNewsDetailActivity(int newsId,boolean hasImg){
+        if(NetUtil.isNetworkAvailable()){
+            Bundle bundle = new Bundle();
+            bundle.putInt("newsId",newsId);
+            bundle.putBoolean("hasImg",hasImg);
+            Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
+            startActivity(intent,bundle);
+        }else{
+            showMsg(getResources().getString(R.string.internet_error));
+        }
+
     }
 
 

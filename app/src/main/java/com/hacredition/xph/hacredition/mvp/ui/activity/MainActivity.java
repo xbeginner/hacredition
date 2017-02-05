@@ -14,6 +14,7 @@ import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.mvp.presenter.base.BasePresenter;
 import com.hacredition.xph.hacredition.mvp.ui.activity.base.BaseActivity;
 import com.hacredition.xph.hacredition.mvp.ui.adapter.MyViewPagerAdatper;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.InputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.NewsFragment;
 import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 
@@ -25,7 +26,10 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity  {
+public class MainActivity extends BaseActivity implements
+        BottomNavigationBar.OnTabSelectedListener
+        ,ViewPager.OnPageChangeListener
+        ,InputFragment.OnFragmentInteractionListener {
 
 
     @BindView(R.id.toolbar) Toolbar toolbar;
@@ -56,7 +60,7 @@ public class MainActivity extends BaseActivity  {
         List<Fragment> fragmentList = initFragmentList();
         List<String> titles = initFragmentTitles();
         viewPager.setAdapter(new MyViewPagerAdatper(getSupportFragmentManager(),titles,fragmentList));
-
+        viewPager.addOnPageChangeListener(this);
     }
 
     @Override
@@ -75,6 +79,7 @@ public class MainActivity extends BaseActivity  {
                 .addItem(new BottomNavigationItem(R.drawable.graphique_statistics, "统计"))
                 .addItem(new BottomNavigationItem(R.drawable.config_set, "设置"))
                 .initialise();
+        bottomNavigationBar.setTabSelectedListener(this);
     }
 
 
@@ -86,7 +91,9 @@ public class MainActivity extends BaseActivity  {
     private List<Fragment> initFragmentList(){
         List<Fragment> viewList = new ArrayList<Fragment>();
        NewsFragment newsFragment = new NewsFragment();
+        InputFragment inputFragment = new InputFragment();
          viewList.add(newsFragment);
+        viewList.add(inputFragment);
         return viewList;
     }
 
@@ -100,4 +107,38 @@ public class MainActivity extends BaseActivity  {
     }
 
 
+    @Override
+    public void onTabSelected(int position) {
+       viewPager.setCurrentItem(position);
+    }
+
+    @Override
+    public void onTabUnselected(int position) {
+
+    }
+
+    @Override
+    public void onTabReselected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+         bottomNavigationBar.selectTab(position);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }

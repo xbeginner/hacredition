@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
@@ -8,35 +9,12 @@
     android:orientation="vertical"
     tools:context="com.hacredition.xph.hacredition.mvp.ui.activity.NewsDetailActivity">
 
-    <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-
         <include
             layout="@layout/app_top_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <include layout="@layout/content_news_detail"/>
 
-    </android.support.design.widget.CoordinatorLayout>
 
-
-    <android.support.v7.widget.AppCompatImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/news_detail_imgview_id"
-        android:visibility="gone"
-        />
-
-    <TextView
-        android:id="@+id/news_detail_titleview_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <WebView
-        android:id="@+id/news_detail_webview_id"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></WebView>
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -1,5 +1,7 @@
 package com.hacredition.xph.hacredition.mvp.presenter.impl;
 
+import android.widget.Toast;
+
 import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.common.LoadNewsType;
 import com.hacredition.xph.hacredition.listener.RequestCallBack;
@@ -120,8 +122,8 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
     public void onError(String errorMsg) {
         super.onError(errorMsg);
         if (mView != null) {
-            int loadType = mIsRefresh ? LoadNewsType.TYPE_REFRESH_ERROR : LoadNewsType.TYPE_LOAD_MORE_ERROR;
-            mView.setNewsList(null, loadType);
+            mView.setNewsList(null,LoadNewsType.TYPE_REFRESH_ERROR);
+            mView.showMsg(errorMsg);
         }
     }
 

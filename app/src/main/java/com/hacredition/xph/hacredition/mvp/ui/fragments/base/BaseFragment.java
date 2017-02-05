@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
  * Created by pc on 2017/1/16.
  */
 
-public abstract class BaseFragment<T extends BasePresenter<BaseView, Collection<E>>> extends Fragment {
+public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
 
     public FragmentComponent getFragmentComponent() {
         return fragmentComponent;

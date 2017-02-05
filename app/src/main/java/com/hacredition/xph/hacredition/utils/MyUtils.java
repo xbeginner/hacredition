@@ -28,7 +28,11 @@ public class MyUtils {
     }
 
 
-
+    public static void cancelSubscription(rx.Subscription subscription) {
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
+    }
 
 
 }

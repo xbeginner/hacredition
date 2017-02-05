@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hacredition.xph.hacredition.App;
+import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.utils.NetUtil;
 import com.socks.library.KLog;
@@ -116,6 +117,8 @@ public class RetrofitManager {
         return mNewsService.getNewsList(existNewsId);
     }
 
-
+    public Observable<NewsDetail> getNewsDetail(int newsId){
+        return mNewsService.getNewsDetail(newsId);
+    }
 
 }

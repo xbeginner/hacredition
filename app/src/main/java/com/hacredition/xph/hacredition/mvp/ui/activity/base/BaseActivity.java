@@ -35,7 +35,7 @@ import butterknife.ButterKnife;
  * Created by pc on 2017/1/9.
  */
 
-public abstract class BaseActivity<T extends BasePresenter<BaseView, Collection<E>>> extends AppCompatActivity {
+public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity {
 
     protected ActivityComponent mActivityComponent;
 

@@ -9,6 +9,8 @@ import com.hacredition.xph.hacredition.mvp.interactor.NewsInteractor;
 import com.hacredition.xph.hacredition.repository.network.RetrofitManager;
 import com.hacredition.xph.hacredition.utils.MyUtils;
 
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.Observable;
@@ -30,29 +32,26 @@ public class NewsInteractorImpl implements NewsInteractor<List<NewsSummary>> {
 
     }
     @Override
-    public Subscription loadNewsFromNet(final RequestCallBack<List<NewsSummary>> listener, int lastNewsId) {
+    public void loadNewsFromNet(final RequestCallBack<List<NewsSummary>> listener, int lastNewsId) {
         RetrofitManager manager = RetrofitManager.getInstance();
-        Subscription subscription = manager.getNewsListObservable(lastNewsId)
+        manager.getNewsListObservable(lastNewsId)
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<List<NewsSummary>>() {
+                    @Override
+                    public void onCompleted() {
 
-            @Override
-            public void onCompleted() {
+                    }
 
-            }
+                    @Override
+                    public void onError(Throwable e) {
+                         listener.onError("net work error");
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                 e.printStackTrace();
-                 listener.onError("net work error");
-            }
-
-            @Override
-            public void onNext(List<NewsSummary> newsSummaries) {
-                 listener.success(newsSummaries);
-            }
-        });
-        return subscription;
+                    @Override
+                    public void onNext(List<NewsSummary> newsSummaries) {
+                         listener.success(newsSummaries);
+                    }
+                });
     }
 
 

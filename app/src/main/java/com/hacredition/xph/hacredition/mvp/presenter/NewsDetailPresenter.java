@@ -11,6 +11,6 @@ import java.util.Collection;
 
 public interface NewsDetailPresenter extends BasePresenter{
 
-       void showNewsDetail();
+       void showNewsDetail(int newsId);
 
 }

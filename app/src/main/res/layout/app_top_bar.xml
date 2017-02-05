@@ -7,7 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/toolbar_padding_top"
-        tools:context=".mvp.ui.activity.MainActivity"
         >
 
 
@@ -18,11 +17,18 @@
             android:background="@color/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
             >
-            <TextView
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/back_image_view_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""/>
+                android:background="@drawable/back_32px"
+                android:visibility="gone"
+                />
+
         </android.support.v7.widget.Toolbar>
 
-    </android.support.design.widget.AppBarLayout>
+
+
+</android.support.design.widget.AppBarLayout>
 
