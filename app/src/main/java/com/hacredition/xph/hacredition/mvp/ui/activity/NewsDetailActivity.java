@@ -58,6 +58,8 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView{
 
     private boolean hasImg;
 
+    private NewsDetail mNewsDetail;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_news_detail;
@@ -79,6 +81,7 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView{
         Bundle bundle = getIntent().getExtras();
         hasImg = bundle.getBoolean("hasImg");
         newsId = bundle.getInt("newsId");
+        backImage.setVisibility(View.VISIBLE);
         backImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,20 +89,31 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView{
                 mActivity.finish();
             }
         });
+        initPresenter();
     }
 
     @Override
     public void showNewsDetail(NewsDetail newsDetail) {
-        if(hasImg){
-            Glide.with(activityContext)
-                    .load(newsDetail.getImgSrc())
-                    .placeholder(R.drawable.no_pic)
-                    .fitCenter()
-                    .into(newsDetailImage);
-        }
-        newsDetailTitleText.setText(newsDetail.getTitle());
-        newsDetailTimeText.setText(newsDetail.getTime());
-        newsDetailContentText.setText(newsDetail.getContent());
+        mNewsDetail = newsDetail;
+
+        mActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(hasImg){
+                    newsDetailImage.setVisibility(View.VISIBLE);
+                    Glide.with(activityContext)
+                            .load(mNewsDetail.getImgSrc())
+                            .placeholder(R.drawable.no_pic)
+                            .fitCenter()
+                            .into(newsDetailImage);
+                }
+                newsDetailTitleText.setText(mNewsDetail.getTitle());
+                newsDetailTimeText.setText(mNewsDetail.getTime());
+                newsDetailContentText.setText(mNewsDetail.getContent());
+                hideProgress();
+            }
+        });
+
     }
 
     @Override
@@ -114,7 +128,14 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView{
 
     @Override
     public void showMsg(String message) {
-        Toast.makeText(this,message,Toast.LENGTH_LONG).show();
+        mActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                hideProgress();
+                Toast.makeText(activityContext,R.string.data_error,Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
     @Override

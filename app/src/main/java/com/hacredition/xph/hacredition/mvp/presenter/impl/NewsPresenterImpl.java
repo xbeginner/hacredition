@@ -85,9 +85,7 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
         }
        if(mView!=null){
            loadNewsData();
-           List<NewsSummary> news = mNewsInteractor.loadNewsFromDB(0,20);
-           mView.setNewsList(news,LoadNewsType.TYPE_REFRESH_SUCCESS);
-           mStartPage = 20;
+
        }
     }
 
@@ -115,7 +113,7 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
             }
         }
 
-
+        getDBNewsList();
     }
 
     @Override
@@ -134,6 +132,7 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
         int loadType = mIsRefresh? LoadNewsType.TYPE_REFRESH_SUCCESS : LoadNewsType.TYPE_LOAD_MORE_SUCCESS;
         if(mIsRefresh == true){
             mNewsInteractor.loadNewsFromNet(this,0);
+
         }else{
             List<NewsSummary> news = mNewsInteractor.loadNewsFromDB(mStartPage,20);
             mView.setNewsList(news,loadType);
@@ -155,6 +154,12 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
         return maxId;
     }
 
+
+    private void getDBNewsList(){
+        List<NewsSummary> news = mNewsInteractor.loadNewsFromDB(0,20);
+        mView.setNewsList(news,LoadNewsType.TYPE_REFRESH_SUCCESS);
+        mStartPage = 20;
+    }
 
 
 }

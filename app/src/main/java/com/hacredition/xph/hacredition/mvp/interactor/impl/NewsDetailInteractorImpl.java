@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.schedulers.Schedulers;
@@ -18,7 +19,7 @@ import rx.schedulers.Schedulers;
  * Created by xikai on 2017/2/3.
  */
 
-public class NewsDetailInteractorImpl implements NewsDetailInteractor {
+public class NewsDetailInteractorImpl implements NewsDetailInteractor<NewsDetail> {
 
     @Inject
     public NewsDetailInteractorImpl() {
@@ -26,7 +27,8 @@ public class NewsDetailInteractorImpl implements NewsDetailInteractor {
     }
     @Override
     public Subscription loadNewsDetail(final RequestCallBack listener, int newsId) {
-         //利用网络加载数据
+
+        //利用网络加载数据
         RetrofitManager manager = RetrofitManager.getInstance();
         return manager.getNewsDetail(newsId)
                 .subscribeOn(Schedulers.io())
@@ -38,6 +40,7 @@ public class NewsDetailInteractorImpl implements NewsDetailInteractor {
 
                     @Override
                     public void onError(Throwable e) {
+                        e.printStackTrace();
                         listener.onError("net work error");
                     }
 

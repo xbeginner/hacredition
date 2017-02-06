@@ -260,11 +260,10 @@ public class NewsFragment extends BaseFragment implements NewsView
 
     private void goToNewsDetailActivity(int newsId,boolean hasImg){
         if(NetUtil.isNetworkAvailable()){
-            Bundle bundle = new Bundle();
-            bundle.putInt("newsId",newsId);
-            bundle.putBoolean("hasImg",hasImg);
             Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
-            startActivity(intent,bundle);
+            intent.putExtra("hasImg",hasImg);
+            intent.putExtra("newsId",newsId);
+            startActivity(intent);
         }else{
             showMsg(getResources().getString(R.string.internet_error));
         }
