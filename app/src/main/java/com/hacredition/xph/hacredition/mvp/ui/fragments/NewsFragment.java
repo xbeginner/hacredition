@@ -39,11 +39,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import io.reactivex.android.schedulers.AndroidSchedulers;
+
 
 
 public class NewsFragment extends BaseFragment implements NewsView
-        ,SwipeRefreshLayout.OnRefreshListener
+        , SwipeRefreshLayout.OnRefreshListener
         , NewsRecyclerAdapter.OnNewsItemClickListener{
 
 
@@ -132,28 +132,17 @@ public class NewsFragment extends BaseFragment implements NewsView
 
     @Override
     public void showProgress() {
-        newsFragmentActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                progressBar.setVisibility(View.VISIBLE);
-            }
-        });
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-        newsFragmentActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                progressBar.setVisibility(View.GONE);
-            }
-        });
-
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
-    public void showMsg(String message) {
-         //Toast.makeText(newsFragmentActivity,message,Toast.LENGTH_LONG).show();
+    public void showMsg() {
+         Toast.makeText(newsFragmentActivity,R.string.data_error,Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -228,30 +217,18 @@ public class NewsFragment extends BaseFragment implements NewsView
 
 
     private void checkIsEmpty(List<NewsSummary> newsSummary) {
-        if (newsSummary == null && newsRecyclerAdapter.getList().size() == 0) {
-            newsFragmentActivity.runOnUiThread(new Runnable() {
+        if (newsSummary == null ) {
+            recyclerView.setVisibility(View.GONE);
+            emptyTextView.setVisibility(View.VISIBLE);
+            emptyTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void run() {
-                    recyclerView.setVisibility(View.GONE);
-                    emptyTextView.setVisibility(View.VISIBLE);
-                    emptyTextView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            mPresenter.onCreate();
-                        }
-                    });
+                public void onClick(View v) {
+                    mPresenter.onCreate();
                 }
             });
-
         } else {
-            newsFragmentActivity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    recyclerView.setVisibility(View.VISIBLE);
-                    emptyTextView.setVisibility(View.GONE);
-                }
-            });
-
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyTextView.setVisibility(View.GONE);
         }
     }
 
@@ -265,7 +242,7 @@ public class NewsFragment extends BaseFragment implements NewsView
             intent.putExtra("newsId",newsId);
             startActivity(intent);
         }else{
-            showMsg(getResources().getString(R.string.internet_error));
+            Toast.makeText(newsFragmentActivity,R.string.internet_error,Toast.LENGTH_LONG).show();
         }
 
     }

@@ -10,8 +10,11 @@ import com.hacredition.xph.hacredition.repository.network.RetrofitManager;
 import com.hacredition.xph.hacredition.utils.MyUtils;
 
 
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import rx.Subscriber;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 import rx.Subscription;
 import rx.Observable;
 import java.util.List;
@@ -19,7 +22,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import rx.functions.Func1;
-import rx.schedulers.Schedulers;
+
 
 /**
  * 用于Rx的处理
@@ -36,20 +39,27 @@ public class NewsInteractorImpl implements NewsInteractor<List<NewsSummary>> {
         RetrofitManager manager = RetrofitManager.getInstance();
         manager.getNewsListObservable(lastNewsId)
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<List<NewsSummary>>() {
+                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe();
+                .subscribe(new Observer<List<NewsSummary>>() {
                     @Override
-                    public void onCompleted() {
+                    public void onSubscribe(Disposable d) {
 
+                    }
+
+                    @Override
+                    public void onNext(List<NewsSummary> list) {
+                         listener.success(list);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                         listener.onError("net work error");
+                          listener.onError();
                     }
 
                     @Override
-                    public void onNext(List<NewsSummary> newsSummaries) {
-                         listener.success(newsSummaries);
+                    public void onComplete() {
+
                     }
                 });
     }

@@ -10,6 +10,6 @@ import rx.Subscription;
 
 public interface NewsDetailInteractor<T> {
 
-    Subscription loadNewsDetail(RequestCallBack<T> listener, int newsId);
+    void loadNewsDetail(RequestCallBack<T> listener, int newsId);
 
 }

@@ -6,6 +6,7 @@ import android.content.Context;
 import com.hacredition.xph.hacredition.di.module.FragmentModule;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.di.scope.PerFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.InputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.NewsFragment;
 
 import dagger.Component;
@@ -28,5 +29,5 @@ public interface FragmentComponent{
     Activity getActivity();
 
     void inject(NewsFragment newsFragment);
-
+    void inject(InputFragment inputFragment);
 }

@@ -2,18 +2,19 @@ package com.hacredition.xph.hacredition.mvp.interactor.impl;
 
 import com.hacredition.xph.hacredition.listener.RequestCallBack;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
-import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.interactor.NewsDetailInteractor;
 import com.hacredition.xph.hacredition.repository.network.RetrofitManager;
 
-import java.util.List;
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import rx.Subscriber;
-import rx.Subscription;
-import rx.schedulers.Schedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 
 /**
  * Created by xikai on 2017/2/3.
@@ -26,28 +27,33 @@ public class NewsDetailInteractorImpl implements NewsDetailInteractor<NewsDetail
 
     }
     @Override
-    public Subscription loadNewsDetail(final RequestCallBack listener, int newsId) {
+    public void loadNewsDetail(final RequestCallBack listener, int newsId) {
 
-        //利用网络加载数据
+//        //利用网络加载数据
         RetrofitManager manager = RetrofitManager.getInstance();
-        return manager.getNewsDetail(newsId)
+          manager.getNewsDetail(newsId)
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<NewsDetail>() {
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<NewsDetail>() {
                     @Override
-                    public void onCompleted() {
+                    public void onSubscribe(Disposable d) {
 
+                    }
+
+                    @Override
+                    public void onNext(NewsDetail value) {
+                         listener.success(value);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        e.printStackTrace();
-                        listener.onError("net work error");
+                         listener.onError();
                     }
 
                     @Override
-                    public void onNext(NewsDetail newsDetail) {
-                        listener.success(newsDetail);
+                    public void onComplete() {
+
                     }
                 });
-     }
+    }
 }

@@ -28,7 +28,7 @@ public class NewsDetailPresenterImpl extends BasePresenterImpl<NewsDetailView,Ne
     @Override
     public void showNewsDetail(int newsId) {
 
-        mSubscription = mNewsDetailInteractor.loadNewsDetail(this,newsId);
+        mNewsDetailInteractor.loadNewsDetail(this,newsId);
     }
 
     @Override
@@ -37,8 +37,8 @@ public class NewsDetailPresenterImpl extends BasePresenterImpl<NewsDetailView,Ne
     }
 
     @Override
-    public void onError(String errorMsg) {
-         mView.showMsg(errorMsg);
+    public void onError() {
+         mView.showMsg();
     }
 
 

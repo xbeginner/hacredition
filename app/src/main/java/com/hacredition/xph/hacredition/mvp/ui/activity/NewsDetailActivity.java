@@ -58,7 +58,7 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView{
 
     private boolean hasImg;
 
-    private NewsDetail mNewsDetail;
+
 
     @Override
     public int getLayoutId() {
@@ -94,25 +94,18 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView{
 
     @Override
     public void showNewsDetail(NewsDetail newsDetail) {
-        mNewsDetail = newsDetail;
-
-        mActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                if(hasImg){
-                    newsDetailImage.setVisibility(View.VISIBLE);
-                    Glide.with(activityContext)
-                            .load(mNewsDetail.getImgSrc())
-                            .placeholder(R.drawable.no_pic)
-                            .fitCenter()
-                            .into(newsDetailImage);
-                }
-                newsDetailTitleText.setText(mNewsDetail.getTitle());
-                newsDetailTimeText.setText(mNewsDetail.getTime());
-                newsDetailContentText.setText(mNewsDetail.getContent());
-                hideProgress();
-            }
-        });
+        if(hasImg){
+            newsDetailImage.setVisibility(View.VISIBLE);
+            Glide.with(activityContext)
+                    .load(newsDetail.getImgSrc())
+                    .placeholder(R.drawable.no_pic)
+                    .fitCenter()
+                    .into(newsDetailImage);
+        }
+        newsDetailTitleText.setText(newsDetail.getTitle());
+        newsDetailTimeText.setText(newsDetail.getTime());
+        newsDetailContentText.setText(newsDetail.getContent());
+        hideProgress();
 
     }
 
@@ -127,15 +120,9 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView{
     }
 
     @Override
-    public void showMsg(String message) {
-        mActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                hideProgress();
-                Toast.makeText(activityContext,R.string.data_error,Toast.LENGTH_LONG).show();
-            }
-        });
-
+    public void showMsg() {
+        hideProgress();
+        Toast.makeText(activityContext,R.string.data_error,Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -15,7 +15,7 @@ public interface BaseView{
 
     void hideProgress();
 
-    void showMsg(String message);
+    void showMsg();
 
     void initPresenter();
 

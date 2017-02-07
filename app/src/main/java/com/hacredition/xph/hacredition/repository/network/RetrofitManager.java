@@ -8,6 +8,7 @@ import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.utils.NetUtil;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.socks.library.KLog;
 
 import org.reactivestreams.Subscriber;
@@ -19,8 +20,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Observable;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import rx.Observable;
+
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
@@ -59,10 +61,10 @@ public class RetrofitManager {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)//主机地址
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))//解析方法
                 .client(getOkHttpClient())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(BASE_URL)//主机地址
                 .build();
         //定义一个可以调用NewsService的API
         mNewsService = retrofit.create(NewsService.class);

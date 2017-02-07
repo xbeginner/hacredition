@@ -6,7 +6,8 @@ import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import java.util.List;
 import java.util.Map;
 
-import rx.Observable;
+
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;

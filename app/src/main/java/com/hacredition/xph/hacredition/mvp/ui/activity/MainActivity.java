@@ -1,6 +1,7 @@
 package com.hacredition.xph.hacredition.mvp.ui.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.mvp.presenter.base.BasePresenter;
@@ -28,8 +30,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements
         BottomNavigationBar.OnTabSelectedListener
-        ,ViewPager.OnPageChangeListener
-        ,InputFragment.OnFragmentInteractionListener {
+        ,ViewPager.OnPageChangeListener {
 
 
     @BindView(R.id.toolbar) Toolbar toolbar;
@@ -124,7 +125,10 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+        if(position==1 && App.hasLogin==false){
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -137,8 +141,5 @@ public class MainActivity extends BaseActivity implements
 
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
-    }
 }

@@ -24,6 +24,7 @@ import org.greenrobot.greendao.database.Database;
 
 public class App extends Application {
 
+    public static boolean hasLogin = true;
 
     private ApplicationComponent mApplicationComponent;
 

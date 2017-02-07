@@ -3,6 +3,7 @@ package com.hacredition.xph.hacredition.mvp.presenter.impl;
 import android.widget.Toast;
 
 import com.hacredition.xph.hacredition.App;
+import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.common.LoadNewsType;
 import com.hacredition.xph.hacredition.listener.RequestCallBack;
 import com.hacredition.xph.hacredition.mvp.entity.DaoSession;
@@ -117,11 +118,11 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
     }
 
     @Override
-    public void onError(String errorMsg) {
-        super.onError(errorMsg);
+    public void onError() {
+        super.onError();
         if (mView != null) {
             mView.setNewsList(null,LoadNewsType.TYPE_REFRESH_ERROR);
-            mView.showMsg(errorMsg);
+            mView.showMsg();
         }
     }
 

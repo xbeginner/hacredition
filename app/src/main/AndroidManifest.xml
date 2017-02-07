@@ -25,7 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.ui.activity.NewsDetailActivity"></activity>
+        <activity android:name=".mvp.ui.activity.NewsDetailActivity" />
+        <activity android:name=".mvp.ui.activity.LoginActivity"></activity>
     </application>
 
 </manifest>
