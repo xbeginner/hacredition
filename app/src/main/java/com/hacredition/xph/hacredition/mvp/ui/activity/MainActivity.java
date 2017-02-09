@@ -133,9 +133,14 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        if(position==1 && App.hasLogin==false){
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivityForResult(intent,LOGIN_SUCCESS_CODE);
+        if(position==1 ){
+            if(App.hasLogin){
+                initInputFragment();
+            }else{
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivityForResult(intent,LOGIN_SUCCESS_CODE);
+            }
+
         }
     }
 
@@ -143,15 +148,13 @@ public class MainActivity extends BaseActivity implements
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (resultCode){
             case LOGIN_SUCCESS_CODE:{
-                System.out.println("success");
                 App.hasLogin = true;
 
-                inputFragment.hideProgress();
+                initInputFragment();
                 break;
             }
             case LOGIN_FAIL_CODE:{
                 App.hasLogin = true;
-
                 inputFragment.hideProgress();
                 break;
             }
@@ -166,6 +169,11 @@ public class MainActivity extends BaseActivity implements
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    private void initInputFragment(){
+        inputFragment.showInputItems();
+        inputFragment.hideProgress();
     }
 
 

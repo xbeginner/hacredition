@@ -17,7 +17,9 @@ public class LoginInteractorImpl implements LoginInteractor<UserInfo> {
     }
 
     @Override
-    public int getLoginInfo() {
-        return 2;
+    public UserInfo getLoginInfo() {
+        UserInfo userInfo = new UserInfo();
+        return userInfo;
+
     }
 }

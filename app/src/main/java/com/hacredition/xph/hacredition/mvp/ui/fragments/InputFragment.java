@@ -19,12 +19,16 @@ import android.widget.TextView;
 import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
+import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
+import com.hacredition.xph.hacredition.mvp.presenter.impl.InputPresenterImpl;
 import com.hacredition.xph.hacredition.mvp.ui.activity.LoginActivity;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputView;
 import com.hacredition.xph.hacredition.utils.RecyclerItemDecoration;
 
 import org.w3c.dom.Text;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -49,7 +53,14 @@ public class InputFragment extends BaseFragment
     @ContextLife("Activity")
     Context activityContext;
 
+    @Inject
+    InputPresenterImpl mInputPresenterImpl;
+
     public static int REQUEST_CODE;
+
+    private UserInfo userInfo;
+
+    List<String> items;
 
 
     @Override
@@ -68,9 +79,16 @@ public class InputFragment extends BaseFragment
         return R.layout.fragment_input;
     }
 
+    /**
+     * 根据权限进行权限的查询
+     */
     @Override
     public void showInputItems() {
+        //从缓存中取出userInfo
+        if(userInfo==null){
 
+        }
+        mInputPresenterImpl.setInputItems(userInfo);
     }
 
     @Override
@@ -96,4 +114,6 @@ public class InputFragment extends BaseFragment
     private void initRecyclerView() {
 
     }
+
+
 }

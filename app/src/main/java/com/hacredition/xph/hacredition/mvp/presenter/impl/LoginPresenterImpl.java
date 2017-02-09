@@ -24,16 +24,12 @@ public class LoginPresenterImpl extends BasePresenterImpl<LoginView,UserInfo> im
     @Override
     public void login(String username, String password) {
 
-          switch (mLoginInteractorImpl.getLoginInfo()){
-              case 0:
-                  break;
-              case 1:
-                  mView.showLoginErrorInfo("错误的用户名");
-                  break;
-              case 2:
-                  mView.showLoginErrorInfo("错误的密码");
-                  break;
+          if (mLoginInteractorImpl.getLoginInfo()==null) {
+              mView.showLoginErrorInfo("错误的用户名");
+          }else {
+              mView.loginSuccessfully(mLoginInteractorImpl.getLoginInfo());
           }
+
     }
 
 

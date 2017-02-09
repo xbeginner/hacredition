@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
+import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.mvp.presenter.impl.LoginPresenterImpl;
 import com.hacredition.xph.hacredition.mvp.ui.activity.base.BaseActivity;
 import com.hacredition.xph.hacredition.mvp.view.LoginView;
@@ -106,6 +107,15 @@ public class LoginActivity extends BaseActivity
     }
 
     @Override
+    public void loginSuccessfully(UserInfo userInfo) {
+        //将User保存进缓存
+        //生成items
+        loginPresenter.onDestory();
+        setResult(MainActivity.LOGIN_SUCCESS_CODE);
+        this.finish();
+    }
+
+    @Override
     public void showProgress() {
 
     }
@@ -136,6 +146,10 @@ public class LoginActivity extends BaseActivity
                 loginPresenter.onDestory();
                 setResult(MainActivity.LOGIN_FAIL_CODE);
                 this.finish();
+                break;
+            }
+            case R.id.register_button:{
+                break;
             }
         }
     }

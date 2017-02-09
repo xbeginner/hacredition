@@ -3,6 +3,8 @@ package com.hacredition.xph.hacredition.mvp.entity;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 
+import java.util.List;
+
 /**
  * Created by pc on 2017/2/7.
  */
@@ -21,6 +23,8 @@ public class UserInfo {
     private String tel;
 
     private String imgSrc;
+
+    private List<String> inputItems;
 
     @Generated(hash = 1072804828)
     public UserInfo(int userId, String userName, int orgId, String orgName,
@@ -83,5 +87,13 @@ public class UserInfo {
 
     public void setImgSrc(String imgSrc) {
         this.imgSrc = imgSrc;
+    }
+
+    public List<String> getInputItems() {
+        return inputItems;
+    }
+
+    public void setInputItems(List<String> inputItems) {
+        this.inputItems = inputItems;
     }
 }
