@@ -23,6 +23,7 @@ import android.content.Context;
 import com.hacredition.xph.hacredition.di.module.ActivityModule;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.di.scope.PerActivity;
+import com.hacredition.xph.hacredition.mvp.ui.activity.LoginActivity;
 import com.hacredition.xph.hacredition.mvp.ui.activity.MainActivity;
 import com.hacredition.xph.hacredition.mvp.ui.activity.NewsDetailActivity;
 
@@ -47,4 +48,5 @@ public interface ActivityComponent {
 
     void inject(NewsDetailActivity newsDetailActivity);
 
+    void inject(LoginActivity loginActivity);
 }

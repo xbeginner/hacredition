@@ -72,18 +72,18 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         int layoutId = getLayoutId();
         setContentView(layoutId);
 
-
         initInjector();
         ButterKnife.bind(this);
         initToolBar();
-        //设定statusBar颜色，4.4以上
-        setStatusBarTranslucent();
+
         initViews();
 
         if (mPresenter != null) {
             mPresenter.onCreate();
         }
 
+        //设定statusBar颜色，4.4以上
+        setStatusBarTranslucent();
     }
 
 

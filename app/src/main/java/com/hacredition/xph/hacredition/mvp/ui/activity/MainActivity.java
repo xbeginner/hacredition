@@ -45,6 +45,12 @@ public class MainActivity extends BaseActivity implements
     @ContextLife("Application")
     Context applicationContext;
 
+    public static final int LOGIN_SUCCESS_CODE=0;
+
+    public static final int LOGIN_FAIL_CODE=1;
+
+    private InputFragment inputFragment;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
@@ -69,6 +75,8 @@ public class MainActivity extends BaseActivity implements
 
         super.onCreate(savedInstanceState);
         initBottomBar();
+
+
     }
 
 
@@ -91,9 +99,9 @@ public class MainActivity extends BaseActivity implements
      */
     private List<Fragment> initFragmentList(){
         List<Fragment> viewList = new ArrayList<Fragment>();
-       NewsFragment newsFragment = new NewsFragment();
-        InputFragment inputFragment = new InputFragment();
-         viewList.add(newsFragment);
+        NewsFragment newsFragment = new NewsFragment();
+        inputFragment = new InputFragment();
+        viewList.add(newsFragment);
         viewList.add(inputFragment);
         return viewList;
     }
@@ -127,7 +135,26 @@ public class MainActivity extends BaseActivity implements
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         if(position==1 && App.hasLogin==false){
             Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent,LOGIN_SUCCESS_CODE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (resultCode){
+            case LOGIN_SUCCESS_CODE:{
+                System.out.println("success");
+                App.hasLogin = true;
+
+                inputFragment.hideProgress();
+                break;
+            }
+            case LOGIN_FAIL_CODE:{
+                App.hasLogin = true;
+
+                inputFragment.hideProgress();
+                break;
+            }
         }
     }
 

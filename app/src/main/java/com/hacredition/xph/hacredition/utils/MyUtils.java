@@ -10,6 +10,9 @@ import com.hacredition.xph.hacredition.common.Constants;
 
 import org.reactivestreams.Subscription;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  * Created by pc on 2017/1/9.
  */
@@ -35,6 +38,33 @@ public class MyUtils {
     }
 
 
+    /**
+     * MD5摘要获取
+     * @param val
+     * @return
+     * @throws NoSuchAlgorithmException
+     */
+    public static String getMD5(String val)  {
+        try{
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            md5.update(val.getBytes());
+            byte[] m = md5.digest();//加密
+            return getString(m);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+
+    private static String getString(byte[] b){
+        StringBuffer sb = new StringBuffer();
+        for(int i = 0; i < b.length; i ++){
+            sb.append(b[i]);
+        }
+        return sb.toString();
+    }
 
 
 }
