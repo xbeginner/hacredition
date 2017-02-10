@@ -2,6 +2,7 @@ package com.hacredition.xph.hacredition.repository.network;
 
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
+import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 
 import java.util.List;
 import java.util.Map;
@@ -27,5 +28,9 @@ public interface NewsService {
     @GET("servlet/test1")
     Observable<NewsDetail> getNewsDetail(
          @Query("newsId") int newsId);
+
+    @GET("servlet/login")
+    Observable<UserInfo> getUserInfo(
+            @Query("username") String username,@Query("password") String password);
 
 }

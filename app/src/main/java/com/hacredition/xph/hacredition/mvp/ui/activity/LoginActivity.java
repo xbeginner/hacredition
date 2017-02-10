@@ -3,6 +3,7 @@ package com.hacredition.xph.hacredition.mvp.ui.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
+import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.mvp.presenter.impl.LoginPresenterImpl;
 import com.hacredition.xph.hacredition.mvp.ui.activity.base.BaseActivity;
 import com.hacredition.xph.hacredition.mvp.view.LoginView;
@@ -65,6 +67,7 @@ public class LoginActivity extends BaseActivity
     Context activityContext;
 
 
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_login;
@@ -103,6 +106,15 @@ public class LoginActivity extends BaseActivity
     public void showLoginErrorInfo(String msg) {
         errorText.setVisibility(View.VISIBLE);
         errorText.setText(msg);
+    }
+
+    @Override
+    public void loginSuccessfully(int userId) {
+        loginPresenter.onDestory();
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.putExtra("userId",userId);
+        setResult(MainActivity.LOGIN_SUCCESS_CODE,intent);
+        this.finish();
     }
 
     @Override
@@ -156,6 +168,7 @@ public class LoginActivity extends BaseActivity
     public void afterTextChanged(Editable editable) {
 
     }
+
 
 
 }

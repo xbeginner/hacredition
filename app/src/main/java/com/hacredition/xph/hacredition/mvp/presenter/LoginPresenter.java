@@ -1,5 +1,6 @@
 package com.hacredition.xph.hacredition.mvp.presenter;
 
+import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.mvp.presenter.base.BasePresenter;
 
 /**
@@ -8,6 +9,6 @@ import com.hacredition.xph.hacredition.mvp.presenter.base.BasePresenter;
 
 public interface LoginPresenter extends BasePresenter {
 
-    void login(String username,String password);
+    void login(String username, String password);
 
 }

@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
+import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.utils.NetUtil;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.socks.library.KLog;
@@ -45,7 +46,7 @@ public class RetrofitManager {
     private NewsService mNewsService;
 
 
-    private static final String BASE_URL = "http://192.168.3.18:8081/hacredition/";
+    private static final String BASE_URL = "http://192.168.0.82:8081/hacredition/";
 
 
     private static volatile OkHttpClient sOkHttpClient;
@@ -121,6 +122,11 @@ public class RetrofitManager {
 
     public Observable<NewsDetail> getNewsDetail(int newsId){
         return mNewsService.getNewsDetail(newsId);
+    }
+
+
+    public Observable<UserInfo> getUserInfo(String username,String password){
+        return mNewsService.getUserInfo(username,password);
     }
 
 }

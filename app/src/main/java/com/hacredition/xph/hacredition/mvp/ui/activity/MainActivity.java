@@ -51,6 +51,9 @@ public class MainActivity extends BaseActivity implements
 
     private InputFragment inputFragment;
 
+    @Inject
+
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
@@ -140,18 +143,17 @@ public class MainActivity extends BaseActivity implements
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         switch (resultCode){
             case LOGIN_SUCCESS_CODE:{
-                System.out.println("success");
                 App.hasLogin = true;
-
                 inputFragment.hideProgress();
+                int userId = intent.getIntExtra("userId",0);
+                System.out.println("userId"+userId);
                 break;
             }
             case LOGIN_FAIL_CODE:{
-                App.hasLogin = true;
-
+                App.hasLogin = false;
                 inputFragment.hideProgress();
                 break;
             }

@@ -10,9 +10,8 @@ public interface LoginView extends BaseView {
 
     void login();
 
-
     void showLoginErrorInfo(String msg);
 
-
+    void loginSuccessfully(int userId);
 
 }

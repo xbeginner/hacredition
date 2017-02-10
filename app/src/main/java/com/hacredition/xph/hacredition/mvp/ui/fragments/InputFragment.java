@@ -75,12 +75,16 @@ public class InputFragment extends BaseFragment
 
     @Override
     public void showProgress() {
-        progressBar.setVisibility(View.VISIBLE);
+        if(progressBar!=null) {
+            progressBar.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void hideProgress() {
-        progressBar.setVisibility(View.GONE);
+        if(progressBar!=null) {
+            progressBar.setVisibility(View.GONE);
+        }
     }
 
     @Override
