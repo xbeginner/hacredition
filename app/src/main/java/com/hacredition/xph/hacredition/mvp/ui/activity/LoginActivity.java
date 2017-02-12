@@ -3,6 +3,7 @@ package com.hacredition.xph.hacredition.mvp.ui.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -66,6 +67,7 @@ public class LoginActivity extends BaseActivity
     Context activityContext;
 
 
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_login;
@@ -107,11 +109,11 @@ public class LoginActivity extends BaseActivity
     }
 
     @Override
-    public void loginSuccessfully(UserInfo userInfo) {
-        //将User保存进缓存
-        //生成items
+    public void loginSuccessfully(int userId) {
         loginPresenter.onDestory();
-        setResult(MainActivity.LOGIN_SUCCESS_CODE);
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.putExtra("userId",userId);
+        setResult(MainActivity.LOGIN_SUCCESS_CODE,intent);
         this.finish();
     }
 
@@ -146,10 +148,6 @@ public class LoginActivity extends BaseActivity
                 loginPresenter.onDestory();
                 setResult(MainActivity.LOGIN_FAIL_CODE);
                 this.finish();
-                break;
-            }
-            case R.id.register_button:{
-                break;
             }
         }
     }
@@ -170,6 +168,7 @@ public class LoginActivity extends BaseActivity
     public void afterTextChanged(Editable editable) {
 
     }
+
 
 
 }

@@ -1,5 +1,6 @@
 package com.hacredition.xph.hacredition.mvp.interactor;
 
+import com.hacredition.xph.hacredition.listener.RequestCallBack;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 
 /**
@@ -8,6 +9,6 @@ import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 
 public interface LoginInteractor<T> {
 
-    UserInfo getLoginInfo();
+    void getLoginInfo(final RequestCallBack listener,String username, String password);
 
 }

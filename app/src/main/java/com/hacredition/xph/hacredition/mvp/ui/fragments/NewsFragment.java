@@ -69,6 +69,7 @@ public class NewsFragment extends BaseFragment implements NewsView
     @Inject
     NewsPresenterImpl newsPresenter;
 
+    private List<NewsSummary> summaryList;
 
     /**
      * 实现注入
@@ -142,8 +143,11 @@ public class NewsFragment extends BaseFragment implements NewsView
 
     @Override
     public void showMsg() {
-         Toast.makeText(newsFragmentActivity,R.string.data_error,Toast.LENGTH_LONG).show();
-    }
+          if(NetUtil.isNetworkAvailable()){
+           Toast.makeText(newsFragmentActivity,R.string.data_error,Toast.LENGTH_LONG).show();
+
+          }
+     }
 
     @Override
     public void initPresenter() {
@@ -170,17 +174,19 @@ public class NewsFragment extends BaseFragment implements NewsView
      */
     @Override
     public void setNewsList(List<NewsSummary> newsSummaryList, @LoadNewsType.checker int loadType) {
+        summaryList = newsSummaryList;
         switch (loadType){
             case LoadNewsType.TYPE_INIT_SUCCESS:{
                 newsRecyclerAdapter.setList(newsSummaryList);
-                break;
             }
+            break;
             case LoadNewsType.TYPE_REFRESH_SUCCESS:{
+
                 newsRecyclerAdapter.setList(newsSummaryList);
                 swipeRefreshLayout.setRefreshing(false);
                 newsRecyclerAdapter.notifyDataSetChanged();
-                break;
             }
+            break;
             case LoadNewsType.TYPE_LOAD_MORE_SUCCESS:{
                 newsRecyclerAdapter.hideFooter();
                 swipeRefreshLayout.setRefreshing(false);
@@ -191,12 +197,13 @@ public class NewsFragment extends BaseFragment implements NewsView
                 }else {
                     newsRecyclerAdapter.addMore(newsSummaryList);
                 }
-                break;
+
             }
+            break;
             case LoadNewsType.TYPE_REFRESH_ERROR:{
                 hideProgress();
-                break;
             }
+            break;
         }
         checkIsEmpty(newsSummaryList);
     }

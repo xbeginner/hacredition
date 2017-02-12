@@ -1,5 +1,8 @@
 package com.hacredition.xph.hacredition.mvp.presenter.impl;
 
+import com.hacredition.xph.hacredition.App;
+import com.hacredition.xph.hacredition.R;
+import com.hacredition.xph.hacredition.listener.RequestCallBack;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.mvp.interactor.impl.LoginInteractorImpl;
 import com.hacredition.xph.hacredition.mvp.presenter.LoginPresenter;
@@ -12,7 +15,8 @@ import javax.inject.Inject;
  * Created by pc on 2017/2/9.
  */
 
-public class LoginPresenterImpl extends BasePresenterImpl<LoginView,UserInfo> implements LoginPresenter {
+public class LoginPresenterImpl extends BasePresenterImpl<LoginView,UserInfo>
+        implements LoginPresenter,RequestCallBack<UserInfo> {
 
     private LoginInteractorImpl mLoginInteractorImpl;
 
@@ -23,14 +27,20 @@ public class LoginPresenterImpl extends BasePresenterImpl<LoginView,UserInfo> im
 
     @Override
     public void login(String username, String password) {
-
-          if (mLoginInteractorImpl.getLoginInfo()==null) {
-              mView.showLoginErrorInfo("错误的用户名");
-          }else {
-              mView.loginSuccessfully(mLoginInteractorImpl.getLoginInfo());
-          }
-
+         mLoginInteractorImpl.getLoginInfo(this,username,password);
     }
 
+    @Override
+    public void success(UserInfo userInfo) {
+         //将userInfo存入缓存
+        App.hasLogin = true;
+        mView.loginSuccessfully(userInfo.getUserId());
+    }
 
+    @Override
+    public void onError() {
+        App.hasLogin = false;
+        mView.showLoginErrorInfo("服务器连接异常");
+        super.onError();
+    }
 }
