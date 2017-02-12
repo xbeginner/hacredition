@@ -11,11 +11,14 @@ import com.hacredition.xph.hacredition.di.component.DaggerApplicationComponent;
 import com.hacredition.xph.hacredition.di.module.ApplicationModule;
 import com.hacredition.xph.hacredition.mvp.entity.DaoMaster;
 import com.hacredition.xph.hacredition.mvp.entity.DaoSession;
+import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.utils.MyUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
 import org.greenrobot.greendao.database.Database;
+
+import java.util.Date;
 
 /**
  * Created by pc on 2017/1/9.
@@ -64,6 +67,25 @@ public class App extends Application {
         initApplicationComponent();
         //初始化数据库
         initDB();
+        initLoginLog();
+    }
+
+
+    /**
+     * 根据数据库上次登录情况判断hasLogin的值
+     */
+    private void initLoginLog(){
+        UserInfo userInfo = mDaoSession.getUserInfoDao().loadAll().get(0);
+        if(userInfo==null||isTimeOut(userInfo.getLastLoginTime())){
+            hasLogin = false;
+        }else{
+            hasLogin = true;
+        }
+    }
+
+    private boolean isTimeOut(Date time){
+        System.out.println(time);
+        return true;
     }
 
     /**

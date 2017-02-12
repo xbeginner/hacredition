@@ -1,5 +1,6 @@
 package com.hacredition.xph.hacredition.mvp.view;
 
+import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 
 /**
@@ -12,6 +13,6 @@ public interface LoginView extends BaseView {
 
     void showLoginErrorInfo(String msg);
 
-    void loginSuccessfully(int userId);
+    void loginSuccessfully(UserInfo userInfo);
 
 }

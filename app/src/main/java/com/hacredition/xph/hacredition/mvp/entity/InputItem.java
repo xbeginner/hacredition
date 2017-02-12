@@ -6,6 +6,18 @@ package com.hacredition.xph.hacredition.mvp.entity;
 
 public class InputItem {
 
+    int inputItemId;
+
+    String inputItemInfo;
+
+    String inputItemActivity;
+
+    String inputItemSrc;
+
+    String inputItemTitle;
+
+
+
 
 
 }

@@ -13,6 +13,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
+import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.mvp.presenter.base.BasePresenter;
 import com.hacredition.xph.hacredition.mvp.ui.activity.base.BaseActivity;
 import com.hacredition.xph.hacredition.mvp.ui.adapter.MyViewPagerAdatper;
@@ -50,6 +51,8 @@ public class MainActivity extends BaseActivity implements
     public static final int LOGIN_FAIL_CODE=1;
 
     private InputFragment inputFragment;
+
+    public static UserInfo mUserInfo;
 
     @Inject
 
@@ -148,8 +151,8 @@ public class MainActivity extends BaseActivity implements
             case LOGIN_SUCCESS_CODE:{
                 App.hasLogin = true;
                 inputFragment.hideProgress();
-                int userId = intent.getIntExtra("userId",0);
-                System.out.println("userId"+userId);
+                UserInfo userInfo = (UserInfo)intent.getSerializableExtra("userInfo");
+                mUserInfo = userInfo;
                 break;
             }
             case LOGIN_FAIL_CODE:{

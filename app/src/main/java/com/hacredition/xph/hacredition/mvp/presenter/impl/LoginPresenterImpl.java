@@ -33,8 +33,8 @@ public class LoginPresenterImpl extends BasePresenterImpl<LoginView,UserInfo>
     @Override
     public void success(UserInfo userInfo) {
          //将userInfo存入缓存
-        App.hasLogin = true;
-        mView.loginSuccessfully(userInfo.getUserId());
+        mLoginInteractorImpl.saveUserInfoToDB(userInfo);
+        mView.loginSuccessfully(userInfo);
     }
 
     @Override

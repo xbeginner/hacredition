@@ -3,6 +3,9 @@ package com.hacredition.xph.hacredition.mvp.entity;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 
+
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,7 +13,7 @@ import java.util.List;
  */
 
 @Entity
-public class UserInfo {
+public class UserInfo implements Serializable {
 
     private int userId;
 
@@ -24,7 +27,8 @@ public class UserInfo {
 
     private String imgSrc;
 
-    private List<String> inputItems;
+
+    private Date lastLoginTime;
 
     @Generated(hash = 1072804828)
     public UserInfo(int userId, String userName, int orgId, String orgName,
@@ -39,6 +43,14 @@ public class UserInfo {
 
     @Generated(hash = 1279772520)
     public UserInfo() {
+    }
+
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
     }
 
     public int getUserId() {
@@ -89,11 +101,4 @@ public class UserInfo {
         this.imgSrc = imgSrc;
     }
 
-    public List<String> getInputItems() {
-        return inputItems;
-    }
-
-    public void setInputItems(List<String> inputItems) {
-        this.inputItems = inputItems;
-    }
 }

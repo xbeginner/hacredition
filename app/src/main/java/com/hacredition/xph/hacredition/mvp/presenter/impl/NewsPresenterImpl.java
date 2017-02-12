@@ -140,9 +140,7 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
     }
 
     public void loadNewsFromDB(){
-        System.out.println("loadFromDB");
         List<NewsSummary> news = mNewsInteractor.loadNewsFromDB(mStartPage,20);
-        System.out.println("newsSize:"+news.size());
         mView.setNewsList(news,LoadNewsType.TYPE_REFRESH_SUCCESS);
         mStartPage += 20;
     }

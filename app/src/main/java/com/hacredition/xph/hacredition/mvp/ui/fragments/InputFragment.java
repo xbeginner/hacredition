@@ -22,6 +22,7 @@ import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.mvp.presenter.impl.InputPresenterImpl;
 import com.hacredition.xph.hacredition.mvp.ui.activity.LoginActivity;
+import com.hacredition.xph.hacredition.mvp.ui.activity.MainActivity;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputView;
 import com.hacredition.xph.hacredition.utils.RecyclerItemDecoration;
@@ -56,11 +57,8 @@ public class InputFragment extends BaseFragment
     @Inject
     InputPresenterImpl mInputPresenterImpl;
 
-    public static int REQUEST_CODE;
 
-    private UserInfo userInfo;
 
-    List<String> items;
 
 
     @Override
@@ -84,11 +82,12 @@ public class InputFragment extends BaseFragment
      */
     @Override
     public void showInputItems() {
-        //从缓存中取出userInfo
-        if(userInfo==null){
-
+        if(MainActivity.mUserInfo==null){
+            Intent intent = new Intent(newsFragmentActivity, LoginActivity.class);
+            startActivityForResult(intent,MainActivity.LOGIN_SUCCESS_CODE);
+        }else{
+            mInputPresenterImpl.setInputItems(MainActivity.mUserInfo);
         }
-        mInputPresenterImpl.setInputItems(userInfo);
     }
 
     @Override

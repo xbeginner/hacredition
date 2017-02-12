@@ -26,7 +26,6 @@ public class InputPresenterImpl extends BasePresenterImpl<InputView,String> impl
 
     @Override
     public void setInputItems(UserInfo userInfo) {
-        List<String> items = userInfo.getInputItems();
-        mView.set
+
     }
 }

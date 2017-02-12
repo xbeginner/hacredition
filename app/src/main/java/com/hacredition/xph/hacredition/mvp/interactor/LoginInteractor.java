@@ -11,4 +11,6 @@ public interface LoginInteractor<T> {
 
     void getLoginInfo(final RequestCallBack listener,String username, String password);
 
+    void saveUserInfoToDB(UserInfo userInfo);
+
 }

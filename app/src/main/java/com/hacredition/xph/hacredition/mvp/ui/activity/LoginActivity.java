@@ -109,10 +109,12 @@ public class LoginActivity extends BaseActivity
     }
 
     @Override
-    public void loginSuccessfully(int userId) {
+    public void loginSuccessfully(UserInfo userInfo) {
         loginPresenter.onDestory();
         Intent intent = new Intent(this,MainActivity.class);
-        intent.putExtra("userId",userId);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("userInfo", userInfo);
+        intent.putExtras(bundle);
         setResult(MainActivity.LOGIN_SUCCESS_CODE,intent);
         this.finish();
     }

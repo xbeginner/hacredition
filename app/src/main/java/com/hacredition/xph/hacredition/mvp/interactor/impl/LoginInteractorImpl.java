@@ -1,10 +1,14 @@
 package com.hacredition.xph.hacredition.mvp.interactor.impl;
 
+import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.listener.RequestCallBack;
+import com.hacredition.xph.hacredition.mvp.entity.DaoSession;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.mvp.interactor.LoginInteractor;
 import com.hacredition.xph.hacredition.repository.network.RetrofitManager;
+
+import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -52,5 +56,13 @@ public class LoginInteractorImpl implements LoginInteractor<UserInfo> {
 
                     }
                 });
+    }
+
+    @Override
+    public void saveUserInfoToDB(UserInfo userInfo) {
+        DaoSession session = App.getmDaoSession();
+        session.getUserInfoDao().deleteAll();
+        userInfo.setLastLoginTime(new Date());
+        session.getUserInfoDao().insert(userInfo);
     }
 }
