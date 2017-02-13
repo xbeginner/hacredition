@@ -15,6 +15,8 @@ import java.util.List;
 @Entity
 public class UserInfo implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     private int userId;
 
     private String userName;
@@ -30,15 +32,16 @@ public class UserInfo implements Serializable {
 
     private Date lastLoginTime;
 
-    @Generated(hash = 1072804828)
+    @Generated(hash = 2034020735)
     public UserInfo(int userId, String userName, int orgId, String orgName,
-            String tel, String imgSrc) {
+            String tel, String imgSrc, Date lastLoginTime) {
         this.userId = userId;
         this.userName = userName;
         this.orgId = orgId;
         this.orgName = orgName;
         this.tel = tel;
         this.imgSrc = imgSrc;
+        this.lastLoginTime = lastLoginTime;
     }
 
     @Generated(hash = 1279772520)

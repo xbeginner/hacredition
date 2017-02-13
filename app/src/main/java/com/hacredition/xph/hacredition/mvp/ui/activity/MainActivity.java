@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity implements
 
     public static UserInfo mUserInfo;
 
-    @Inject
+    public static boolean inputItemInited = false;
 
 
     @Override
@@ -139,9 +139,20 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        if(position==1 && App.hasLogin==false){
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivityForResult(intent,LOGIN_SUCCESS_CODE);
+        switch (position){
+            case 1:
+                if(App.hasLogin==false){
+                    Intent intent = new Intent(this, LoginActivity.class);
+                    startActivityForResult(intent,LOGIN_SUCCESS_CODE);
+                }else{
+                    if(!inputItemInited){
+                        inputFragment.showInputItems();
+                    }
+                }
+                break;
+            case 2:
+
+                break;
         }
     }
 

@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hacredition.xph.hacredition.App;
+import com.hacredition.xph.hacredition.mvp.entity.InputItem;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
@@ -127,6 +128,11 @@ public class RetrofitManager {
 
     public Observable<UserInfo> getUserInfo(String username,String password){
         return mNewsService.getUserInfo(username,password);
+    }
+
+
+    public Observable<List<InputItem>> getInputItems(int userId){
+        return mNewsService.getInputItems(userId);
     }
 
 }

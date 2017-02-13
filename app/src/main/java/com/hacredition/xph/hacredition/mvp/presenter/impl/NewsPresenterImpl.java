@@ -1,10 +1,13 @@
 package com.hacredition.xph.hacredition.mvp.presenter.impl;
 
+import android.app.Activity;
+import android.support.annotation.NonNull;
 import android.widget.Toast;
 
 import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.common.LoadNewsType;
+import com.hacredition.xph.hacredition.listener.DBOprationRequestCallback;
 import com.hacredition.xph.hacredition.listener.RequestCallBack;
 import com.hacredition.xph.hacredition.mvp.entity.DaoSession;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
@@ -13,7 +16,9 @@ import com.hacredition.xph.hacredition.mvp.interactor.NewsInteractor;
 import com.hacredition.xph.hacredition.mvp.interactor.impl.NewsInteractorImpl;
 import com.hacredition.xph.hacredition.mvp.presenter.base.BasePresenterImpl;
 import com.hacredition.xph.hacredition.mvp.presenter.NewsPresenter;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.NewsFragment;
 import com.hacredition.xph.hacredition.mvp.view.NewsView;
+import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 import com.hacredition.xph.hacredition.utils.NetUtil;
 
 import org.greenrobot.greendao.query.Query;
@@ -33,7 +38,7 @@ import static com.hacredition.xph.hacredition.common.LoadNewsType.TYPE_REFRESH_S
  */
 
 public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSummary>>
-        implements NewsPresenter,RequestCallBack<List<NewsSummary>> {
+        implements NewsPresenter,RequestCallBack<List<NewsSummary>>,DBOprationRequestCallback {
 
     private NewsInteractor<List<NewsSummary>> mNewsInteractor;
 
@@ -44,6 +49,8 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
     private int mStartPage;
 
     private  DaoSession session;
+
+    private NewsFragment fragment;
 
    @Inject
    public NewsPresenterImpl(NewsInteractorImpl newsInteractorImpl ){
@@ -105,15 +112,7 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
         if(mView!=null){
             mView.hideProgress();
         }
-        for(NewsSummary n:items){
-            //保存进数据库
-            int i = session.getNewsSummaryDao().queryBuilder().where(NewsSummaryDao.Properties.NewsId.eq(n.getNewsId())).list().size();
-            if(i==0) {
-                session.getNewsSummaryDao().insert(n);
-            }
-        }
-
-        getDBNewsList();
+        mNewsInteractor.saveNewsToDB(items,this);
     }
 
     @Override
@@ -164,5 +163,20 @@ public class NewsPresenterImpl extends BasePresenterImpl<NewsView,List<NewsSumma
         mStartPage = 20;
     }
 
+    @Override
+    public void attachView(@NonNull BaseView view) {
+        super.attachView(view);
+        fragment = (NewsFragment) view;
+    }
 
+    @Override
+    public void operationSuccessfully() {
+        fragment.getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                getDBNewsList();
+            }
+        });
+
+    }
 }

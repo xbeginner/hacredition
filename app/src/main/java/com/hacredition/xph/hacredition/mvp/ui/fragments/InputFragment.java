@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
+import com.hacredition.xph.hacredition.mvp.entity.InputItem;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.mvp.presenter.impl.InputPresenterImpl;
 import com.hacredition.xph.hacredition.mvp.ui.activity.LoginActivity;
@@ -68,7 +69,6 @@ public class InputFragment extends BaseFragment
 
     @Override
     public void initViews(View view) {
-        initRecyclerView();
         initPresenter();
     }
 
@@ -111,10 +111,13 @@ public class InputFragment extends BaseFragment
 
     @Override
     public void initPresenter() {
-
+        mPresenter = mInputPresenterImpl;
+        mPresenter.attachView(this);
     }
 
-    private void initRecyclerView() {
+    @Override
+    public void setInputItem(List<InputItem> inputItems) {
+        //设定将数据展现出来
 
     }
 

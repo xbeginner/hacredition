@@ -1,5 +1,6 @@
 package com.hacredition.xph.hacredition.repository.network;
 
+import com.hacredition.xph.hacredition.mvp.entity.InputItem;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
@@ -32,5 +33,10 @@ public interface NewsService {
     @GET("servlet/login")
     Observable<UserInfo> getUserInfo(
             @Query("username") String username,@Query("password") String password);
+
+
+    @GET("servlet/input")
+    Observable<List<InputItem>> getInputItems(
+            @Query("userId") int userId);
 
 }
