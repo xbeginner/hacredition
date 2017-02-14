@@ -33,7 +33,6 @@ public class InputPresenterImpl extends BasePresenterImpl<InputView,List<InputIt
 
     @Override
     public void setInputItems(UserInfo userInfo) {
-
          mInputItemInteractor.getInputItemsByUserId(this,userInfo.getUserId());
     }
 
@@ -49,6 +48,6 @@ public class InputPresenterImpl extends BasePresenterImpl<InputView,List<InputIt
 
     @Override
     public void onError() {
-        super.onError();
+       mView.showMsg();
     }
 }

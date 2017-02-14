@@ -20,23 +20,23 @@ public class InputItem {
 
     String inputItemTitle;
 
-    String activityName;
 
-    @Generated(hash = 503029745)
+
+    @Generated(hash = 60938752)
     public InputItem(int inputItemId, String inputItemInfo,
-            String inputItemActivity, String inputItemSrc, String inputItemTitle,
-            String activityName) {
+            String inputItemActivity, String inputItemSrc, String inputItemTitle) {
         this.inputItemId = inputItemId;
         this.inputItemInfo = inputItemInfo;
         this.inputItemActivity = inputItemActivity;
         this.inputItemSrc = inputItemSrc;
         this.inputItemTitle = inputItemTitle;
-        this.activityName = activityName;
     }
 
     @Generated(hash = 195613999)
     public InputItem() {
     }
+
+ 
 
     public int getInputItemId() {
         return inputItemId;
@@ -78,11 +78,5 @@ public class InputItem {
         this.inputItemTitle = inputItemTitle;
     }
 
-    public String getActivityName() {
-        return activityName;
-    }
 
-    public void setActivityName(String activityName) {
-        this.activityName = activityName;
-    }
 }

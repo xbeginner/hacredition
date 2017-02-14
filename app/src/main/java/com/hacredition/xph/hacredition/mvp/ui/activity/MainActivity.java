@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity implements
 
     public static UserInfo mUserInfo;
 
-    public static boolean inputItemInited = false;
+
 
 
     @Override
@@ -145,9 +145,7 @@ public class MainActivity extends BaseActivity implements
                     Intent intent = new Intent(this, LoginActivity.class);
                     startActivityForResult(intent,LOGIN_SUCCESS_CODE);
                 }else{
-                    if(!inputItemInited){
-                        inputFragment.showInputItems();
-                    }
+                    inputFragment.showInputItems();
                 }
                 break;
             case 2:
@@ -164,6 +162,7 @@ public class MainActivity extends BaseActivity implements
                 inputFragment.hideProgress();
                 UserInfo userInfo = (UserInfo)intent.getSerializableExtra("userInfo");
                 mUserInfo = userInfo;
+                inputFragment.showInputItems();
                 break;
             }
             case LOGIN_FAIL_CODE:{

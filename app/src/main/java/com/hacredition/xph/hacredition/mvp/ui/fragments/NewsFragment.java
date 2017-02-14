@@ -144,8 +144,7 @@ public class NewsFragment extends BaseFragment implements NewsView
     @Override
     public void showMsg() {
           if(NetUtil.isNetworkAvailable()){
-           Toast.makeText(newsFragmentActivity,R.string.data_error,Toast.LENGTH_LONG).show();
-
+              Toast.makeText(newsFragmentActivity,R.string.data_error,Toast.LENGTH_SHORT).show();
           }
      }
 
@@ -193,7 +192,6 @@ public class NewsFragment extends BaseFragment implements NewsView
                 if(newsSummaryList==null||newsSummaryList.size()==0){
                     Toast.makeText(activityContext,"没有更多了",Toast.LENGTH_SHORT).show();
                     recyclerView.scrollToPosition(newsRecyclerAdapter.getItemCount() - 1);
-
                 }else {
                     newsRecyclerAdapter.addMore(newsSummaryList);
                 }

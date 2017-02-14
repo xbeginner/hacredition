@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.PersistableBundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -65,6 +66,8 @@ public class LoginActivity extends BaseActivity
     @Inject
     @ContextLife("Activity")
     Context activityContext;
+
+    public static final int REGISTER_SUCCESSFULLY_CODE = 5;
 
 
 
@@ -150,6 +153,12 @@ public class LoginActivity extends BaseActivity
                 loginPresenter.onDestory();
                 setResult(MainActivity.LOGIN_FAIL_CODE);
                 this.finish();
+                break;
+            }
+            case R.id.register_button:{
+                Intent intent = new Intent(this,RegisterActivity.class);
+                startActivityForResult(intent,REGISTER_SUCCESSFULLY_CODE);
+                break;
             }
         }
     }
@@ -171,6 +180,9 @@ public class LoginActivity extends BaseActivity
 
     }
 
-
-
+    @Override
+    public void onActivityReenter(int resultCode, Intent intent) {
+        super.onActivityReenter(resultCode, intent);
+        System.out.println(resultCode);
+    }
 }

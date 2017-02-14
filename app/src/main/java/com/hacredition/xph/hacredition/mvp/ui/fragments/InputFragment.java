@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.R;
@@ -24,8 +25,10 @@ import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.mvp.presenter.impl.InputPresenterImpl;
 import com.hacredition.xph.hacredition.mvp.ui.activity.LoginActivity;
 import com.hacredition.xph.hacredition.mvp.ui.activity.MainActivity;
+import com.hacredition.xph.hacredition.mvp.ui.adapter.InputRecyclerAdapter;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputView;
+import com.hacredition.xph.hacredition.utils.NetUtil;
 import com.hacredition.xph.hacredition.utils.RecyclerItemDecoration;
 
 import org.w3c.dom.Text;
@@ -37,7 +40,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 
 public class InputFragment extends BaseFragment
-        implements InputView{
+        implements InputView,InputRecyclerAdapter.OnInputItemClickListener{
 
     @BindView(R.id.input_item_recyclerview_id)
     RecyclerView recyclerView;
@@ -49,7 +52,7 @@ public class InputFragment extends BaseFragment
     TextView textView;
 
     @Inject
-    Activity newsFragmentActivity;
+    Activity inputFragmentActivity;
 
     @Inject
     @ContextLife("Activity")
@@ -58,7 +61,10 @@ public class InputFragment extends BaseFragment
     @Inject
     InputPresenterImpl mInputPresenterImpl;
 
+    @Inject
+    InputRecyclerAdapter inputRecyclerAdapter;
 
+    public static boolean inputItemInited = false;
 
 
 
@@ -70,6 +76,7 @@ public class InputFragment extends BaseFragment
     @Override
     public void initViews(View view) {
         initPresenter();
+        initRecyclerView();
     }
 
     @Override
@@ -83,10 +90,12 @@ public class InputFragment extends BaseFragment
     @Override
     public void showInputItems() {
         if(MainActivity.mUserInfo==null){
-            Intent intent = new Intent(newsFragmentActivity, LoginActivity.class);
+            Intent intent = new Intent(inputFragmentActivity, LoginActivity.class);
             startActivityForResult(intent,MainActivity.LOGIN_SUCCESS_CODE);
         }else{
-            mInputPresenterImpl.setInputItems(MainActivity.mUserInfo);
+            if(!inputItemInited) {
+                mInputPresenterImpl.setInputItems(MainActivity.mUserInfo);
+            }
         }
     }
 
@@ -106,7 +115,9 @@ public class InputFragment extends BaseFragment
 
     @Override
     public void showMsg(){
-
+        if(NetUtil.isNetworkAvailable()){
+            Toast.makeText(inputFragmentActivity,R.string.data_error,Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -117,9 +128,23 @@ public class InputFragment extends BaseFragment
 
     @Override
     public void setInputItem(List<InputItem> inputItems) {
-        //设定将数据展现出来
-
+        inputRecyclerAdapter.setList(inputItems);
+        inputRecyclerAdapter.notifyDataSetChanged();
     }
 
 
+    private void initRecyclerView() {
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(inputFragmentActivity,
+                LinearLayoutManager.VERTICAL, false));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(inputRecyclerAdapter);
+        inputRecyclerAdapter.setOnItemClickListener(this);
+        //recyclerView.addItemDecoration(new RecyclerItemDecoration(2,2,getResources().getColor(R.color.dividerColor)));
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        System.out.println(position);
+    }
 }
