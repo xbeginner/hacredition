@@ -18,7 +18,7 @@
         android:id="@+id/login_top_imageview"
         android:layout_width="wrap_content"
         android:layout_weight="0.3"
-        android:src="@drawable/login_img"
+        android:src="@drawable/logo"
         android:layout_gravity="center"
         android:layout_height="wrap_content" />
 

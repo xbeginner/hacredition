@@ -8,4 +8,31 @@
     <string name="click_refresh">点我重试</string>
     <string name="data_error">服务器连接错误</string>
     <string name="no_actions">没有权限</string>
+    <string name="title_activity_input">InputActivity</string>
+    <string name="action_settings">Settings</string>
+
+    <string name = "submit">提交</string>
+
+    <string name = "houseinfo_prompt">请选择房屋性质</string>
+    <string name = "houseinfo_ismortgaged_title">是否抵押</string>
+    <string name = "add_photo">添加照片</string>
+
+    <string name = "yes">是</string>
+    <string name = "no">否</string>
+
+    <string-array name="houseinfo_type">
+        <item>住宅</item>
+        <item>住宿房屋</item>
+        <item>商业用户</item>
+        <item>商业房屋</item>
+        <item>出租房</item>
+        <item>生产房屋</item>
+    </string-array>
+
+
+
+    <string name="validation_error_idcard">身份证号错误</string>
+    <string name="validation_error_null">不能为空</string>
+    <string name="validation_error_pattern">格式错误</string>
+    <string name="validation_error_float">小数或者整数</string>
 </resources>

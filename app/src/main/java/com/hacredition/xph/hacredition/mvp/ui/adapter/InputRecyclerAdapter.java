@@ -28,7 +28,7 @@ public class InputRecyclerAdapter extends BaseRecyclerViewAdapter<InputItem>{
 
 
     public interface OnInputItemClickListener extends OnItemClickListener{
-        void onItemClick(View view, int position);
+        void onItemClick(View view, String ActivityName);
     }
 
     @Inject
@@ -40,17 +40,17 @@ public class InputRecyclerAdapter extends BaseRecyclerViewAdapter<InputItem>{
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = getView(parent,R.layout.input_item);
         final InputItemViewHolder holder = new InputItemViewHolder(view);
-        setItemOnClickEvent(holder,false);
+        setItemOnClickEvent(holder);
         return holder;
     }
 
 
-    private void setItemOnClickEvent(final RecyclerView.ViewHolder holder, final boolean hasImg) {
+    private void setItemOnClickEvent(final RecyclerView.ViewHolder holder) {
         if (mOnItemClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                     ((OnInputItemClickListener) mOnItemClickListener).onItemClick(v, mList.get(holder.getLayoutPosition()).getInputItemId());
+                     ((OnInputItemClickListener) mOnItemClickListener).onItemClick(v, mList.get(holder.getLayoutPosition()).getInputItemFragmentName());
                 }
             });
         }

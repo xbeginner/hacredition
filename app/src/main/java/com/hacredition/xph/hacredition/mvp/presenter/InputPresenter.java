@@ -11,8 +11,6 @@ import java.util.List;
 
 public interface InputPresenter extends BasePresenter {
 
-
-
     void setInputItems(UserInfo userInfo);
 
 }

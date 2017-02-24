@@ -62,4 +62,6 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     provided 'org.glassfish:javax.annotation:10.0-b28'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+    compile 'com.basgeekball:awesome-validation:1.0'
 }

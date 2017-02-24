@@ -23,6 +23,7 @@ import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.mvp.entity.InputItem;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.mvp.presenter.impl.InputPresenterImpl;
+import com.hacredition.xph.hacredition.mvp.ui.activity.InputComponentActivity;
 import com.hacredition.xph.hacredition.mvp.ui.activity.LoginActivity;
 import com.hacredition.xph.hacredition.mvp.ui.activity.MainActivity;
 import com.hacredition.xph.hacredition.mvp.ui.adapter.InputRecyclerAdapter;
@@ -95,6 +96,7 @@ public class InputFragment extends BaseFragment
         }else{
             if(!inputItemInited) {
                 mInputPresenterImpl.setInputItems(MainActivity.mUserInfo);
+                hideProgress();
             }
         }
     }
@@ -144,7 +146,16 @@ public class InputFragment extends BaseFragment
     }
 
     @Override
+    public void onItemClick(View view, String FragmentName) {
+            Bundle bundle = new Bundle();
+            bundle.putString("fragmentName",FragmentName);
+            Intent intent = new Intent(activityContext, InputComponentActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+    }
+
+    @Override
     public void onItemClick(View view, int position) {
-        System.out.println(position);
+
     }
 }

@@ -46,12 +46,9 @@ public class RetrofitManager {
 
     private NewsService mNewsService;
 
-
     private static final String BASE_URL = "http://192.168.0.82:8081/hacredition/";
 
-
     private static volatile OkHttpClient sOkHttpClient;
-
 
     private static RetrofitManager mRetrofitManager;
 

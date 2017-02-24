@@ -160,9 +160,13 @@ public class MainActivity extends BaseActivity implements
             case LOGIN_SUCCESS_CODE:{
                 App.hasLogin = true;
                 inputFragment.hideProgress();
-                UserInfo userInfo = (UserInfo)intent.getSerializableExtra("userInfo");
-                mUserInfo = userInfo;
-                inputFragment.showInputItems();
+                if(intent!=null){
+                    UserInfo userInfo = (UserInfo)intent.getSerializableExtra("userInfo");
+                    if(userInfo!=null){
+                        mUserInfo = userInfo;
+                        inputFragment.showInputItems();
+                    }
+                }
                 break;
             }
             case LOGIN_FAIL_CODE:{

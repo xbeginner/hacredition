@@ -14,7 +14,7 @@ public class InputItem {
 
     String inputItemInfo;
 
-    String inputItemActivity;
+    String inputItemFragmentName;
 
     String inputItemSrc;
 
@@ -22,12 +22,17 @@ public class InputItem {
 
 
 
-    @Generated(hash = 60938752)
+
+
+
+
+    @Generated(hash = 31962579)
     public InputItem(int inputItemId, String inputItemInfo,
-            String inputItemActivity, String inputItemSrc, String inputItemTitle) {
+            String inputItemFragmentName, String inputItemSrc,
+            String inputItemTitle) {
         this.inputItemId = inputItemId;
         this.inputItemInfo = inputItemInfo;
-        this.inputItemActivity = inputItemActivity;
+        this.inputItemFragmentName = inputItemFragmentName;
         this.inputItemSrc = inputItemSrc;
         this.inputItemTitle = inputItemTitle;
     }
@@ -35,6 +40,10 @@ public class InputItem {
     @Generated(hash = 195613999)
     public InputItem() {
     }
+
+
+
+   
 
  
 
@@ -54,12 +63,12 @@ public class InputItem {
         this.inputItemInfo = inputItemInfo;
     }
 
-    public String getInputItemActivity() {
-        return inputItemActivity;
+    public String getInputItemFragmentName() {
+        return inputItemFragmentName;
     }
 
-    public void setInputItemActivity(String inputItemActivity) {
-        this.inputItemActivity = inputItemActivity;
+    public void setInputItemFragmentName(String inputItemActivity) {
+        this.inputItemFragmentName = inputItemActivity;
     }
 
     public String getInputItemSrc() {
