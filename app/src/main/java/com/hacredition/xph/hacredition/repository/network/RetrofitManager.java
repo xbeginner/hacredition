@@ -5,9 +5,14 @@ import android.support.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hacredition.xph.hacredition.App;
+import com.hacredition.xph.hacredition.mvp.entity.Entrepreneurship;
+import com.hacredition.xph.hacredition.mvp.entity.FiscalSpend;
+import com.hacredition.xph.hacredition.mvp.entity.HouseInfo;
 import com.hacredition.xph.hacredition.mvp.entity.InputItem;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
+import com.hacredition.xph.hacredition.mvp.entity.OperationalEntity;
+import com.hacredition.xph.hacredition.mvp.entity.OwnerShip;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.utils.NetUtil;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -36,6 +41,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 
 
 /**
@@ -132,4 +138,27 @@ public class RetrofitManager {
         return mNewsService.getInputItems(userId);
     }
 
+    public Observable<String> saveHouseInfo(HouseInfo houseInfo){
+        return mNewsService.saveHouseInfo(houseInfo);
+    }
+
+
+    public Observable<String> saveFiscalSpend(FiscalSpend fiscalSpend){
+        return mNewsService.saveFiscalSpend(fiscalSpend);
+    }
+
+
+    public Observable<String> saveOperationalEntity(OperationalEntity operationalEntity){
+        return mNewsService.saveOperationalEntity(operationalEntity);
+    }
+
+
+    public Observable<String> saveEntrepreneurship(Entrepreneurship entrepreneurship){
+        return mNewsService.saveEntrepreneurship(entrepreneurship);
+    }
+
+
+    public Observable<String> saveOwnerShip(OwnerShip ownerShip){
+        return mNewsService.saveOwnerShip(ownerShip);
+    }
 }

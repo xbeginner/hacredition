@@ -1,13 +1,15 @@
 package com.hacredition.xph.hacredition.mvp.entity;
 
+import java.util.Arrays;
+
 /**
  * Created by pc on 2017/2/16.
  */
 
 public class HouseInfo {
 
-    private int nonghuId;
-    private String fangwutupiao;
+    private String nonghuIdcard;
+    private byte[] fangwutupiao;
     private String shifoudiya;
     private float dangqianguzhi;
     private String suozaidi;
@@ -16,19 +18,19 @@ public class HouseInfo {
     private String fangwuxingzhi;
 
 
-    public int getNonghuId() {
-        return nonghuId;
+    public String getNonghuId() {
+        return nonghuIdcard;
     }
 
-    public void setNonghuId(int nonghuId) {
-        this.nonghuId = nonghuId;
+    public void setNonghuIdcard(String nonghuIdcard) {
+        this.nonghuIdcard = nonghuIdcard;
     }
 
-    public String getFangwutupiao() {
+    public byte[] getFangwutupiao() {
         return fangwutupiao;
     }
 
-    public void setFangwutupiao(String fangwutupiao) {
+    public void setFangwutupiao(byte[] fangwutupiao) {
         this.fangwutupiao = fangwutupiao;
     }
 
@@ -78,5 +80,19 @@ public class HouseInfo {
 
     public void setFangwuxingzhi(String fangwuxingzhi) {
         this.fangwuxingzhi = fangwuxingzhi;
+    }
+
+    @Override
+    public String toString() {
+        return "HouseInfo{" +
+                "nonghuIdcard='" + nonghuIdcard + '\'' +
+                ", fangwutupiao=" + Arrays.toString(fangwutupiao) +
+                ", shifoudiya='" + shifoudiya + '\'' +
+                ", dangqianguzhi=" + dangqianguzhi +
+                ", suozaidi='" + suozaidi + '\'' +
+                ", jianzhumianji=" + jianzhumianji +
+                ", goujianriqi='" + goujianriqi + '\'' +
+                ", fangwuxingzhi='" + fangwuxingzhi + '\'' +
+                '}';
     }
 }

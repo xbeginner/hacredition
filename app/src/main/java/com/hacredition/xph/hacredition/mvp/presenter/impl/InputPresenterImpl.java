@@ -20,7 +20,6 @@ import javax.inject.Inject;
 public class InputPresenterImpl extends BasePresenterImpl<InputView,List<InputItem>>
         implements InputPresenter,RequestCallBack<List<InputItem>> {
 
-
     private UserInfo userInfo;
 
     private InputItemInteractorImpl mInputItemInteractor;

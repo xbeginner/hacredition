@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -22,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
@@ -34,6 +36,7 @@ import com.hacredition.xph.hacredition.mvp.presenter.impl.HouseInfoInputPresente
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
+import com.hacredition.xph.hacredition.utils.MyUtils;
 
 import org.greenrobot.greendao.annotation.NotNull;
 
@@ -52,7 +55,7 @@ public class HouseInfoInputFragment extends BaseFragment
         ,View.OnFocusChangeListener
         ,View.OnClickListener
         ,DatePickerDialog.OnDateSetListener
-        ,SaveCallback{
+        ,RadioGroup.OnCheckedChangeListener {
 
 
     private boolean isValidate = false;
@@ -108,6 +111,8 @@ public class HouseInfoInputFragment extends BaseFragment
 
     private Uri outputFileUri;
 
+    private String isDiya = "否";
+
     @Override
     public void initInjector() {
         fragmentComponent.inject(this);
@@ -115,11 +120,10 @@ public class HouseInfoInputFragment extends BaseFragment
 
     @Override
     public void initViews(View view) {
+        initPresenter();
         buildTimeEditText.setInputType(InputType.TYPE_NULL);
-        valueEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
-        areaEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
         buildTimeEditText.setOnFocusChangeListener(this);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(activityContext,R.array.houseinfo_type,android.R.layout.simple_spinner_item);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(activityContext,R.array.houseinfo_type,android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         addValidation();
         submitButton.setOnClickListener(this);
@@ -156,6 +160,7 @@ public class HouseInfoInputFragment extends BaseFragment
     @Override
     public void initPresenter() {
         mPresenter = houseInfoInputPresenter;
+        mPresenter.attachView(this);
     }
 
     @Override
@@ -163,8 +168,8 @@ public class HouseInfoInputFragment extends BaseFragment
          switch (view.getId()){
              case R.id.houseinfo_submit_button:{
                  if(awesomeValidation.validate()){
-                    HouseInfo houseInfo = initHouseInfo();
-                    System.out.println(houseInfo.getFangwuxingzhi());
+                     HouseInfo houseInfo = initHouseInfo();
+                     saveInfo(houseInfo);
                  }
                  break;
              }
@@ -216,13 +221,15 @@ public class HouseInfoInputFragment extends BaseFragment
 
     @Override
     public void saveSuccessfully() {
-
+        Toast.makeText(activityContext,"保存成功",Toast.LENGTH_LONG).show();
+        inputFragmentActivity.finish();
     }
 
     @Override
-    public void saveFially() {
-
+    public void saveFailly() {
+        Toast.makeText(activityContext,"保存失败,服务器连接错误",Toast.LENGTH_LONG).show();
     }
+
 
     private HouseInfo initHouseInfo(){
         HouseInfo houseInfo = new HouseInfo();
@@ -230,6 +237,15 @@ public class HouseInfoInputFragment extends BaseFragment
             houseInfo.setDangqianguzhi(Float.valueOf(valueEditText.getText().toString()));
         }
         houseInfo.setFangwuxingzhi((String)spinner.getSelectedItem());
+        Drawable drawable = houseInfoImageView.getDrawable();
+        Bitmap bitmap = MyUtils.drawableToBitmap(drawable);
+        byte[] housePicByte = MyUtils.Bitmap2Bytes(bitmap);
+        houseInfo.setFangwutupiao(housePicByte);
+        houseInfo.setGoujianriqi(buildTimeEditText.getText().toString());
+        houseInfo.setJianzhumianji(Float.valueOf(areaEditText.getText().toString()));
+        houseInfo.setNonghuIdcard(idcardEditText.getText().toString());
+        houseInfo.setShifoudiya(isDiya);
+        houseInfo.setSuozaidi(locationEditText.getText().toString());
         return houseInfo;
     }
 
@@ -262,5 +278,14 @@ public class HouseInfoInputFragment extends BaseFragment
                     .fitCenter()
                     .into(houseInfoImageView);
         }
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+         if(checkedId==R.id.houseInfo_radiobutton_yes){
+             isDiya = "是";
+         }else{
+             isDiya = "否";
+         }
     }
 }

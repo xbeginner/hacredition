@@ -20,6 +20,17 @@
     <string name = "yes">是</string>
     <string name = "no">否</string>
 
+
+
+
+
+    <string name="validation_error_idcard">身份证号错误</string>
+    <string name="validation_error_null">不能为空</string>
+    <string name="validation_error_pattern">格式错误</string>
+    <string name="validation_error_float">小数或者整数</string>
+    <string name="validation_error_year">请输入四位年份</string>
+
+
     <string-array name="houseinfo_type">
         <item>住宅</item>
         <item>住宿房屋</item>
@@ -29,10 +40,44 @@
         <item>生产房屋</item>
     </string-array>
 
+    <string-array name="fiscalspend_jibie">
+        <item>科级以下</item>
+        <item>科级</item>
+        <item>处级</item>
+        <item>厅级</item>
+        <item>部级</item>
+        <item>部级以上</item>
+    </string-array>
+
+    <string-array name="fiscalspend_bianzhileixing">
+        <item>行政编制</item>
+        <item>事业编制</item>
+        <item>人事代理</item>
+        <item>其他</item>
+    </string-array>
 
 
-    <string name="validation_error_idcard">身份证号错误</string>
-    <string name="validation_error_null">不能为空</string>
-    <string name="validation_error_pattern">格式错误</string>
-    <string name="validation_error_float">小数或者整数</string>
+    <string-array name="operationalentity_type">
+        <item>种植</item>
+        <item>养殖</item>
+        <item>门店</item>
+        <item>运输</item>
+        <item>其他</item>
+    </string-array>
+
+
+    <string-array name="entrepreneurship_type">
+        <item>种植</item>
+        <item>养殖</item>
+        <item>门店</item>
+        <item>运输</item>
+        <item>其他</item>
+    </string-array>
+
+
+    <string-array name="ownership_type">
+        <item>林地</item>
+        <item>承包土地</item>
+        <item>其他</item>
+    </string-array>
 </resources>

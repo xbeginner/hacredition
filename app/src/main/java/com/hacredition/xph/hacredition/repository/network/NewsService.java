@@ -1,8 +1,13 @@
 package com.hacredition.xph.hacredition.repository.network;
 
+import com.hacredition.xph.hacredition.mvp.entity.Entrepreneurship;
+import com.hacredition.xph.hacredition.mvp.entity.FiscalSpend;
+import com.hacredition.xph.hacredition.mvp.entity.HouseInfo;
 import com.hacredition.xph.hacredition.mvp.entity.InputItem;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
+import com.hacredition.xph.hacredition.mvp.entity.OperationalEntity;
+import com.hacredition.xph.hacredition.mvp.entity.OwnerShip;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 
 import java.util.List;
@@ -11,8 +16,11 @@ import java.util.Map;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Headers;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -38,5 +46,32 @@ public interface NewsService {
     @GET("servlet/input")
     Observable<List<InputItem>> getInputItems(
             @Query("userId") int userId);
+
+    @Headers("Content-Type:application/json")
+    @POST("servlet/saveHouseInfo")
+    Observable<String> saveHouseInfo(
+            @Body HouseInfo houseInfo);
+
+
+    @Headers("Content-Type:application/json")
+    @POST("servlet/saveFiscalSpend")
+    Observable<String> saveFiscalSpend(
+            @Body FiscalSpend fiscalSpend);
+
+    @Headers("Content-Type:application/json")
+    @POST("servlet/saveOperationalEntity")
+    Observable<String> saveOperationalEntity(
+            @Body OperationalEntity operationalEntity);
+
+    @Headers("Content-Type:application/json")
+    @POST("servlet/saveEntrepreneurship")
+    Observable<String> saveEntrepreneurship(
+            @Body Entrepreneurship entrepreneurship);
+
+
+    @Headers("Content-Type:application/json")
+    @POST("servlet/saveOwnerShip")
+    Observable<String> saveOwnerShip(
+            @Body OwnerShip ownerShip);
 
 }

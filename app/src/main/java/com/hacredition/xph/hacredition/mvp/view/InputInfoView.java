@@ -12,6 +12,9 @@ public interface InputInfoView<T> extends BaseView {
 
     void saveInfo(T t);
 
+    void saveSuccessfully();
+
+    void saveFailly();
 
 
 }

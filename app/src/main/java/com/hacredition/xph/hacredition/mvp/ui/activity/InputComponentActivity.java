@@ -12,7 +12,11 @@ import android.widget.FrameLayout;
 
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.mvp.ui.activity.base.BaseActivity;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.EntrepreneurshipFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.FiscalSpendFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseInfoInputFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.OperationalEntityFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.OwnerShipFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 
 import java.util.HashMap;
@@ -27,6 +31,10 @@ public class InputComponentActivity extends BaseActivity  {
     private static final Map<String,Integer> maps = new HashMap<String,Integer>(){
         {
              put("HouseHoldInput",1);
+             put("FiscalSpendingInput",2);
+             put("OperationalEntityInput",3);
+             put("EntrepreneurshipInput",4);
+             put("OwnerShipInput",5);
         }
     };
 
@@ -66,6 +74,27 @@ public class InputComponentActivity extends BaseActivity  {
                break;
            }
            case 2:{
+               FiscalSpendFragment fragment = new FiscalSpendFragment();
+               fragmentTransaction.add(R.id.input_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 3:{
+               OperationalEntityFragment fragment = new OperationalEntityFragment();
+               fragmentTransaction.add(R.id.input_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 4:{
+               EntrepreneurshipFragment fragment = new EntrepreneurshipFragment();
+               fragmentTransaction.add(R.id.input_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 5:{
+               OwnerShipFragment fragment = new OwnerShipFragment();
+               fragmentTransaction.add(R.id.input_component_layout,fragment);
+               fragmentTransaction.commit();
                break;
            }
        }

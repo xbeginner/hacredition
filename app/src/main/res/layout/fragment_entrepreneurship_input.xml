@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_weight="0.8"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/entrepreneurship_idcard_editview"
+                android:hint="证件号"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="410702983789293868"/>
+
+            <EditText
+                android:id="@+id/entrepreneurship_name_editview"
+                android:hint="姓名"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="张三"/>
+
+
+
+            <Spinner android:id="@+id/entrepreneurship_type_spinner"
+                android:layout_width="match_parent"
+                android:padding="16dp"
+                android:layout_height="wrap_content"></Spinner>
+
+
+
+            <EditText
+                android:id="@+id/entrepreneurship_xiangmu_edit"
+                android:hint="经营项目"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="经营项目"/>
+
+            <EditText
+                android:id="@+id/entrepreneurship_guimo_edit"
+                android:hint="拟建规模"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="130万"/>
+
+            <EditText
+                android:id="@+id/entrepreneurship_jindu_edit"
+                android:hint="当前进度"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="100"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/entrepreneurship_submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:background="@color/colorPrimary"
+            android:layout_weight="0.2"/>
+
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>
