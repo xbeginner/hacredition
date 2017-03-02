@@ -8,8 +8,10 @@ import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.di.scope.PerFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.EntrepreneurshipFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.FiscalSpendFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.HonourInfoFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.InputFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.MachineInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.NewsFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.OperationalEntityFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.OwnerShipFragment;
@@ -46,4 +48,8 @@ public interface FragmentComponent{
     void inject(EntrepreneurshipFragment entrepreneurshipFragment);
 
     void inject(OwnerShipFragment ownerShipFragment);
+
+    void inject(HonourInfoFragment honourInfoFragment);
+
+    void inject(MachineInfoInputFragment machineInfoInputFragment);
 }

@@ -14,7 +14,9 @@ import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.mvp.ui.activity.base.BaseActivity;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.EntrepreneurshipFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.FiscalSpendFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.HonourInfoFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseInfoInputFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.MachineInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.OperationalEntityFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.OwnerShipFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
@@ -35,6 +37,8 @@ public class InputComponentActivity extends BaseActivity  {
              put("OperationalEntityInput",3);
              put("EntrepreneurshipInput",4);
              put("OwnerShipInput",5);
+             put("HonourInfoInput",6);
+             put("MachineInfoInput",7);
         }
     };
 
@@ -93,6 +97,18 @@ public class InputComponentActivity extends BaseActivity  {
            }
            case 5:{
                OwnerShipFragment fragment = new OwnerShipFragment();
+               fragmentTransaction.add(R.id.input_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 6:{
+               HonourInfoFragment fragment = new HonourInfoFragment();
+               fragmentTransaction.add(R.id.input_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 7:{
+               MachineInfoInputFragment fragment = new MachineInfoInputFragment();
                fragmentTransaction.add(R.id.input_component_layout,fragment);
                fragmentTransaction.commit();
                break;

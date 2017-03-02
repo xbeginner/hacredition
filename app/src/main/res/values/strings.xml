@@ -80,4 +80,11 @@
         <item>承包土地</item>
         <item>其他</item>
     </string-array>
+
+
+    <string-array name="honour_level">
+        <item>省级</item>
+        <item>市级</item>
+        <item>县级</item>
+    </string-array>
 </resources>

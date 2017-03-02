@@ -2,8 +2,10 @@ package com.hacredition.xph.hacredition.repository.network;
 
 import com.hacredition.xph.hacredition.mvp.entity.Entrepreneurship;
 import com.hacredition.xph.hacredition.mvp.entity.FiscalSpend;
+import com.hacredition.xph.hacredition.mvp.entity.HonourInfo;
 import com.hacredition.xph.hacredition.mvp.entity.HouseInfo;
 import com.hacredition.xph.hacredition.mvp.entity.InputItem;
+import com.hacredition.xph.hacredition.mvp.entity.MachineInfo;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.entity.OperationalEntity;
@@ -74,4 +76,15 @@ public interface NewsService {
     Observable<String> saveOwnerShip(
             @Body OwnerShip ownerShip);
 
+
+    @Headers("Content-Type:application/json")
+    @POST("servlet/saveHonourInfo")
+    Observable<String> saveHonourInfo(
+            @Body HonourInfo honourInfo);
+
+
+    @Headers("Content-Type:application/json")
+    @POST("servlet/saveMachineInfo")
+    Observable<String> saveMachine(
+            @Body MachineInfo machineInfo);
 }

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_weight="0.8"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/honourinfo_idcard_editview"
+                android:hint="表彰人证件号"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="410702983789293868"/>
+
+            <EditText
+                android:id="@+id/honourinfo_name_editview"
+                android:hint="表彰人姓名"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="张三"/>
+
+            <EditText
+                android:id="@+id/honourinfo_shixiang_edit"
+                android:hint="表彰事项"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:id="@+id/honourinfo_org_editview"
+                android:hint="表彰部门"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:id="@+id/honourinfo_time_editview"
+                android:hint="表彰时间"
+                android:inputType="date"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:id="@+id/honourinfo_number_editview"
+                android:hint="表彰文号"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <Spinner android:id="@+id/honourinfo_level_spinner"
+                android:layout_width="match_parent"
+                android:padding="16dp"
+                android:layout_height="wrap_content"></Spinner>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/honourinfo_submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:background="@color/colorPrimary"
+            android:layout_weight="0.2"/>
+
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>

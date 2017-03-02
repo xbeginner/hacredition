@@ -7,8 +7,10 @@ import com.google.gson.GsonBuilder;
 import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.mvp.entity.Entrepreneurship;
 import com.hacredition.xph.hacredition.mvp.entity.FiscalSpend;
+import com.hacredition.xph.hacredition.mvp.entity.HonourInfo;
 import com.hacredition.xph.hacredition.mvp.entity.HouseInfo;
 import com.hacredition.xph.hacredition.mvp.entity.InputItem;
+import com.hacredition.xph.hacredition.mvp.entity.MachineInfo;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.entity.OperationalEntity;
@@ -160,5 +162,13 @@ public class RetrofitManager {
 
     public Observable<String> saveOwnerShip(OwnerShip ownerShip){
         return mNewsService.saveOwnerShip(ownerShip);
+    }
+
+    public Observable<String> saveHonourInfo(HonourInfo honourInfo){
+        return mNewsService.saveHonourInfo(honourInfo);
+    }
+
+    public Observable<String> saveMachine(MachineInfo machineInfo){
+        return mNewsService.saveMachine(machineInfo);
     }
 }
