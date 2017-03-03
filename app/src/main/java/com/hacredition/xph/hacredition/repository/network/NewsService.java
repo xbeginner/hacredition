@@ -1,5 +1,6 @@
 package com.hacredition.xph.hacredition.repository.network;
 
+import com.hacredition.xph.hacredition.mvp.entity.CreditInfo;
 import com.hacredition.xph.hacredition.mvp.entity.Entrepreneurship;
 import com.hacredition.xph.hacredition.mvp.entity.FiscalSpend;
 import com.hacredition.xph.hacredition.mvp.entity.HonourInfo;
@@ -10,6 +11,7 @@ import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.entity.OperationalEntity;
 import com.hacredition.xph.hacredition.mvp.entity.OwnerShip;
+import com.hacredition.xph.hacredition.mvp.entity.PoliceInfo;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 
 import java.util.List;
@@ -87,4 +89,16 @@ public interface NewsService {
     @POST("servlet/saveMachineInfo")
     Observable<String> saveMachine(
             @Body MachineInfo machineInfo);
+
+
+    @Headers("Content-Type:application/json")
+    @POST("servlet/savePoliceInfo")
+    Observable<String> savePoliceInfo(
+            @Body PoliceInfo policeInfo);
+
+
+    @Headers("Content-Type:application/json")
+    @POST("servlet/saveCreditInfo")
+    Observable<String> saveCreditInfo(
+            @Body CreditInfo creditInfo);
 }

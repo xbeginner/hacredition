@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_weight="0.8"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/creditinfo_idcard_editview"
+                android:hint="贷款人证件号"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="410702983789293868"/>
+
+            <EditText
+                android:id="@+id/creditinfo_name_editview"
+                android:hint="贷款人姓名"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="张三"/>
+
+            <Spinner android:id="@+id/creditinfo_bank_spinner"
+                android:layout_width="match_parent"
+                android:padding="16dp"
+                android:layout_height="wrap_content"></Spinner>
+
+            <EditText
+                android:id="@+id/creditinfo_yongtu_editview"
+                android:hint="贷款用途"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="张三"/>
+
+            <EditText
+                android:id="@+id/creditinfo_shouxin_edit"
+                android:hint="授信金额(万元)"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:inputType="numberDecimal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="100"/>
+
+            <EditText
+                android:id="@+id/creditinfo_fafang_edit"
+                android:hint="发放金额(万元)"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:inputType="numberDecimal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="100"/>
+
+            <Spinner android:id="@+id/creditinfo_fangshi_spinner"
+                android:layout_width="match_parent"
+                android:padding="16dp"
+                android:layout_height="wrap_content"></Spinner>
+
+            <EditText
+                android:id="@+id/creditinfo_fafangtime_edit"
+                android:hint="发放时间"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:inputType="date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="2017-01-01"/>
+
+            <EditText
+                android:id="@+id/creditinfo_daoqitime_edit"
+                android:hint="到期时间"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:inputType="date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="2017-01-01"/>
+
+            <Spinner android:id="@+id/creditinfo_zhuangtai_spinner"
+                android:layout_width="match_parent"
+                android:padding="16dp"
+                android:layout_height="wrap_content"></Spinner>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:weightSum="1"
+                android:padding="16dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_weight="0.6"
+                    android:text="按期付息"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <RadioGroup
+                    android:id="@+id/creditinfo_anqifuxi_radiogroup"
+                    android:layout_weight="0.4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/creditinfo_anqifuxi_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="@string/yes"
+                        android:layout_height="wrap_content" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/creditinfo_anqifuxi_no"
+                        android:text="@string/no"
+                        android:layout_weight="0.3"
+                        android:checked="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:weightSum="1"
+                android:padding="16dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_weight="0.6"
+                    android:text="形成不良"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <RadioGroup
+                    android:id="@+id/creditinfo_buliang_radiogroup"
+                    android:layout_weight="0.4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/creditinfo_buliang_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="@string/yes"
+                        android:layout_height="wrap_content" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/creditinfo_buliang_no"
+                        android:text="@string/no"
+                        android:layout_weight="0.3"
+                        android:checked="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:weightSum="1"
+                android:padding="16dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_weight="0.6"
+                    android:text="第三方代偿"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <RadioGroup
+                    android:id="@+id/creditinfo_daichang_radiogroup"
+                    android:layout_weight="0.4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/creditinfo_daichang_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="@string/yes"
+                        android:layout_height="wrap_content" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/creditinfo_daichang_no"
+                        android:text="@string/no"
+                        android:layout_weight="0.3"
+                        android:checked="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:weightSum="1"
+                android:padding="16dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_weight="0.6"
+                    android:text="逾期"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <RadioGroup
+                    android:id="@+id/creditinfo_yuqi_radiogroup"
+                    android:layout_weight="0.4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/creditinfo_yuqi_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="@string/yes"
+                        android:layout_height="wrap_content" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/creditinfo_yuqi_no"
+                        android:text="@string/no"
+                        android:layout_weight="0.3"
+                        android:checked="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:weightSum="1"
+                android:padding="16dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_weight="0.6"
+                    android:text="还清"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <RadioGroup
+                    android:id="@+id/creditinfo_huanqing_radiogroup"
+                    android:layout_weight="0.4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/creditinfo_huanqing_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="@string/yes"
+                        android:layout_height="wrap_content" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/creditinfo_huanqing_no"
+                        android:text="@string/no"
+                        android:layout_weight="0.3"
+                        android:checked="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/creditinfo_submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:background="@color/colorPrimary"
+            android:layout_weight="0.2"/>
+
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>

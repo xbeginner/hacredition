@@ -87,4 +87,29 @@
         <item>市级</item>
         <item>县级</item>
     </string-array>
+
+
+    <string-array name="policeinfo_type">
+        <item>涉黄</item>
+        <item>涉赌</item>
+        <item>涉毒</item>
+    </string-array>
+
+
+    <string-array name="creditinfo_fangshi">
+        <item>抵押</item>
+        <item>质押</item>
+        <item>担保</item>
+        <item>一网两平台信用贷款</item>
+        <item>其他</item>
+    </string-array>
+
+
+    <string-array name="creditinfo_zhuangtai">
+        <item>正常</item>
+        <item>关注</item>
+        <item>次级</item>
+        <item>可疑</item>
+        <item>损失</item>
+    </string-array>
 </resources>

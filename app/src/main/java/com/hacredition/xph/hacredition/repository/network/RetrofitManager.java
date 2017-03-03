@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hacredition.xph.hacredition.App;
+import com.hacredition.xph.hacredition.mvp.entity.CreditInfo;
 import com.hacredition.xph.hacredition.mvp.entity.Entrepreneurship;
 import com.hacredition.xph.hacredition.mvp.entity.FiscalSpend;
 import com.hacredition.xph.hacredition.mvp.entity.HonourInfo;
@@ -15,6 +16,7 @@ import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.entity.OperationalEntity;
 import com.hacredition.xph.hacredition.mvp.entity.OwnerShip;
+import com.hacredition.xph.hacredition.mvp.entity.PoliceInfo;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.utils.NetUtil;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -170,5 +172,13 @@ public class RetrofitManager {
 
     public Observable<String> saveMachine(MachineInfo machineInfo){
         return mNewsService.saveMachine(machineInfo);
+    }
+
+    public Observable<String> savePoliceInfo(PoliceInfo policeInfo){
+        return mNewsService.savePoliceInfo(policeInfo);
+    }
+
+    public Observable<String> saveCreditInfo(CreditInfo creditInfo){
+        return mNewsService.saveCreditInfo(creditInfo);
     }
 }

@@ -11,7 +11,9 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 
 import com.hacredition.xph.hacredition.R;
+import com.hacredition.xph.hacredition.mvp.entity.CreditInfo;
 import com.hacredition.xph.hacredition.mvp.ui.activity.base.BaseActivity;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.CreditInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.EntrepreneurshipFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.FiscalSpendFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HonourInfoFragment;
@@ -19,6 +21,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.MachineInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.OperationalEntityFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.OwnerShipFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.PoliceInfoFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 
 import java.util.HashMap;
@@ -39,6 +42,8 @@ public class InputComponentActivity extends BaseActivity  {
              put("OwnerShipInput",5);
              put("HonourInfoInput",6);
              put("MachineInfoInput",7);
+             put("PoliceInfoInput",8);
+             put("CreditInfoInput",9);
         }
     };
 
@@ -109,6 +114,18 @@ public class InputComponentActivity extends BaseActivity  {
            }
            case 7:{
                MachineInfoInputFragment fragment = new MachineInfoInputFragment();
+               fragmentTransaction.add(R.id.input_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 8:{
+               PoliceInfoFragment fragment = new PoliceInfoFragment();
+               fragmentTransaction.add(R.id.input_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 9:{
+               CreditInfoInputFragment fragment = new CreditInfoInputFragment();
                fragmentTransaction.add(R.id.input_component_layout,fragment);
                fragmentTransaction.commit();
                break;
