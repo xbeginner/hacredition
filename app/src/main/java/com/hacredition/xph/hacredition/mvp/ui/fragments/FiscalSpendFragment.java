@@ -195,6 +195,7 @@ public class FiscalSpendFragment extends BaseFragment
         fiscalSpend.setNonghu(idcardEditText.getText().toString());
         fiscalSpend.setXingming(nameEditText.getText().toString());
         fiscalSpend.setZhiwu(zhiwuEditText.getText().toString());
+        fiscalSpend.setInputUserId(MyUtils.getInputUserId());
         return fiscalSpend;
     }
 

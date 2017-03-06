@@ -14,6 +14,7 @@ public class MachineInfo {
     private Float pinggujiage;
     private String zhenghao;
     private byte[] zhaopian;
+    private int inputUserId;
 
     public String getNonghu() {
         return nonghu;
@@ -77,5 +78,13 @@ public class MachineInfo {
 
     public void setZhaopian(byte[] zhaopian) {
         this.zhaopian = zhaopian;
+    }
+
+    public int getInputUserId() {
+        return inputUserId;
+    }
+
+    public void setInputUserId(int inputUserId) {
+        this.inputUserId = inputUserId;
     }
 }

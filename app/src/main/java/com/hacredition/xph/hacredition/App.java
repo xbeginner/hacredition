@@ -13,6 +13,7 @@ import com.hacredition.xph.hacredition.mvp.entity.DaoMaster;
 import com.hacredition.xph.hacredition.mvp.entity.DaoSession;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.hacredition.xph.hacredition.utils.UncertainHandler;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -59,6 +60,7 @@ public class App extends Application {
         super.onCreate();
         mApplicationContext = this;
         //初始化监控
+        initUnCatchException();
         initLeakCanary();
         initStrictMode();
         //初始化夜晚模式
@@ -70,6 +72,11 @@ public class App extends Application {
         initLoginLog();
     }
 
+
+    private void initUnCatchException(){
+        UncertainHandler catchExcep = new UncertainHandler(this);
+        Thread.setDefaultUncaughtExceptionHandler(catchExcep);
+    }
 
     /**
      * 根据数据库上次登录情况判断hasLogin的值
@@ -166,5 +173,9 @@ public class App extends Application {
 
     public static DaoSession getmDaoSession(){
         return mDaoSession;
+    }
+
+    public void finishApplication(){
+        System.exit(0);
     }
 }

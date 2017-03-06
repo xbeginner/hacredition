@@ -16,6 +16,7 @@ public class HouseInfo {
     private float jianzhumianji;
     private String goujianriqi;
     private String fangwuxingzhi;
+    private int inputUserId;
 
 
     public String getNonghuId() {
@@ -80,6 +81,16 @@ public class HouseInfo {
 
     public void setFangwuxingzhi(String fangwuxingzhi) {
         this.fangwuxingzhi = fangwuxingzhi;
+    }
+
+
+
+    public int getInputUserId() {
+        return inputUserId;
+    }
+
+    public void setInputUserId(int inputUserId) {
+        this.inputUserId = inputUserId;
     }
 
     @Override

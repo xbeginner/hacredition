@@ -11,12 +11,17 @@ import android.provider.SyncStateContract;
 
 import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.common.Constants;
+import com.hacredition.xph.hacredition.mvp.entity.DaoSession;
+import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
+import com.hacredition.xph.hacredition.mvp.entity.UserInfoDao;
+import com.hacredition.xph.hacredition.mvp.ui.activity.MainActivity;
 
 import org.reactivestreams.Subscription;
 
 import java.io.ByteArrayOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 
 /**
  * Created by pc on 2017/1/9.
@@ -101,6 +106,27 @@ public class MyUtils {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
                 return baos.toByteArray();
+    }
+
+    public static int getInputUserId(){
+        if(MainActivity.mUserInfo!=null){
+            return MainActivity.mUserInfo.getUserId();
+        }else{
+            DaoSession session = App.getmDaoSession();
+            UserInfo userInfo = session.getUserInfoDao().loadAll().get(0);
+            return userInfo.getUserId();
+        }
+    }
+
+
+    public static UserInfo getCurrentUserInfo(){
+        if(MainActivity.mUserInfo!=null){
+            return MainActivity.mUserInfo;
+        }else{
+            DaoSession session = App.getmDaoSession();
+            UserInfo userInfo = session.getUserInfoDao().loadAll().get(0);
+            return userInfo;
+        }
     }
 
 }

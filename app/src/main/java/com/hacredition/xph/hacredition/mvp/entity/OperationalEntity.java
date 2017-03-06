@@ -10,6 +10,7 @@ public class OperationalEntity {
     private String leixing;
     private String xiangmu;
     private String guimo;
+    private int inputUserId;
 
     public String getNonghu() {
         return nonghu;
@@ -41,5 +42,13 @@ public class OperationalEntity {
 
     public void setGuimo(String guimo) {
         this.guimo = guimo;
+    }
+
+    public int getInputUserId() {
+        return inputUserId;
+    }
+
+    public void setInputUserId(int inputUserId) {
+        this.inputUserId = inputUserId;
     }
 }

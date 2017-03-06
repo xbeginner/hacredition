@@ -233,9 +233,12 @@ public class MachineInfoInputFragment extends BaseFragment
         machineInfo.setPinggujiage(Float.valueOf(currentValueEditText.getText().toString()));
         machineInfo.setZhenghao(numberEditText.getText().toString());
         Drawable drawable = machineInfoImageView.getDrawable();
-        Bitmap bitmap = MyUtils.drawableToBitmap(drawable);
-        byte[] machinePicByte = MyUtils.Bitmap2Bytes(bitmap);
-        machineInfo.setZhaopian(machinePicByte);
+        if(drawable!=null){
+            Bitmap bitmap = MyUtils.drawableToBitmap(drawable);
+            byte[] machinePicByte = MyUtils.Bitmap2Bytes(bitmap);
+            machineInfo.setZhaopian(machinePicByte);
+        }
+        machineInfo.setInputUserId(MyUtils.getInputUserId());
 
         return machineInfo;
     }

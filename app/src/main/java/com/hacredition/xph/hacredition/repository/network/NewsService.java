@@ -3,6 +3,7 @@ package com.hacredition.xph.hacredition.repository.network;
 import com.hacredition.xph.hacredition.mvp.entity.CreditInfo;
 import com.hacredition.xph.hacredition.mvp.entity.Entrepreneurship;
 import com.hacredition.xph.hacredition.mvp.entity.FiscalSpend;
+import com.hacredition.xph.hacredition.mvp.entity.GuaranteeInfo;
 import com.hacredition.xph.hacredition.mvp.entity.HonourInfo;
 import com.hacredition.xph.hacredition.mvp.entity.HouseInfo;
 import com.hacredition.xph.hacredition.mvp.entity.InputItem;
@@ -101,4 +102,10 @@ public interface NewsService {
     @POST("servlet/saveCreditInfo")
     Observable<String> saveCreditInfo(
             @Body CreditInfo creditInfo);
+
+
+    @Headers("Content-Type:application/json")
+    @POST("servlet/saveGuarantee")
+    Observable<String> saveGuarantee(
+            @Body GuaranteeInfo guaranteeInfo);
 }

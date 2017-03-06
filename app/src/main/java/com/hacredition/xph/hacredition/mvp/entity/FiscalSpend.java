@@ -14,6 +14,7 @@ public class FiscalSpend {
     private String danweimingcheng;
     private String gongzuoshijiian;
     private String xingming;
+    private int inputUserId;
 
     public String getNonghu() {
         return nonghu;
@@ -77,5 +78,13 @@ public class FiscalSpend {
 
     public void setXingming(String xingming) {
         this.xingming = xingming;
+    }
+
+    public int getInputUserId() {
+        return inputUserId;
+    }
+
+    public void setInputUserId(int inputUserId) {
+        this.inputUserId = inputUserId;
     }
 }

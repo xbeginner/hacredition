@@ -11,6 +11,7 @@ public class Entrepreneurship {
     private String guimo;
     private String xiangmu;
     private String leixing;
+    private int inputUserId;
 
     public String getNonghu() {
         return nonghu;
@@ -50,5 +51,13 @@ public class Entrepreneurship {
 
     public void setLeixing(String leixing) {
         this.leixing = leixing;
+    }
+
+    public int getInputUserId() {
+        return inputUserId;
+    }
+
+    public void setInputUserId(int inputUserId) {
+        this.inputUserId = inputUserId;
     }
 }

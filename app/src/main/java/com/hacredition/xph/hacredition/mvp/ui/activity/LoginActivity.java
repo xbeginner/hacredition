@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
@@ -183,6 +184,5 @@ public class LoginActivity extends BaseActivity
     @Override
     public void onActivityReenter(int resultCode, Intent intent) {
         super.onActivityReenter(resultCode, intent);
-        System.out.println(resultCode);
     }
 }

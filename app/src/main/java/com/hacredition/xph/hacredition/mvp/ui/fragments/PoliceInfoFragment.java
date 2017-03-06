@@ -20,9 +20,11 @@ import com.hacredition.xph.hacredition.mvp.entity.HonourInfo;
 import com.hacredition.xph.hacredition.mvp.entity.PoliceInfo;
 import com.hacredition.xph.hacredition.mvp.presenter.impl.HonourInfoInputPresenterImpl;
 import com.hacredition.xph.hacredition.mvp.presenter.impl.PoliceInfoInputPresenterImpl;
+import com.hacredition.xph.hacredition.mvp.ui.activity.MainActivity;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
+import com.hacredition.xph.hacredition.utils.MyUtils;
 
 import java.util.Calendar;
 
@@ -152,6 +154,7 @@ public class PoliceInfoFragment extends BaseFragment
         info.setType((String)typeSpinner.getSelectedItem());
         info.setTime(timeEditText.getText().toString());
         info.setXianzhuang(xianzhuangEditText.getText().toString());
+        info.setInputUserId(MyUtils.getInputUserId());
 
         return info;
     }

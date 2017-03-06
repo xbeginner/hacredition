@@ -13,6 +13,7 @@ public class HonourInfo {
     private String biaozhangshijian;
     private String biaozhangbumen;
     private String biaozhangshixiang;
+    private int inputUserId;
 
 
     public String getNonghu() {
@@ -69,5 +70,14 @@ public class HonourInfo {
 
     public void setBiaozhangshixiang(String biaozhangshixiang) {
         this.biaozhangshixiang = biaozhangshixiang;
+    }
+
+
+    public int getInputUserId() {
+        return inputUserId;
+    }
+
+    public void setInputUserId(int inputUserId) {
+        this.inputUserId = inputUserId;
     }
 }

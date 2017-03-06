@@ -20,6 +20,7 @@ import com.hacredition.xph.hacredition.mvp.presenter.impl.OnwerShipInputPresente
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
+import com.hacredition.xph.hacredition.utils.MyUtils;
 
 import java.security.acl.Owner;
 
@@ -33,7 +34,7 @@ public class OwnerShipFragment extends BaseFragment
         ,View.OnClickListener {
 
 
-    @BindView(R.id.ownership_name_editview)
+    @BindView(R.id.ownership_idcard_editview)
     EditText idcardEditText;
 
     @BindView(R.id.ownership_name_editview)
@@ -153,6 +154,7 @@ public class OwnerShipFragment extends BaseFragment
         ship.setMianji(Float.valueOf(earaEditText.getText().toString()));
         ship.setQuanzhengbianhao(numberEditText.getText().toString());
         ship.setLeixing((String)typeSpinner.getSelectedItem());
+        ship.setInputUserId(MyUtils.getInputUserId());
 
         return ship;
     }

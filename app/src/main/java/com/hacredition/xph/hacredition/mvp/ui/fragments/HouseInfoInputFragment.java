@@ -238,25 +238,28 @@ public class HouseInfoInputFragment extends BaseFragment
         }
         houseInfo.setFangwuxingzhi((String)spinner.getSelectedItem());
         Drawable drawable = houseInfoImageView.getDrawable();
-        Bitmap bitmap = MyUtils.drawableToBitmap(drawable);
-        byte[] housePicByte = MyUtils.Bitmap2Bytes(bitmap);
-        houseInfo.setFangwutupiao(housePicByte);
+//        if(drawable!=null){
+            Bitmap bitmap = MyUtils.drawableToBitmap(drawable);
+            byte[] housePicByte = MyUtils.Bitmap2Bytes(bitmap);
+            houseInfo.setFangwutupiao(housePicByte);
+//        }
         houseInfo.setGoujianriqi(buildTimeEditText.getText().toString());
         houseInfo.setJianzhumianji(Float.valueOf(areaEditText.getText().toString()));
         houseInfo.setNonghuIdcard(idcardEditText.getText().toString());
         houseInfo.setShifoudiya(isDiya);
         houseInfo.setSuozaidi(locationEditText.getText().toString());
+        houseInfo.setInputUserId(MyUtils.getInputUserId());
         return houseInfo;
     }
 
 
     private void addValidation(){
-        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
-        awesomeValidation.addValidation(idcardEditText, MyRegex.IDCARD,getResources().getString(R.string.validation_error_idcard));
-        awesomeValidation.addValidation(buildTimeEditText,MyRegex.DATE,getResources().getString(R.string.validation_error_pattern));
-        awesomeValidation.addValidation(areaEditText,MyRegex.ISFLOAT,getResources().getString(R.string.validation_error_float));
-        awesomeValidation.addValidation(locationEditText,MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
-        awesomeValidation.addValidation(valueEditText,MyRegex.ISFLOAT,getResources().getString(R.string.validation_error_float));
+//        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+//        awesomeValidation.addValidation(idcardEditText, MyRegex.IDCARD,getResources().getString(R.string.validation_error_idcard));
+//        awesomeValidation.addValidation(buildTimeEditText,MyRegex.DATE,getResources().getString(R.string.validation_error_pattern));
+//        awesomeValidation.addValidation(areaEditText,MyRegex.ISFLOAT,getResources().getString(R.string.validation_error_float));
+//        awesomeValidation.addValidation(locationEditText,MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
+//        awesomeValidation.addValidation(valueEditText,MyRegex.ISFLOAT,getResources().getString(R.string.validation_error_float));
     }
 
     @Override

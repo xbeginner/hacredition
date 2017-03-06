@@ -18,8 +18,8 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/creditinfo_idcard_editview"
-                android:hint="贷款人证件号"
+                android:id="@+id/guarantee_idcard_editview"
+                android:hint="担保人证件号"
                 android:maxLines="1"
                 android:padding="16dp"
                 android:layout_width="match_parent"
@@ -27,18 +27,8 @@
                 tools:text="410702983789293868"/>
 
             <EditText
-                android:id="@+id/creditinfo_name_editview"
-                android:hint="贷款人姓名"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="张三"/>
-
-
-            <EditText
-                android:id="@+id/creditinfo_yongtu_editview"
-                android:hint="贷款用途"
+                android:id="@+id/guarantee_name_editview"
+                android:hint="担保人姓名"
                 android:maxLines="1"
                 android:padding="16dp"
                 android:layout_width="match_parent"
@@ -46,8 +36,26 @@
                 tools:text="张三"/>
 
             <EditText
-                android:id="@+id/creditinfo_shouxin_edit"
-                android:hint="授信金额(万元)"
+                android:id="@+id/guaranted_idcard_editview"
+                android:hint="被担保人证件号"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="410702983789293868"/>
+
+            <EditText
+                android:id="@+id/guaranted_name_editview"
+                android:hint="被担保人姓名"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="张三"/>
+
+            <EditText
+                android:id="@+id/guarantee_jine_edit"
+                android:hint="担保金额(万元)"
                 android:maxLines="1"
                 android:padding="16dp"
                 android:inputType="numberDecimal"
@@ -56,8 +64,8 @@
                 tools:text="100"/>
 
             <EditText
-                android:id="@+id/creditinfo_fafang_edit"
-                android:hint="发放金额(万元)"
+                android:id="@+id/guarantee_weijieqing_edit"
+                android:hint="未结清金额(万元)"
                 android:maxLines="1"
                 android:padding="16dp"
                 android:inputType="numberDecimal"
@@ -65,13 +73,10 @@
                 android:layout_height="wrap_content"
                 tools:text="100"/>
 
-            <Spinner android:id="@+id/creditinfo_fangshi_spinner"
-                android:layout_width="match_parent"
-                android:padding="16dp"
-                android:layout_height="wrap_content"></Spinner>
+
 
             <EditText
-                android:id="@+id/creditinfo_fafangtime_edit"
+                android:id="@+id/guarantee_fafangtime_edit"
                 android:hint="发放时间"
                 android:maxLines="1"
                 android:padding="16dp"
@@ -81,7 +86,7 @@
                 tools:text="2017-01-01"/>
 
             <EditText
-                android:id="@+id/creditinfo_daoqitime_edit"
+                android:id="@+id/guarantee_daoqitime_edit"
                 android:hint="到期时间"
                 android:maxLines="1"
                 android:padding="16dp"
@@ -90,49 +95,9 @@
                 android:layout_height="wrap_content"
                 tools:text="2017-01-01"/>
 
-            <Spinner android:id="@+id/creditinfo_zhuangtai_spinner"
-                android:layout_width="match_parent"
-                android:padding="16dp"
-                android:layout_height="wrap_content"></Spinner>
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:weightSum="1"
-                android:padding="16dp"
-                android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_weight="0.6"
-                    android:text="按期付息"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
 
-                <RadioGroup
-                    android:id="@+id/creditinfo_anqifuxi_radiogroup"
-                    android:layout_weight="0.4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <android.support.v7.widget.AppCompatRadioButton
-                        android:id="@+id/creditinfo_anqifuxi_yes"
-                        android:layout_width="wrap_content"
-                        android:layout_weight="0.3"
-                        android:text="@string/yes"
-                        android:layout_height="wrap_content" />
-
-                    <android.support.v7.widget.AppCompatRadioButton
-                        android:id="@+id/creditinfo_anqifuxi_no"
-                        android:text="@string/no"
-                        android:layout_weight="0.3"
-                        android:checked="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </RadioGroup>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -148,21 +113,21 @@
                     android:layout_height="wrap_content"/>
 
                 <RadioGroup
-                    android:id="@+id/creditinfo_buliang_radiogroup"
+                    android:id="@+id/guarantee_buliang_radiogroup"
                     android:layout_weight="0.4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <android.support.v7.widget.AppCompatRadioButton
-                        android:id="@+id/creditinfo_buliang_yes"
+                        android:id="@+id/guarantee_buliang_yes"
                         android:layout_width="wrap_content"
                         android:layout_weight="0.3"
                         android:text="@string/yes"
                         android:layout_height="wrap_content" />
 
                     <android.support.v7.widget.AppCompatRadioButton
-                        android:id="@+id/creditinfo_buliang_no"
+                        android:id="@+id/guarantee_buliang_no"
                         android:text="@string/no"
                         android:layout_weight="0.3"
                         android:checked="true"
@@ -182,26 +147,26 @@
 
                 <TextView
                     android:layout_weight="0.6"
-                    android:text="第三方代偿"
+                    android:text="是否代偿"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <RadioGroup
-                    android:id="@+id/creditinfo_daichang_radiogroup"
+                    android:id="@+id/guarantee_daichang_radiogroup"
                     android:layout_weight="0.4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <android.support.v7.widget.AppCompatRadioButton
-                        android:id="@+id/creditinfo_daichang_yes"
+                        android:id="@+id/guarantee_daichang_yes"
                         android:layout_width="wrap_content"
                         android:layout_weight="0.3"
                         android:text="@string/yes"
                         android:layout_height="wrap_content" />
 
                     <android.support.v7.widget.AppCompatRadioButton
-                        android:id="@+id/creditinfo_daichang_no"
+                        android:id="@+id/guarantee_daichang_no"
                         android:text="@string/no"
                         android:layout_weight="0.3"
                         android:checked="true"
@@ -226,60 +191,21 @@
                     android:layout_height="wrap_content"/>
 
                 <RadioGroup
-                    android:id="@+id/creditinfo_yuqi_radiogroup"
+                    android:id="@+id/guarantee_yuqi_radiogroup"
                     android:layout_weight="0.4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <android.support.v7.widget.AppCompatRadioButton
-                        android:id="@+id/creditinfo_yuqi_yes"
+                        android:id="@+id/guarantee_yuqi_yes"
                         android:layout_width="wrap_content"
                         android:layout_weight="0.3"
                         android:text="@string/yes"
                         android:layout_height="wrap_content" />
 
                     <android.support.v7.widget.AppCompatRadioButton
-                        android:id="@+id/creditinfo_yuqi_no"
-                        android:text="@string/no"
-                        android:layout_weight="0.3"
-                        android:checked="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:weightSum="1"
-                android:padding="16dp"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_weight="0.6"
-                    android:text="还清"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <RadioGroup
-                    android:id="@+id/creditinfo_huanqing_radiogroup"
-                    android:layout_weight="0.4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <android.support.v7.widget.AppCompatRadioButton
-                        android:id="@+id/creditinfo_huanqing_yes"
-                        android:layout_width="wrap_content"
-                        android:layout_weight="0.3"
-                        android:text="@string/yes"
-                        android:layout_height="wrap_content" />
-
-                    <android.support.v7.widget.AppCompatRadioButton
-                        android:id="@+id/creditinfo_huanqing_no"
+                        android:id="@+id/guarantee_yuqi_no"
                         android:text="@string/no"
                         android:layout_weight="0.3"
                         android:checked="true"
@@ -293,7 +219,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/creditinfo_submit_button"
+            android:id="@+id/guarantee_submit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/submit"

@@ -13,6 +13,7 @@ public class OwnerShip {
     private Float mianji;
     private String quanzhengbianhao;
     private String leixing;
+    private int inputUserId;
 
 
     public String getUserId() {
@@ -70,5 +71,13 @@ public class OwnerShip {
 
     public void setLeixing(String leixing) {
         this.leixing = leixing;
+    }
+
+    public int getInputUserId() {
+        return inputUserId;
+    }
+
+    public void setInputUserId(int inputUserId) {
+        this.inputUserId = inputUserId;
     }
 }

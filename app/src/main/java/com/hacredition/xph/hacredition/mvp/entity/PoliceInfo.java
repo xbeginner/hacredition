@@ -11,6 +11,7 @@ public class PoliceInfo {
     private String type;
     private String time;
     private String xianzhuang;
+    private int inputUserId;
 
     public String getNonghu() {
         return nonghu;
@@ -50,5 +51,13 @@ public class PoliceInfo {
 
     public void setXianzhuang(String xianzhuang) {
         this.xianzhuang = xianzhuang;
+    }
+
+    public int getInputUserId() {
+        return inputUserId;
+    }
+
+    public void setInputUserId(int inputUserId) {
+        this.inputUserId = inputUserId;
     }
 }

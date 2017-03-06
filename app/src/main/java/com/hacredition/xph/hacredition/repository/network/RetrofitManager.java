@@ -8,6 +8,7 @@ import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.mvp.entity.CreditInfo;
 import com.hacredition.xph.hacredition.mvp.entity.Entrepreneurship;
 import com.hacredition.xph.hacredition.mvp.entity.FiscalSpend;
+import com.hacredition.xph.hacredition.mvp.entity.GuaranteeInfo;
 import com.hacredition.xph.hacredition.mvp.entity.HonourInfo;
 import com.hacredition.xph.hacredition.mvp.entity.HouseInfo;
 import com.hacredition.xph.hacredition.mvp.entity.InputItem;
@@ -56,7 +57,7 @@ public class RetrofitManager {
 
     private NewsService mNewsService;
 
-    private static final String BASE_URL = "http://192.168.0.82:8081/hacredition/";
+    private static final String BASE_URL = "http://192.168.0.82:8080/hacredition/";
 
     private static volatile OkHttpClient sOkHttpClient;
 
@@ -180,5 +181,10 @@ public class RetrofitManager {
 
     public Observable<String> saveCreditInfo(CreditInfo creditInfo){
         return mNewsService.saveCreditInfo(creditInfo);
+    }
+
+
+    public Observable<String> saveGuaranteeInfo(GuaranteeInfo guaranteeInfo){
+        return mNewsService.saveGuarantee(guaranteeInfo);
     }
 }

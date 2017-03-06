@@ -23,6 +23,7 @@ import com.hacredition.xph.hacredition.mvp.presenter.impl.HonourInfoInputPresent
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
+import com.hacredition.xph.hacredition.utils.MyUtils;
 
 import java.util.Calendar;
 
@@ -161,6 +162,7 @@ public class HonourInfoFragment extends BaseFragment
         info.setBiaozhangshijian(timeEditText.getText().toString());
         info.setBiaozhangbumen(orgEditText.getText().toString());
         info.setBiaozhangshixiang(shixiangEditText.getText().toString());
+        info.setInputUserId(MyUtils.getInputUserId());
 
         return info;
     }

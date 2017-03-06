@@ -8,7 +8,6 @@ public class CreditInfo {
 
     private String nonghu;
     private String nonghuName;
-    private String daikuanjigou;
     private String jiekuangyongtu;
     private Float fafangjine;
     private String fafangshijian;
@@ -22,6 +21,8 @@ public class CreditInfo {
     private String shifoudaichang;
     private String shifouyuqi;
     private String shifouhuanqing;
+
+    private int inputId;
 
 
     public String getNonghu() {
@@ -38,14 +39,6 @@ public class CreditInfo {
 
     public void setNonghuName(String nonghuName) {
         this.nonghuName = nonghuName;
-    }
-
-    public String getDaikuanjigou() {
-        return daikuanjigou;
-    }
-
-    public void setDaikuanjigou(String daikuanjigou) {
-        this.daikuanjigou = daikuanjigou;
     }
 
     public String getJiekuangyongtu() {
@@ -144,5 +137,13 @@ public class CreditInfo {
 
     public void setShifouhuanqing(String shifouhuanqing) {
         this.shifouhuanqing = shifouhuanqing;
+    }
+
+    public int getInputId() {
+        return inputId;
+    }
+
+    public void setInputId(int inputId) {
+        this.inputId = inputId;
     }
 }

@@ -20,6 +20,7 @@ import com.hacredition.xph.hacredition.mvp.presenter.impl.OperationalEntityInput
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
+import com.hacredition.xph.hacredition.utils.MyUtils;
 
 import javax.inject.Inject;
 
@@ -148,6 +149,7 @@ public class EntrepreneurshipFragment extends BaseFragment
         ship.setLeixing((String)typeSpinner.getSelectedItem());
         ship.setXiangmu(xiangmuEditText.getText().toString());
         ship.setDangqianjindu(jinduEditText.getText().toString());
+        ship.setInputUserId(MyUtils.getInputUserId());
 
         return ship;
     }

@@ -23,6 +23,7 @@ import com.hacredition.xph.hacredition.mvp.presenter.impl.OperationalEntityInput
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
+import com.hacredition.xph.hacredition.utils.MyUtils;
 
 import java.util.Calendar;
 
@@ -148,6 +149,7 @@ public class OperationalEntityFragment extends BaseFragment
         operationalEntity.setGuimo(guimoEditText.getText().toString());
         operationalEntity.setLeixing((String)typeSpinner.getSelectedItem());
         operationalEntity.setXiangmu(xiangmuEditText.getText().toString());
+        operationalEntity.setInputUserId(MyUtils.getInputUserId());
         return operationalEntity;
     }
 

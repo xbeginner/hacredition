@@ -16,6 +16,7 @@ import com.hacredition.xph.hacredition.mvp.ui.activity.base.BaseActivity;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.CreditInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.EntrepreneurshipFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.FiscalSpendFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.GuaranteeInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HonourInfoFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.MachineInfoInputFragment;
@@ -44,6 +45,7 @@ public class InputComponentActivity extends BaseActivity  {
              put("MachineInfoInput",7);
              put("PoliceInfoInput",8);
              put("CreditInfoInput",9);
+             put("GuaranteeInfoInput",10);
         }
     };
 
@@ -126,6 +128,12 @@ public class InputComponentActivity extends BaseActivity  {
            }
            case 9:{
                CreditInfoInputFragment fragment = new CreditInfoInputFragment();
+               fragmentTransaction.add(R.id.input_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 10:{
+               GuaranteeInfoInputFragment fragment = new GuaranteeInfoInputFragment();
                fragmentTransaction.add(R.id.input_component_layout,fragment);
                fragmentTransaction.commit();
                break;
