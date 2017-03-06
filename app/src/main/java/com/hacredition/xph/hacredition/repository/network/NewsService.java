@@ -8,6 +8,7 @@ import com.hacredition.xph.hacredition.mvp.entity.HonourInfo;
 import com.hacredition.xph.hacredition.mvp.entity.HouseInfo;
 import com.hacredition.xph.hacredition.mvp.entity.InputItem;
 import com.hacredition.xph.hacredition.mvp.entity.MachineInfo;
+import com.hacredition.xph.hacredition.mvp.entity.MortgageInfo;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.entity.OperationalEntity;
@@ -108,4 +109,10 @@ public interface NewsService {
     @POST("servlet/saveGuarantee")
     Observable<String> saveGuarantee(
             @Body GuaranteeInfo guaranteeInfo);
+
+
+    @Headers("Content-Type:application/json")
+    @POST("servlet/saveMortgage")
+    Observable<String> saveMortgage(
+            @Body MortgageInfo mortgageInfo);
 }

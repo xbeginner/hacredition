@@ -13,6 +13,7 @@ import com.hacredition.xph.hacredition.mvp.entity.HonourInfo;
 import com.hacredition.xph.hacredition.mvp.entity.HouseInfo;
 import com.hacredition.xph.hacredition.mvp.entity.InputItem;
 import com.hacredition.xph.hacredition.mvp.entity.MachineInfo;
+import com.hacredition.xph.hacredition.mvp.entity.MortgageInfo;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.entity.OperationalEntity;
@@ -186,5 +187,10 @@ public class RetrofitManager {
 
     public Observable<String> saveGuaranteeInfo(GuaranteeInfo guaranteeInfo){
         return mNewsService.saveGuarantee(guaranteeInfo);
+    }
+
+
+    public Observable<String> saveMortgageInfo(MortgageInfo mortgageInfo){
+        return mNewsService.saveMortgage(mortgageInfo);
     }
 }

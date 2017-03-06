@@ -199,7 +199,18 @@ public class GuaranteeInfoInputFragment extends BaseFragment
 
     private GuaranteeInfo initGuaranteeInfo(){
         GuaranteeInfo info = new GuaranteeInfo();
-
+        info.setGuaranteeUserIdcard(idcardEditText.getText().toString());
+        info.setGuaranteeUserName(nameEditText.getText().toString());
+        info.setGuarantedUserIdcard(guarantedIdcardEditText.getText().toString());
+        info.setGuarantedUserName(guarantedNameEditText.getText().toString());
+        info.setDanbaojine(Float.valueOf(jineEditText.getText().toString()));
+        info.setWeijieqingjine(Float.valueOf(weijieqingEditText.getText().toString()));
+        info.setFafangriqi(fafangTimeEditText.getText().toString());
+        info.setDaoqiriqi(daoqiTimeEditText.getText().toString());
+        info.setYuqi(yuqi);
+        info.setXingchengbuliang(buliang);
+        info.setDaichang(daichang);
+        info.setInputUserId(MyUtils.getInputUserId());
         return info;
     }
 
@@ -208,9 +219,12 @@ public class GuaranteeInfoInputFragment extends BaseFragment
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         awesomeValidation.addValidation(idcardEditText, MyRegex.IDCARD,getResources().getString(R.string.validation_error_idcard));
         awesomeValidation.addValidation(nameEditText, MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
-
+        awesomeValidation.addValidation(guarantedIdcardEditText, MyRegex.IDCARD,getResources().getString(R.string.validation_error_idcard));
+        awesomeValidation.addValidation(guarantedNameEditText, MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
         awesomeValidation.addValidation(fafangTimeEditText, MyRegex.DATE,getResources().getString(R.string.validation_error_pattern));
         awesomeValidation.addValidation(daoqiTimeEditText, MyRegex.DATE,getResources().getString(R.string.validation_error_pattern));
+        awesomeValidation.addValidation(jineEditText, MyRegex.ISFLOAT,getResources().getString(R.string.validation_error_float));
+        awesomeValidation.addValidation(weijieqingEditText, MyRegex.ISFLOAT,getResources().getString(R.string.validation_error_float));
     }
 
 
