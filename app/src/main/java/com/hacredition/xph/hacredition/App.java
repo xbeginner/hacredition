@@ -82,7 +82,7 @@ public class App extends Application {
      * 根据数据库上次登录情况判断hasLogin的值
      */
     private void initLoginLog(){
-        if(mDaoSession.getInputItemDao().count()>0){
+        if(mDaoSession.getUserInfoDao().count()>0){
             UserInfo userInfo = mDaoSession.getUserInfoDao().loadAll().get(0);
             if(userInfo==null||isTimeOut(userInfo.getLastLoginTime())){
                 hasLogin = false;

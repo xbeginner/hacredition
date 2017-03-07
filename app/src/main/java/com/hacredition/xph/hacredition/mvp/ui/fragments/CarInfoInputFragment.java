@@ -5,9 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
@@ -15,14 +13,10 @@ import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
@@ -30,15 +24,14 @@ import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.bumptech.glide.Glide;
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
-import com.hacredition.xph.hacredition.listener.SaveCallback;
-import com.hacredition.xph.hacredition.mvp.entity.HouseInfo;
-import com.hacredition.xph.hacredition.mvp.presenter.impl.HouseInfoInputPresenterImpl;
+import com.hacredition.xph.hacredition.mvp.entity.CarInfo;
+import com.hacredition.xph.hacredition.mvp.entity.MachineInfo;
+import com.hacredition.xph.hacredition.mvp.presenter.impl.CarInfoInputPresenterImpl;
+import com.hacredition.xph.hacredition.mvp.presenter.impl.MachineInfoInputPresenterImpl;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
-
-import org.greenrobot.greendao.annotation.NotNull;
 
 import java.io.File;
 import java.util.Calendar;
@@ -47,74 +40,63 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 
-import static android.content.Context.INPUT_METHOD_SERVICE;
 
-
-public class HouseInfoInputFragment extends BaseFragment
-        implements InputInfoView<HouseInfo>
+public class CarInfoInputFragment extends BaseFragment
+        implements InputInfoView<CarInfo>
         ,View.OnFocusChangeListener
         ,View.OnClickListener
-        ,DatePickerDialog.OnDateSetListener
-        ,RadioGroup.OnCheckedChangeListener {
+        ,DatePickerDialog.OnDateSetListener {
 
 
-    private boolean isValidate = false;
 
-    @BindView(R.id.idcard_editview)
+    @BindView(R.id.car_name_editview)
+    EditText nameEditText;
+
+    @BindView(R.id.car_idcard_editview)
     EditText idcardEditText;
 
-    @BindView(R.id.houseinfo_buildtime_edit)
-    EditText buildTimeEditText;
 
-    @BindView(R.id.houseinfo_area_edit)
-    EditText areaEditText;
+    @BindView(R.id.car_pinpai_editview)
+    EditText pinpaiEditText;
 
-    @BindView(R.id.fangchanzhenghao_editview)
-    EditText fangchanzhenghaoEditText;
+    @BindView(R.id.car_chexing_editview)
+    EditText chexingEditText;
 
-    @BindView(R.id.houseinfo_location_edit)
-    EditText locationEditText;
+    @BindView(R.id.car_time_edit)
+    EditText timeEditText;
 
-    @BindView(R.id.houseinfo_value_edit)
-    EditText valueEditText;
+    @BindView(R.id.car_number_editview)
+    EditText numberEditText;
 
-    @BindView(R.id.houseinfo_radiogroup)
-    RadioGroup metalogRadioGroup;
 
-    @BindView(R.id.houseinfo_spinner_id)
-    Spinner spinner;
-
-    @BindView(R.id.houseinfo_submit_button)
+    @BindView(R.id.car_submit_button)
     Button submitButton;
 
-    @BindView(R.id.take_pic_button)
+    @BindView(R.id.car_pic_button)
     Button takePicButton;
 
-    @BindView(R.id.houseinfo_pic_img)
-    ImageView houseInfoImageView;
+    @BindView(R.id.car_pic_img)
+    ImageView carInfoImageView;
 
     @Inject
-    HouseInfoInputPresenterImpl houseInfoInputPresenter;
+    CarInfoInputPresenterImpl carInfoInputPresenter;
 
     @Inject
     @ContextLife("Activity")
     Context activityContext;
 
-
-
     @Inject
     Activity inputFragmentActivity;
 
-    public final static int CONSULT_DOC_PICTURE = 1000;
+    public final static int CONSULT_DOC_PICTURE = 3000;
 
-    public final static int CONSULT_DOC_CAMERA = 1001;
+    public final static int CONSULT_DOC_CAMERA = 3001;
 
 
     private static AwesomeValidation awesomeValidation;
 
     private Uri outputFileUri;
 
-    private String isDiya = "否";
 
     @Override
     public void initInjector() {
@@ -124,10 +106,8 @@ public class HouseInfoInputFragment extends BaseFragment
     @Override
     public void initViews(View view) {
         initPresenter();
-        buildTimeEditText.setInputType(InputType.TYPE_NULL);
-        buildTimeEditText.setOnFocusChangeListener(this);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(activityContext,R.array.houseinfo_type,android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        timeEditText.setInputType(InputType.TYPE_NULL);
+        timeEditText.setOnFocusChangeListener(this);
         addValidation();
         submitButton.setOnClickListener(this);
         takePicButton.setOnClickListener(this);
@@ -136,12 +116,12 @@ public class HouseInfoInputFragment extends BaseFragment
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_houseinfo_input;
+        return R.layout.fragment_car_input;
     }
 
     @Override
-    public void saveInfo(HouseInfo houseInfo) {
-        houseInfoInputPresenter.saveInputInfo(houseInfo);
+    public void saveInfo(CarInfo carInfo) {
+        carInfoInputPresenter.saveInputInfo(carInfo);
     }
 
 
@@ -162,21 +142,21 @@ public class HouseInfoInputFragment extends BaseFragment
 
     @Override
     public void initPresenter() {
-        mPresenter = houseInfoInputPresenter;
+        mPresenter = carInfoInputPresenter;
         mPresenter.attachView(this);
     }
 
     @Override
     public void onClick(View view) {
          switch (view.getId()){
-             case R.id.houseinfo_submit_button:{
+             case R.id.car_submit_button:{
                  if(awesomeValidation.validate()){
-                     HouseInfo houseInfo = initHouseInfo();
-                     saveInfo(houseInfo);
+                     CarInfo carInfo = initCarInfo();
+                     saveInfo(carInfo);
                  }
                  break;
              }
-             case R.id.take_pic_button:{
+             case R.id.car_pic_button:{
                  CharSequence[] items = { "从本地选择", "相机拍照" };
                  final int SELECT_FROM_PIC = 0;
                  final int SELECT_FROM_CAMERA = 1;
@@ -219,7 +199,7 @@ public class HouseInfoInputFragment extends BaseFragment
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-        buildTimeEditText.setText(year+"-"+month+"-"+day);
+        timeEditText.setText(year+"-"+month+"-"+day);
     }
 
     @Override
@@ -234,36 +214,34 @@ public class HouseInfoInputFragment extends BaseFragment
     }
 
 
-    private HouseInfo initHouseInfo(){
-        HouseInfo houseInfo = new HouseInfo();
-        if(!valueEditText.getText().equals("")){
-            houseInfo.setDangqianguzhi(Float.valueOf(valueEditText.getText().toString()));
-        }
-        houseInfo.setFangwuxingzhi((String)spinner.getSelectedItem());
-        Drawable drawable = houseInfoImageView.getDrawable();
+    private CarInfo initCarInfo(){
+        CarInfo info = new CarInfo();
+        info.setNonghu(idcardEditText.getText().toString());
+        info.setNonghuName(nameEditText.getText().toString());
+        info.setPinpai(pinpaiEditText.getText().toString());
+        info.setChexing(chexingEditText.getText().toString());
+        info.setGoumairiqi(timeEditText.getText().toString());
+        info.setXingchezhenghao(numberEditText.getText().toString());
+        Drawable drawable = carInfoImageView.getDrawable();
         if(drawable!=null){
             Bitmap bitmap = MyUtils.drawableToBitmap(drawable);
-            byte[] housePicByte = MyUtils.Bitmap2Bytes(bitmap);
-            houseInfo.setFangwutupiao(housePicByte);
+            byte[] carPicByte = MyUtils.Bitmap2Bytes(bitmap);
+            info.setCheliangzhaopian(carPicByte);
         }
-        houseInfo.setFangchanzhenghao(fangchanzhenghaoEditText.getText().toString());
-        houseInfo.setGoujianriqi(buildTimeEditText.getText().toString());
-        houseInfo.setJianzhumianji(Float.valueOf(areaEditText.getText().toString()));
-        houseInfo.setNonghuIdcard(idcardEditText.getText().toString());
-        houseInfo.setShifoudiya(isDiya);
-        houseInfo.setSuozaidi(locationEditText.getText().toString());
-        houseInfo.setInputUserId(MyUtils.getInputUserId());
-        return houseInfo;
+        info.setInputUserId(MyUtils.getInputUserId());
+        return info;
     }
 
 
     private void addValidation(){
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         awesomeValidation.addValidation(idcardEditText, MyRegex.IDCARD,getResources().getString(R.string.validation_error_idcard));
-        awesomeValidation.addValidation(buildTimeEditText,MyRegex.DATE,getResources().getString(R.string.validation_error_pattern));
-        awesomeValidation.addValidation(areaEditText,MyRegex.ISFLOAT,getResources().getString(R.string.validation_error_float));
-        awesomeValidation.addValidation(locationEditText,MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
-        awesomeValidation.addValidation(valueEditText,MyRegex.ISFLOAT,getResources().getString(R.string.validation_error_float));
+        awesomeValidation.addValidation(nameEditText, MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
+        awesomeValidation.addValidation(pinpaiEditText, MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
+        awesomeValidation.addValidation(chexingEditText, MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
+        awesomeValidation.addValidation(numberEditText, MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
+        awesomeValidation.addValidation(timeEditText, MyRegex.DATE,getResources().getString(R.string.validation_error_pattern));
+
     }
 
     @Override
@@ -271,28 +249,20 @@ public class HouseInfoInputFragment extends BaseFragment
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CONSULT_DOC_PICTURE && null != data) {
             Uri selectedImage = data.getData();
-            houseInfoImageView.setVisibility(View.VISIBLE);
+            carInfoImageView.setVisibility(View.VISIBLE);
             Glide.with(activityContext)
                     .load(selectedImage)
                     .placeholder(R.drawable.no_pic)
                     .fitCenter()
-                    .into(houseInfoImageView);
+                    .into(carInfoImageView);
         }else{
-            houseInfoImageView.setVisibility(View.VISIBLE);
+            carInfoImageView.setVisibility(View.VISIBLE);
             Glide.with(activityContext)
                     .load(outputFileUri)
                     .placeholder(R.drawable.no_pic)
                     .fitCenter()
-                    .into(houseInfoImageView);
+                    .into(carInfoImageView);
         }
     }
 
-    @Override
-    public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-         if(checkedId==R.id.houseInfo_radiobutton_yes){
-             isDiya = "是";
-         }else{
-             isDiya = "否";
-         }
-    }
 }

@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hacredition.xph.hacredition.App;
+import com.hacredition.xph.hacredition.mvp.entity.CarInfo;
+import com.hacredition.xph.hacredition.mvp.entity.CourtInfo;
 import com.hacredition.xph.hacredition.mvp.entity.CreditInfo;
 import com.hacredition.xph.hacredition.mvp.entity.Entrepreneurship;
 import com.hacredition.xph.hacredition.mvp.entity.FiscalSpend;
@@ -12,6 +14,7 @@ import com.hacredition.xph.hacredition.mvp.entity.GuaranteeInfo;
 import com.hacredition.xph.hacredition.mvp.entity.HonourInfo;
 import com.hacredition.xph.hacredition.mvp.entity.HouseInfo;
 import com.hacredition.xph.hacredition.mvp.entity.InputItem;
+import com.hacredition.xph.hacredition.mvp.entity.InsuranceInfo;
 import com.hacredition.xph.hacredition.mvp.entity.MachineInfo;
 import com.hacredition.xph.hacredition.mvp.entity.MortgageInfo;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
@@ -19,6 +22,7 @@ import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.entity.OperationalEntity;
 import com.hacredition.xph.hacredition.mvp.entity.OwnerShip;
 import com.hacredition.xph.hacredition.mvp.entity.PoliceInfo;
+import com.hacredition.xph.hacredition.mvp.entity.QueryItem;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.utils.NetUtil;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -58,7 +62,7 @@ public class RetrofitManager {
 
     private NewsService mNewsService;
 
-    private static final String BASE_URL = "http://192.168.0.82:8080/hacredition/";
+    private static final String BASE_URL = "http://192.168.3.18:8080/hacredition/";
 
     private static volatile OkHttpClient sOkHttpClient;
 
@@ -144,6 +148,10 @@ public class RetrofitManager {
         return mNewsService.getInputItems(userId);
     }
 
+    public Observable<List<QueryItem>> getQueryItems(int userId){
+        return mNewsService.getQueryItems(userId);
+    }
+
     public Observable<String> saveHouseInfo(HouseInfo houseInfo){
         return mNewsService.saveHouseInfo(houseInfo);
     }
@@ -192,5 +200,20 @@ public class RetrofitManager {
 
     public Observable<String> saveMortgageInfo(MortgageInfo mortgageInfo){
         return mNewsService.saveMortgage(mortgageInfo);
+    }
+
+
+    public Observable<String> saveCourtInfo(CourtInfo courtInfo){
+        return mNewsService.saveCourtInfo(courtInfo);
+    }
+
+
+    public Observable<String> saveCarInfo(CarInfo carInfo){
+        return mNewsService.saveCarInfo(carInfo);
+    }
+
+
+    public Observable<String> saveInsuranceInfo(InsuranceInfo insuranceInfo){
+        return mNewsService.saveInsuranceInfo(insuranceInfo);
     }
 }

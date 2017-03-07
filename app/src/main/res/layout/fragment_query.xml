@@ -1,0 +1,33 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hacredition.xph.hacredition.mvp.ui.fragments.QueryFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/query_item_recyclerview_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/container_background"/>
+
+    <TextView
+        android:id="@+id/query_no_actions_view_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawablePadding="@dimen/item_margin"
+        android:drawableTop="@drawable/no_action"
+        android:gravity="center"
+        android:text="@string/no_actions"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/big_medium"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+    <ProgressBar
+        android:id="@+id/query_progress_bar_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+</FrameLayout>

@@ -4,7 +4,6 @@ import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.listener.RequestCallBack;
 import com.hacredition.xph.hacredition.mvp.entity.DaoSession;
 import com.hacredition.xph.hacredition.mvp.entity.InputItem;
-import com.hacredition.xph.hacredition.mvp.entity.InputItemDao;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
 import com.hacredition.xph.hacredition.mvp.interactor.InputItemInteractor;
 import com.hacredition.xph.hacredition.repository.network.RetrofitManager;
@@ -46,7 +45,7 @@ public class InputItemInteractorImpl implements InputItemInteractor<List<InputIt
 
                     @Override
                     public void onNext(List<InputItem> inputItems) {
-                        saveInputItemsToDB(inputItems);
+                        //saveInputItemsToDB(inputItems);
                         listener.success(inputItems);
                     }
 
@@ -63,32 +62,32 @@ public class InputItemInteractorImpl implements InputItemInteractor<List<InputIt
     }
 
 
-    private void saveInputItemsToDB(List<InputItem> inputItems){
-        DaoSession session = App.getmDaoSession();
-        session.startAsyncSession().runInTx(new InputIntemDBRunnbale(inputItems,session));
-    }
-
-    public void clearInputItemsFromDB(){
-        DaoSession session = App.getmDaoSession();
-        InputItemDao dao = session.getInputItemDao();
-        dao.deleteAll();
-    }
-
-
-    /**
-     * 用于异步保存数据的Runnable类
-     */
-    class InputIntemDBRunnbale extends BaseRunnable<List<InputItem>,DaoSession>{
-
-        public InputIntemDBRunnbale(List<InputItem> list, DaoSession daoSession) {
-            super(list, daoSession);
-        }
-
-        @Override
-        protected void runInRunnable() {
-            for(InputItem i:mObject){
-                mDaoSession.getInputItemDao().insert(i);
-            }
-        }
-    }
+//    private void saveInputItemsToDB(List<InputItem> inputItems){
+//        DaoSession session = App.getmDaoSession();
+//        session.startAsyncSession().runInTx(new InputIntemDBRunnbale(inputItems,session));
+//    }
+//
+//    public void clearInputItemsFromDB(){
+//        DaoSession session = App.getmDaoSession();
+//        InputItemDao dao = session.getInputItemDao();
+//        dao.deleteAll();
+//    }
+//
+//
+//    /**
+//     * 用于异步保存数据的Runnable类
+//     */
+//    class InputIntemDBRunnbale extends BaseRunnable<List<InputItem>,DaoSession>{
+//
+//        public InputIntemDBRunnbale(List<InputItem> list, DaoSession daoSession) {
+//            super(list, daoSession);
+//        }
+//
+//        @Override
+//        protected void runInRunnable() {
+//            for(InputItem i:mObject){
+//                mDaoSession.getInputItemDao().insert(i);
+//            }
+//        }
+//    }
 }

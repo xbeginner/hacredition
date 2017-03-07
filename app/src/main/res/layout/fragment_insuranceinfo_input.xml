@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_weight="0.8"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/insurance_idcard_editview"
+                android:hint="投保人证件号"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="410702983789293868"/>
+
+            <EditText
+                android:id="@+id/insurance_name_editview"
+                android:hint="投保人姓名"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="张三"/>
+
+            <Spinner android:id="@+id/insurance_leixing_spinner"
+                android:layout_width="match_parent"
+                android:padding="16dp"
+                android:layout_height="wrap_content"></Spinner>
+
+
+            <EditText
+                android:id="@+id/insurance_toubaojine_edit"
+                android:hint="投保金额(万元)"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:inputType="numberDecimal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="100"/>
+
+            <EditText
+                android:id="@+id/insurance_baofeijine_edit"
+                android:hint="保费金额(万元)"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:inputType="numberDecimal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="100"/>
+
+            <Spinner android:id="@+id/insurance_jiaofei_spinner"
+                android:layout_width="match_parent"
+                android:padding="16dp"
+                android:layout_height="wrap_content"></Spinner>
+
+            <EditText
+                android:id="@+id/insurance_canbaotime_edit"
+                android:hint="参保时间"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:inputType="date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="2017-01-01"/>
+
+            <EditText
+                android:id="@+id/insurance_daoqitime_edit"
+                android:hint="到期时间"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:inputType="date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="2017-01-01"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/insurance_submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:background="@color/colorPrimary"
+            android:layout_weight="0.2"/>
+
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>

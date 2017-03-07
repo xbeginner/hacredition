@@ -12,13 +12,17 @@ import android.widget.FrameLayout;
 
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.mvp.entity.CreditInfo;
+import com.hacredition.xph.hacredition.mvp.entity.InsuranceInfo;
 import com.hacredition.xph.hacredition.mvp.ui.activity.base.BaseActivity;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.CarInfoInputFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.CourtInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.CreditInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.EntrepreneurshipFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.FiscalSpendFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.GuaranteeInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HonourInfoFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseInfoInputFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.InsuranceInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.MachineInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.MortgageInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.OperationalEntityFragment;
@@ -48,6 +52,9 @@ public class InputComponentActivity extends BaseActivity  {
              put("CreditInfoInput",9);
              put("GuaranteeInfoInput",10);
              put("MortgageInfoInput",11);
+             put("CourtInfoInput",12);
+             put("CarInfoInput",13);
+             put("InsuranceInfoInput",14);
         }
     };
 
@@ -142,6 +149,24 @@ public class InputComponentActivity extends BaseActivity  {
            }
            case 11:{
                MortgageInfoInputFragment fragment = new MortgageInfoInputFragment();
+               fragmentTransaction.add(R.id.input_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 12:{
+               CourtInfoInputFragment fragment = new CourtInfoInputFragment();
+               fragmentTransaction.add(R.id.input_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 13:{
+               CarInfoInputFragment fragment = new CarInfoInputFragment();
+               fragmentTransaction.add(R.id.input_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 14:{
+               InsuranceInfoInputFragment fragment = new InsuranceInfoInputFragment();
                fragmentTransaction.add(R.id.input_component_layout,fragment);
                fragmentTransaction.commit();
                break;

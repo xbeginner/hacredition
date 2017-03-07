@@ -126,6 +126,15 @@
 
         </LinearLayout>
 
+        <EditText
+            android:id="@+id/fangchanzhenghao_editview"
+            android:hint="房产证号"
+            android:maxLines="1"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="410702983789293868"/>
+
         <Button
             android:id="@+id/houseinfo_submit_button"
             android:layout_width="match_parent"

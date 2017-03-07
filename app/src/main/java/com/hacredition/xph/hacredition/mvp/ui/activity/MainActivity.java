@@ -19,6 +19,7 @@ import com.hacredition.xph.hacredition.mvp.ui.activity.base.BaseActivity;
 import com.hacredition.xph.hacredition.mvp.ui.adapter.MyViewPagerAdatper;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.InputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.NewsFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.QueryFragment;
 import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 
 import java.util.ArrayList;
@@ -50,7 +51,10 @@ public class MainActivity extends BaseActivity implements
 
     public static final int LOGIN_FAIL_CODE=1;
 
+
     private InputFragment inputFragment;
+
+    private QueryFragment queryFragment;
 
     public static UserInfo mUserInfo;
 
@@ -107,8 +111,10 @@ public class MainActivity extends BaseActivity implements
         List<Fragment> viewList = new ArrayList<Fragment>();
         NewsFragment newsFragment = new NewsFragment();
         inputFragment = new InputFragment();
+        queryFragment = new QueryFragment();
         viewList.add(newsFragment);
         viewList.add(inputFragment);
+        viewList.add(queryFragment);
         return viewList;
     }
 
@@ -139,39 +145,61 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        switch (position){
-            case 1:
-                if(App.hasLogin==false){
-                    Intent intent = new Intent(this, LoginActivity.class);
-                    startActivityForResult(intent,LOGIN_SUCCESS_CODE);
-                }else{
-                    inputFragment.showInputItems();
-                }
-                break;
-            case 2:
+//        switch (position){
+//            case 1:
+//                if(App.hasLogin==false){
+//                    Intent intent = new Intent(this, LoginActivity.class);
+//                    startActivityForResult(intent,LOGIN_SUCCESS_CODE);
+//                }else{
+//                    inputFragment.showInputItems();
+//                }
+//                break;
+//            case 2:
+////                if(App.hasLogin==false){
+////                    Intent intent = new Intent(this, LoginActivity.class);
+////                    startActivityForResult(intent,LOGIN_SUCCESS_CODE);
+////                }else{
+////                    queryFragment.showQueryItems();
+////                }
+//                break;
+//        }
 
-                break;
+        if(position!=0){
+            if(App.hasLogin==false){
+                    Intent intent = new Intent(this, LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    startActivityForResult(intent,LOGIN_SUCCESS_CODE);
+            }else{
+                switch (position){
+                    case 1:
+                        inputFragment.showInputItems();
+                        break;
+                    case 2:
+                        queryFragment.showQueryItems();
+                        break;
+                }
+            }
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+
         switch (resultCode){
             case LOGIN_SUCCESS_CODE:{
                 App.hasLogin = true;
-                inputFragment.hideProgress();
                 if(intent!=null){
                     UserInfo userInfo = (UserInfo)intent.getSerializableExtra("userInfo");
                     if(userInfo!=null){
                         mUserInfo = userInfo;
-                        inputFragment.showInputItems();
+                        viewPager.setCurrentItem(0);
                     }
                 }
                 break;
             }
             case LOGIN_FAIL_CODE:{
                 App.hasLogin = false;
-                inputFragment.hideProgress();
+                viewPager.setCurrentItem(0);
                 break;
             }
         }

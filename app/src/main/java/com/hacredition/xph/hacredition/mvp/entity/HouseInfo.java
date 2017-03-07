@@ -16,6 +16,7 @@ public class HouseInfo {
     private float jianzhumianji;
     private String goujianriqi;
     private String fangwuxingzhi;
+    private String fangchanzhenghao;
     private int inputUserId;
 
 
@@ -91,6 +92,14 @@ public class HouseInfo {
 
     public void setInputUserId(int inputUserId) {
         this.inputUserId = inputUserId;
+    }
+
+    public String getFangchanzhenghao() {
+        return fangchanzhenghao;
+    }
+
+    public void setFangchanzhenghao(String fangchanzhenghao) {
+        this.fangchanzhenghao = fangchanzhenghao;
     }
 
     @Override

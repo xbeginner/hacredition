@@ -27,6 +27,7 @@ import com.hacredition.xph.hacredition.mvp.ui.activity.InputComponentActivity;
 import com.hacredition.xph.hacredition.mvp.ui.activity.LoginActivity;
 import com.hacredition.xph.hacredition.mvp.ui.activity.MainActivity;
 import com.hacredition.xph.hacredition.mvp.ui.activity.NewsDetailActivity;
+import com.hacredition.xph.hacredition.mvp.ui.activity.QueryComponentActivity;
 
 import dagger.Component;
 
@@ -52,4 +53,6 @@ public interface ActivityComponent {
     void inject(LoginActivity loginActivity);
 
     void inject(InputComponentActivity inputComponentActivity);
+
+    void inject(QueryComponentActivity queryComponentActivity);
 }

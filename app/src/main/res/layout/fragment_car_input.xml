@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_weight="0.8"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/car_idcard_editview"
+                android:hint="所有人证件号"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="410702983789293868"/>
+
+            <EditText
+                android:id="@+id/car_name_editview"
+                android:hint="所有人姓名"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:id="@+id/car_pinpai_editview"
+                android:hint="车辆品牌"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:id="@+id/car_chexing_editview"
+                android:hint="车型"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+
+            <EditText
+                android:id="@+id/car_time_edit"
+                android:hint="购买时间"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:inputType="date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="2017-01-01"/>
+
+
+
+
+            <EditText
+                android:id="@+id/car_number_editview"
+                android:hint="行车证号"
+                android:maxLines="1"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+
+            <ImageView
+                android:id="@+id/car_pic_img"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <Button
+                android:id="@+id/car_pic_button"
+                android:text="@string/add_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/car_submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:background="@color/colorPrimary"
+            android:layout_weight="0.2"/>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

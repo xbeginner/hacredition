@@ -7,6 +7,9 @@ import com.hacredition.xph.hacredition.di.module.FragmentModule;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.di.scope.PerFragment;
 import com.hacredition.xph.hacredition.mvp.entity.CreditInfo;
+import com.hacredition.xph.hacredition.mvp.entity.InsuranceInfo;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.CarInfoInputFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.CourtInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.CreditInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.EntrepreneurshipFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.FiscalSpendFragment;
@@ -14,12 +17,14 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.GuaranteeInfoInputFragme
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HonourInfoFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.InputFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.InsuranceInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.MachineInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.MortgageInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.NewsFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.OperationalEntityFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.OwnerShipFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.PoliceInfoFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.QueryFragment;
 
 import dagger.Component;
 import dagger.Provides;
@@ -44,6 +49,8 @@ public interface FragmentComponent{
 
     void inject(InputFragment inputFragment);
 
+    void inject(QueryFragment queryFragment);
+
     void inject(HouseInfoInputFragment houseInfoInputFragment);
 
     void inject(FiscalSpendFragment fiscalSpendFragment);
@@ -65,4 +72,10 @@ public interface FragmentComponent{
     void inject(GuaranteeInfoInputFragment guaranteeInfoInputFragment);
 
     void inject(MortgageInfoInputFragment mortgageInfoInputFragment);
+
+    void inject(CourtInfoInputFragment courtInfoInputFragment);
+
+    void inject(CarInfoInputFragment carInfoInputFragment);
+
+    void inject(InsuranceInfoInputFragment insuranceInfoInputFragment);
 }
