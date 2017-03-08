@@ -2,12 +2,15 @@ package com.hacredition.xph.hacredition.mvp.ui.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -143,15 +146,34 @@ public class QueryFragment extends BaseFragment
 
     @Override
     public void onItemClick(View view, String FragmentName) {
-            Bundle bundle = new Bundle();
-            bundle.putString("queryfragmentName",FragmentName);
-            Intent intent = new Intent(activityContext, QueryComponentActivity.class);
-            intent.putExtras(bundle);
-            startActivity(intent);
+        final String fragmentName = FragmentName;
+        final EditText et = new EditText(activityContext);
+        new AlertDialog.Builder(activityContext)
+                .setTitle("请输入证件号")
+                .setView(et)
+                .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("queryfragmentName",fragmentName);
+                        bundle.putString("idcard",et.getText().toString());
+                        Intent intent = new Intent(activityContext, QueryComponentActivity.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                }).show();
     }
 
     @Override
     public void onItemClick(View view, int position) {
 
     }
+
+
 }

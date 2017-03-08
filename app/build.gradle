@@ -64,4 +64,5 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 
     compile 'com.basgeekball:awesome-validation:1.0'
+    compile 'com.github.lecho:hellocharts-android:v1.5.8'
 }

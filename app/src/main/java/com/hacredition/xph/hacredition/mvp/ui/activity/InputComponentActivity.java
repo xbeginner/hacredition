@@ -2,10 +2,12 @@ package com.hacredition.xph.hacredition.mvp.ui.activity;
 
 
 
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.FrameLayout;
@@ -74,8 +76,8 @@ public class InputComponentActivity extends BaseActivity  {
     public void initViews() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        initFragment(maps.get(fragmentName),fragmentTransaction);
-
+        int type = maps.get(fragmentName)==null?0:maps.get(fragmentName);
+        initFragment(type,fragmentTransaction);
     }
 
     @Override
@@ -87,6 +89,19 @@ public class InputComponentActivity extends BaseActivity  {
 
     void initFragment(int type,FragmentTransaction fragmentTransaction){
        switch (type){
+           case 0:{
+               new AlertDialog.Builder(this)
+                       .setTitle("提示")
+                       .setMessage("抱歉,该功能正在建设中")
+                       .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                           @Override
+                           public void onClick(DialogInterface dialogInterface, int i) {
+                               InputComponentActivity.this.finish();
+                           }
+                       })
+                       .show();
+
+           }
            case 1:{
                HouseInfoInputFragment fragment = new HouseInfoInputFragment();
                fragmentTransaction.add(R.id.input_component_layout,fragment);

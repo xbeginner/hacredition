@@ -20,6 +20,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.EntrepreneurshipFragment
 import com.hacredition.xph.hacredition.mvp.ui.fragments.FiscalSpendFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.GuaranteeInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HonourInfoFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseHoldBasicQueryFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.InsuranceInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.MachineInfoInputFragment;
@@ -37,6 +38,7 @@ public class QueryComponentActivity extends BaseActivity  {
 
     private String fragmentName;
 
+    private String queryIdcard;
 
 
     private static final Map<String,Integer> maps = new HashMap<String,Integer>(){
@@ -61,7 +63,6 @@ public class QueryComponentActivity extends BaseActivity  {
     public void initViews() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        System.out.println(maps.get(fragmentName)==null);
         int type = maps.get(fragmentName)==null?0:maps.get(fragmentName);
         initFragment(type,fragmentTransaction);
     }
@@ -69,6 +70,7 @@ public class QueryComponentActivity extends BaseActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         fragmentName = getIntent().getStringExtra("queryfragmentName");
+        queryIdcard = getIntent().getStringExtra("idcard");
         super.onCreate(savedInstanceState);
     }
 
@@ -86,12 +88,12 @@ public class QueryComponentActivity extends BaseActivity  {
                            }
                        })
                        .show();
-
            }
            case 1:{
-//               HouseHoldInfoInputFragment fragment = new HouseHoldInfoInputFragment();
-//               fragmentTransaction.add(R.id.query_component_layout,fragment);
-//               fragmentTransaction.commit();
+               HouseHoldBasicQueryFragment fragment = new HouseHoldBasicQueryFragment();
+               fragment.setIdCard(queryIdcard);
+               fragmentTransaction.add(R.id.query_component_layout,fragment);
+               fragmentTransaction.commit();
                break;
            }
        }

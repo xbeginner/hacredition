@@ -15,6 +15,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.EntrepreneurshipFragment
 import com.hacredition.xph.hacredition.mvp.ui.fragments.FiscalSpendFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.GuaranteeInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HonourInfoFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseHoldBasicQueryFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.InputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.InsuranceInfoInputFragment;
@@ -25,6 +26,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.OperationalEntityFragmen
 import com.hacredition.xph.hacredition.mvp.ui.fragments.OwnerShipFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.PoliceInfoFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.QueryFragment;
+import com.hacredition.xph.hacredition.mvp.view.HouseHoldBasicQueryView;
 
 import dagger.Component;
 import dagger.Provides;
@@ -78,4 +80,7 @@ public interface FragmentComponent{
     void inject(CarInfoInputFragment carInfoInputFragment);
 
     void inject(InsuranceInfoInputFragment insuranceInfoInputFragment);
+
+
+    void inject(HouseHoldBasicQueryFragment houseHoldBasicQueryFragment);
 }
