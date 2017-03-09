@@ -58,7 +58,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     public abstract void initViews();
 
-     protected  Toolbar toolbar;
+    protected  Toolbar toolbar;
 
     protected BottomNavigationBar bottomNavigationBar;
 

@@ -25,14 +25,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.ui.activity.NewsDetailActivity" />
-        <activity android:name=".mvp.ui.activity.LoginActivity" />
-        <activity android:name=".mvp.ui.activity.RegisterActivity" />
+        <activity android:name=".mvp.ui.activity.NewsDetailActivity"
+            android:theme="@style/StatusBarTranslucentTheme"/>
+        <activity android:name=".mvp.ui.activity.LoginActivity"
+            android:theme="@style/StatusBarTranslucentTheme"/>
+        <activity android:name=".mvp.ui.activity.RegisterActivity"
+            android:theme="@style/StatusBarTranslucentTheme"/>
         <activity
             android:name=".mvp.ui.activity.InputComponentActivity"
+            android:theme="@style/StatusBarTranslucentTheme"
             android:launchMode="singleTask"></activity>
         <activity
             android:name=".mvp.ui.activity.QueryComponentActivity"
+            android:theme="@style/StatusBarTranslucentTheme"
             android:launchMode="singleTask"></activity>
     </application>
 

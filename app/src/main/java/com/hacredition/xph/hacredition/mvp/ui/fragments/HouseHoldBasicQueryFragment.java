@@ -8,10 +8,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +22,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,10 +38,12 @@ import com.hacredition.xph.hacredition.mvp.entity.HouseHoldBasicInfo;
 import com.hacredition.xph.hacredition.mvp.presenter.impl.CarInfoInputPresenterImpl;
 import com.hacredition.xph.hacredition.mvp.presenter.impl.HouseHoldBasicQueryPresenterImpl;
 import com.hacredition.xph.hacredition.mvp.presenter.impl.HouseInfoInputPresenterImpl;
+import com.hacredition.xph.hacredition.mvp.ui.activity.QueryComponentActivity;
 import com.hacredition.xph.hacredition.mvp.ui.adapter.BasicQueryItemAdapter;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.HouseHoldBasicQueryView;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
+import com.hacredition.xph.hacredition.utils.LineGridView;
 import com.hacredition.xph.hacredition.utils.MyHashMaps;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
@@ -47,6 +53,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -55,7 +62,7 @@ import butterknife.BindView;
 
 
 public class HouseHoldBasicQueryFragment extends BaseFragment
-        implements HouseHoldBasicQueryView {
+        implements HouseHoldBasicQueryView{
 
     @Inject
     @ContextLife("Activity")
@@ -68,7 +75,7 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
     HouseHoldBasicQueryPresenterImpl presenter;
 
     @BindView(R.id.household_basic_gridview)
-    GridView gridView;
+    LineGridView gridView;
 
     private static String mIdCard;
 
@@ -77,6 +84,9 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
     public void setIdCard(String idcard){
         mIdCard = idcard;
     }
+
+    private static long downTime;    //获取鼠标按下时的时间
+    private static long upTime;     //获取鼠标松开时的时间
 
 
     @Override
@@ -121,7 +131,6 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
 
     @Override
     public void showHouseHoldBasicInfo(HouseHoldBasicInfo info) {
-        System.out.println("showHouseHoldBasicInfo");
         List<BaseAdapterItem> list = new ArrayList<BaseAdapterItem>();
         try{
             Class clazz = info.getClass();
@@ -130,18 +139,65 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
             for(int i=0;i<fieldlist.length;i++){
                 Field f = fieldlist[i];
                 BaseAdapterItem item = new BaseAdapterItem();
-                item.setName(MyHashMaps.HOUSEHOLDBASICINFOMAP.get(f.getName()));
                 String fieldName = f.getName();
+                item.setName(MyHashMaps.HOUSEHOLDBASICINFOMAP.get(fieldName));
                 Method m = clazz.getDeclaredMethod("get"+fieldName.substring(0,1).toUpperCase()+fieldName.substring(1,fieldName.length()));
                 String s = String.valueOf(m.invoke(info));
                 item.setValue(s);
-                list.add(item);
+                item.setSortId(MyHashMaps.HOUSEHOLDBASICSORTMAP.get(fieldName));
+                if(!s.equals("null")){
+                    list.add(item);
+                }
             }
         }catch (Exception e){
             e.printStackTrace();
         }
         mAdapter = new BasicQueryItemAdapter(list,activityContext);
         gridView.setAdapter(mAdapter);
+        gridView.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                int action = event.getAction();
+
+                switch (action)
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        downTime = System.currentTimeMillis();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        upTime = System.currentTimeMillis();
+                        if(upTime-downTime>2000){
+                            Spinner spinner = new Spinner(activityContext);
+                            ArrayAdapter adapter = ArrayAdapter.createFromResource(activityContext,R.array.householdinfoquery,android.R.layout.simple_spinner_dropdown_item);
+                            spinner.setAdapter(adapter);
+                            new AlertDialog.Builder(activityContext)
+                                    .setTitle("请选择查看内容")
+                                    .setView(spinner)
+                                    .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            dialogInterface.dismiss();
+                                        }
+                                    })
+                                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            dialogInterface.dismiss();
+                                        }
+                                    }).show();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+                return false;
+            }
+        });
     }
 
 

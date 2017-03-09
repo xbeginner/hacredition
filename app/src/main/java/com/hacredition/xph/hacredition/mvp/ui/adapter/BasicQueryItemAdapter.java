@@ -12,6 +12,7 @@ import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.mvp.entity.BaseAdapterItem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +32,7 @@ public class BasicQueryItemAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
 
     public BasicQueryItemAdapter(List<BaseAdapterItem> list ,Context context){
+        Collections.sort(list);
         this.list = list;
         this.mInflater = LayoutInflater.from(context);
     }

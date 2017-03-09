@@ -26,7 +26,6 @@ public class HouseHoldBasicQueryPresenterImpl extends BasePresenterImpl<HouseHol
 
     @Override
     public HouseHoldBasicInfo getHouseHoldBasicInfo(String idcard) {
-        System.out.println("presenter:getHouseHoldBasicInfo");
         return interactorImpl.getHouseHoldBasicInfo(idcard);
     }
 

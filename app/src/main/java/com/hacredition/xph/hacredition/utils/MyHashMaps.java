@@ -17,7 +17,17 @@ public  class MyHashMaps {
             put("congyenianxian","从业年限");
             put("fubingyi","服兵役");
             put("hunyinzhuangkuang","婚姻状况");
+        }
+    };
 
+    public static final Map<String,Integer> HOUSEHOLDBASICSORTMAP = new HashMap<String,Integer>(){
+        {
+            put("sfzno",0);
+            put("xingming",1);
+            put("chushengriqi",2);
+            put("congyenianxian",3);
+            put("fubingyi",4);
+            put("hunyinzhuangkuang",5);
         }
     };
 

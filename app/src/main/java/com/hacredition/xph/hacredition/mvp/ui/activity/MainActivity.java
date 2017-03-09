@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity implements
         ,ViewPager.OnPageChangeListener {
 
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
+   // @BindView(R.id.toolbar) Toolbar toolbar;
 
     @BindView(R.id.viewpager_id)  ViewPager viewPager;
 
@@ -145,24 +145,6 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//        switch (position){
-//            case 1:
-//                if(App.hasLogin==false){
-//                    Intent intent = new Intent(this, LoginActivity.class);
-//                    startActivityForResult(intent,LOGIN_SUCCESS_CODE);
-//                }else{
-//                    inputFragment.showInputItems();
-//                }
-//                break;
-//            case 2:
-////                if(App.hasLogin==false){
-////                    Intent intent = new Intent(this, LoginActivity.class);
-////                    startActivityForResult(intent,LOGIN_SUCCESS_CODE);
-////                }else{
-////                    queryFragment.showQueryItems();
-////                }
-//                break;
-//        }
 
         if(position!=0){
             if(App.hasLogin==false){

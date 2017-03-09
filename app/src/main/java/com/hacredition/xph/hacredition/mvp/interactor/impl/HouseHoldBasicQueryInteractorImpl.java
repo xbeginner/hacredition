@@ -18,7 +18,6 @@ public class HouseHoldBasicQueryInteractorImpl implements HouseHoldBasicQueryInt
 
     @Override
     public HouseHoldBasicInfo getHouseHoldBasicInfo(String idcard) {
-        System.out.println("inter:HouseHoldBasicInfo");
         HouseHoldBasicInfo info = new HouseHoldBasicInfo();
         info.setChushengriqi("1990-01-01");
         info.setCongyenianxian(5);

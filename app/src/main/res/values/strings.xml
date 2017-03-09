@@ -135,4 +135,12 @@
         <item>月交</item>
         <item>其他</item>
     </string-array>
+
+
+    <string-array name="householdinfoquery">
+        <item>贷款情况</item>
+        <item>担保情况</item>
+        <item>保险情况</item>
+        <item>房产情况</item>
+    </string-array>
 </resources>

@@ -8,6 +8,7 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -35,6 +36,8 @@ import butterknife.BindView;
 public class LoginActivity extends BaseActivity
         implements LoginView,View.OnClickListener
         ,TextWatcher{
+
+
 
     @BindView(R.id.username_editview)
     EditText usernameEidt;
