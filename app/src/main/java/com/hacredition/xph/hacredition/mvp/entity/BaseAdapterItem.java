@@ -12,6 +12,8 @@ public class BaseAdapterItem implements Comparable<BaseAdapterItem>{
 
     private String value;
 
+    private Boolean showSplitLine;
+
     public Integer getSortId() {
         return sortId;
     }
@@ -34,6 +36,14 @@ public class BaseAdapterItem implements Comparable<BaseAdapterItem>{
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public Boolean getShowSplitLine() {
+        return showSplitLine;
+    }
+
+    public void setShowSplitLine(Boolean showSplitLine) {
+        this.showSplitLine = showSplitLine;
     }
 
     @Override

@@ -8,6 +8,7 @@
     <string name="click_refresh">点我重试</string>
     <string name="data_error">服务器连接错误</string>
     <string name="no_actions">没有权限</string>
+    <string name="no_data">没有数据</string>
     <string name="title_activity_input">InputActivity</string>
     <string name="action_settings">Settings</string>
 

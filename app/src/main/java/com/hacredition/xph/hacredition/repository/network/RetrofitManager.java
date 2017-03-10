@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hacredition.xph.hacredition.App;
+import com.hacredition.xph.hacredition.mvp.entity.BaseAdapterItem;
 import com.hacredition.xph.hacredition.mvp.entity.CarInfo;
 import com.hacredition.xph.hacredition.mvp.entity.CourtInfo;
 import com.hacredition.xph.hacredition.mvp.entity.CreditInfo;
@@ -215,5 +216,10 @@ public class RetrofitManager {
 
     public Observable<String> saveInsuranceInfo(InsuranceInfo insuranceInfo){
         return mNewsService.saveInsuranceInfo(insuranceInfo);
+    }
+
+
+    public Observable<List<BaseAdapterItem>> getHouseHoldOtherInfoItems(String idcard, int type){
+        return mNewsService.getHouseHoldOtherInfoItems(idcard,type);
     }
 }

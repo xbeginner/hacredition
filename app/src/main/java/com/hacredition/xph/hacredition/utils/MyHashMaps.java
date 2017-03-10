@@ -31,4 +31,14 @@ public  class MyHashMaps {
         }
     };
 
+
+    public static final Map<String,Integer> HOUSEHOLDQUERYTYPES = new HashMap<String,Integer>(){
+        {
+            put("贷款情况",1);
+            put("担保情况",2);
+            put("保险情况",3);
+            put("房产情况",4);
+        }
+    };
+
 }

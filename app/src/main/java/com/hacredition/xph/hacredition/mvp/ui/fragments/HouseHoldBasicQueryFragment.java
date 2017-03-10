@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AppCompatImageView;
 import android.text.InputType;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -54,7 +55,9 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -69,7 +72,13 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
     Context activityContext;
 
     @Inject
-    Activity inputFragmentActivity;
+    Activity queryFragmentActivity;
+
+    @BindView(R.id.empty_data_id)
+    TextView emptyDataText;
+
+
+
 
     @Inject
     HouseHoldBasicQueryPresenterImpl presenter;
@@ -89,6 +98,9 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
     private static long upTime;     //获取鼠标松开时的时间
 
 
+
+
+
     @Override
     public void initInjector() {
         fragmentComponent.inject(this);
@@ -97,6 +109,7 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
     @Override
     public void initViews(View view) {
         initPresenter();
+
     }
 
     @Override
@@ -144,6 +157,7 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
                 Method m = clazz.getDeclaredMethod("get"+fieldName.substring(0,1).toUpperCase()+fieldName.substring(1,fieldName.length()));
                 String s = String.valueOf(m.invoke(info));
                 item.setValue(s);
+                item.setShowSplitLine(true);
                 item.setSortId(MyHashMaps.HOUSEHOLDBASICSORTMAP.get(fieldName));
                 if(!s.equals("null")){
                     list.add(item);
@@ -160,7 +174,6 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
             public boolean onTouch(View v, MotionEvent event)
             {
                 int action = event.getAction();
-
                 switch (action)
                 {
                     case MotionEvent.ACTION_DOWN:
@@ -171,7 +184,7 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
                     case MotionEvent.ACTION_UP:
                         upTime = System.currentTimeMillis();
                         if(upTime-downTime>2000){
-                            Spinner spinner = new Spinner(activityContext);
+                            final Spinner spinner = new Spinner(activityContext);
                             ArrayAdapter adapter = ArrayAdapter.createFromResource(activityContext,R.array.householdinfoquery,android.R.layout.simple_spinner_dropdown_item);
                             spinner.setAdapter(adapter);
                             new AlertDialog.Builder(activityContext)
@@ -186,7 +199,7 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
                                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
-                                            dialogInterface.dismiss();
+                                            queryHouseHoldBasicInfo(mIdCard,(String)spinner.getSelectedItem());
                                         }
                                     }).show();
                         }
@@ -200,6 +213,21 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
         });
     }
 
+    @Override
+    public void queryHouseHoldBasicInfo(String idcard, String type) {
+        presenter.getHouseHoldOtherInfo(idcard,MyHashMaps.HOUSEHOLDQUERYTYPES.get(type));
+    }
+
+    @Override
+    public void updateHouseHoldBasicInfo(List<BaseAdapterItem> list) {
+        if(list!=null&&list.size()>0) {
+            emptyDataText.setVisibility(View.GONE);
+            mAdapter.setList(list);
+        }else{
+            emptyDataText.setVisibility(View.VISIBLE);
+            gridView.setVisibility(View.GONE);
+        }
+    }
 
 
 }

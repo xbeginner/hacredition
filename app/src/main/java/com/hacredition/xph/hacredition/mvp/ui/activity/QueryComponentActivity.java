@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AppCompatImageView;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.Toast;
 
 import com.hacredition.xph.hacredition.R;
@@ -34,7 +36,12 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+
 public class QueryComponentActivity extends BaseActivity  {
+
+    @BindView(R.id.back_image_view_id)
+    AppCompatImageView backImageView;
 
     private String fragmentName;
 
@@ -65,6 +72,13 @@ public class QueryComponentActivity extends BaseActivity  {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         int type = maps.get(fragmentName)==null?0:maps.get(fragmentName);
         initFragment(type,fragmentTransaction);
+        backImageView.setVisibility(View.VISIBLE);
+        backImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                QueryComponentActivity.this.finish();
+            }
+        });
     }
 
     @Override

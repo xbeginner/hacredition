@@ -1,5 +1,6 @@
 package com.hacredition.xph.hacredition.repository.network;
 
+import com.hacredition.xph.hacredition.mvp.entity.BaseAdapterItem;
 import com.hacredition.xph.hacredition.mvp.entity.CarInfo;
 import com.hacredition.xph.hacredition.mvp.entity.CourtInfo;
 import com.hacredition.xph.hacredition.mvp.entity.CreditInfo;
@@ -141,4 +142,9 @@ public interface NewsService {
     @POST("servlet/saveInsuranceInfo")
     Observable<String> saveInsuranceInfo(
             @Body InsuranceInfo insuranceInfo);
+
+
+    @GET("servlet/queryHouseHoldOtherInfo")
+    Observable<List<BaseAdapterItem>> getHouseHoldOtherInfoItems(
+            @Query("idcard") String idcard,@Query("type") int type);
 }

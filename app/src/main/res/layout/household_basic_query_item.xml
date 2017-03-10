@@ -17,6 +17,7 @@
         tools:text="姓名" />
 
     <View
+        android:id="@+id/split_line_id"
         android:layout_width="1px"
         android:layout_height="match_parent"
         android:background="@color/black"
