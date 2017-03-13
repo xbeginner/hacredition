@@ -93,7 +93,7 @@ public class GuaranteeInfoInputFragment extends BaseFragment
     @Inject
     Activity inputFragmentActivity;
 
-    private static AwesomeValidation awesomeValidation;
+
 
     private EditText editText;
 
@@ -215,7 +215,8 @@ public class GuaranteeInfoInputFragment extends BaseFragment
     }
 
 
-    private void addValidation(){
+    @Override
+    public void addValidation(){
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         awesomeValidation.addValidation(idcardEditText, MyRegex.IDCARD,getResources().getString(R.string.validation_error_idcard));
         awesomeValidation.addValidation(nameEditText, MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));

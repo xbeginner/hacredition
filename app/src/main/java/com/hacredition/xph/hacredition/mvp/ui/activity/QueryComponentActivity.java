@@ -231,4 +231,6 @@ public class QueryComponentActivity extends BaseActivity
     }
 
 
+
+
 }

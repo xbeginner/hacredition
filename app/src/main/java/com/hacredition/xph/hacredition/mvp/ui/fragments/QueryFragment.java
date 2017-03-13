@@ -83,6 +83,11 @@ public class QueryFragment extends BaseFragment
         return R.layout.fragment_query;
     }
 
+    @Override
+    protected void addValidation() {
+
+    }
+
     /**
      * 根据权限进行权限的查询
      */

@@ -127,6 +127,11 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
         return R.layout.fragment_household_basic_query;
     }
 
+    @Override
+    protected void addValidation() {
+
+    }
+
 
     @Override
     public void showProgress() {

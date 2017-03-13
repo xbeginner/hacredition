@@ -130,6 +130,11 @@ public class NewsFragment extends BaseFragment implements NewsView
         return R.layout.fragment_news;
     }
 
+    @Override
+    protected void addValidation() {
+
+    }
+
 
     @Override
     public void showProgress() {

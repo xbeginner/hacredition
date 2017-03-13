@@ -67,7 +67,6 @@ public class OperationalEntityFragment extends BaseFragment
     @Inject
     Activity inputFragmentActivity;
 
-    private static AwesomeValidation awesomeValidation;
 
 
     @Override
@@ -154,7 +153,8 @@ public class OperationalEntityFragment extends BaseFragment
     }
 
 
-    private void addValidation(){
+    @Override
+    public void addValidation(){
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         awesomeValidation.addValidation(idcardEditText, MyRegex.IDCARD,getResources().getString(R.string.validation_error_idcard));
         awesomeValidation.addValidation(nameEditText,MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));

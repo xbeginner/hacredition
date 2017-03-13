@@ -86,21 +86,21 @@ public class InputFragment extends BaseFragment
         return R.layout.fragment_input;
     }
 
+    @Override
+    protected void addValidation() {
+
+    }
+
     /**
      * 根据权限进行权限的查询
      */
     @Override
     public void showInputItems() {
-//        if(MainActivity.mUserInfo!=null){
-//            Intent intent = new Intent(inputFragmentActivity, LoginActivity.class);
-//            startActivityForResult(intent,MainActivity.LOGIN_SUCCESS_CODE);
-//        }else{
             if(!isInit) {
                 mInputPresenterImpl.setInputItems(MainActivity.mUserInfo);
                 hideProgress();
                 isInit = true;
             }
-//        }
     }
 
     @Override
@@ -144,7 +144,6 @@ public class InputFragment extends BaseFragment
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(inputRecyclerAdapter);
         inputRecyclerAdapter.setOnItemClickListener(this);
-        //recyclerView.addItemDecoration(new RecyclerItemDecoration(2,2,getResources().getColor(R.color.dividerColor)));
     }
 
     @Override

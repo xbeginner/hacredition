@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.di.component.DaggerFragmentComponent;
 import com.hacredition.xph.hacredition.di.component.FragmentComponent;
@@ -39,12 +41,27 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
 
     protected Subscription mSubscription;
 
+    protected static AwesomeValidation awesomeValidation;
+
 
     public abstract void initInjector();
 
     public abstract void initViews(View view);
 
     public abstract int getLayoutId();
+
+    protected void initValidation(){
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+        addValidation();
+    }
+
+    protected abstract void addValidation();
+
+    public void destroyValidation(){
+        if(awesomeValidation!=null){
+            awesomeValidation = null;
+        }
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +71,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
                 .fragmentModule(new FragmentModule(this))
                 .build();
         initInjector();
+        initValidation();
     }
 
     @Nullable
@@ -70,6 +88,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        destroyValidation();
         RefWatcher refWatcher = App.getRefWatcher(getActivity());
         refWatcher.watch(this);
 

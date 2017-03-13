@@ -93,7 +93,7 @@ public class CarInfoInputFragment extends BaseFragment
     public final static int CONSULT_DOC_CAMERA = 3001;
 
 
-    private static AwesomeValidation awesomeValidation;
+
 
     private Uri outputFileUri;
 
@@ -232,16 +232,14 @@ public class CarInfoInputFragment extends BaseFragment
         return info;
     }
 
-
-    private void addValidation(){
-        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+    @Override
+    public void addValidation(){
         awesomeValidation.addValidation(idcardEditText, MyRegex.IDCARD,getResources().getString(R.string.validation_error_idcard));
         awesomeValidation.addValidation(nameEditText, MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
         awesomeValidation.addValidation(pinpaiEditText, MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
         awesomeValidation.addValidation(chexingEditText, MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
         awesomeValidation.addValidation(numberEditText, MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
         awesomeValidation.addValidation(timeEditText, MyRegex.DATE,getResources().getString(R.string.validation_error_pattern));
-
     }
 
     @Override

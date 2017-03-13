@@ -10,6 +10,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatImageView;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.hacredition.xph.hacredition.R;
@@ -41,6 +43,9 @@ public class InputComponentActivity extends BaseActivity  {
 
     private String fragmentName;
 
+    @BindView(R.id.back_image_view_id)
+    AppCompatImageView backImageView;
+
     private static final Map<String,Integer> maps = new HashMap<String,Integer>(){
         {
              put("HouseHoldInput",1);
@@ -59,6 +64,8 @@ public class InputComponentActivity extends BaseActivity  {
              put("InsuranceInfoInput",14);
         }
     };
+
+
 
 
 
@@ -84,6 +91,14 @@ public class InputComponentActivity extends BaseActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         fragmentName = getIntent().getStringExtra("fragmentName");
         super.onCreate(savedInstanceState);
+        backImageView.setVisibility(View.VISIBLE);
+        backImageView.setClickable(true);
+        backImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                InputComponentActivity.this.finish();
+            }
+        });
     }
 
 
