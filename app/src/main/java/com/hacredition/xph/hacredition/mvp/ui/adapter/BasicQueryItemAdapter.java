@@ -26,7 +26,6 @@ import butterknife.ButterKnife;
 
 public class BasicQueryItemAdapter extends BaseAdapter {
 
-
     List<BaseAdapterItem> list = new ArrayList<BaseAdapterItem>();
     private LayoutInflater mInflater;
 
@@ -37,12 +36,6 @@ public class BasicQueryItemAdapter extends BaseAdapter {
     }
 
     public void setList(List<BaseAdapterItem> list){
-
-        for(BaseAdapterItem i:list){
-            System.out.println(i.getName());
-            System.out.println(i.getShowSplitLine());
-        }
-
         Collections.sort(list);
         this.list = list;
         notifyDataSetChanged();
@@ -82,7 +75,6 @@ public class BasicQueryItemAdapter extends BaseAdapter {
                 holder.view.setVisibility(View.GONE);
             }
         }
-
         return convertView;
     }
 
@@ -98,4 +90,7 @@ public class BasicQueryItemAdapter extends BaseAdapter {
             ButterKnife.bind(this,view);
         }
     }
+
+
+
 }

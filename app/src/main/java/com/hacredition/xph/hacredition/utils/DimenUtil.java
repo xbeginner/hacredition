@@ -12,6 +12,11 @@ public class DimenUtil {
         return (int)(dp * scale + 0.5f);
     }
 
+    public static int px2dip(float pxValue) {
+        final float scale = App.getAppContext().getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
+    }
+
     public static float sp2px(float sp) {
         final float scale = App.getAppContext().getResources().getDisplayMetrics().scaledDensity;
         return sp * scale;

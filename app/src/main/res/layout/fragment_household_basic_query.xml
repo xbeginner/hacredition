@@ -17,7 +17,7 @@
 
                   <com.hacredition.xph.hacredition.utils.LineGridView
                       android:id="@+id/household_basic_gridview"
-                      android:layout_width="match_parent"
+                      android:layout_width="wrap_content"
                       android:layout_height="match_parent"></com.hacredition.xph.hacredition.utils.LineGridView>
 
             </HorizontalScrollView>

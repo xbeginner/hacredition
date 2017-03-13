@@ -65,7 +65,8 @@ import butterknife.BindView;
 
 
 public class HouseHoldBasicQueryFragment extends BaseFragment
-        implements HouseHoldBasicQueryView{
+        implements HouseHoldBasicQueryView
+        ,QueryComponentActivity.QueryFlingEventListener {
 
     @Inject
     @ContextLife("Activity")
@@ -78,8 +79,6 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
     TextView emptyDataText;
 
 
-
-
     @Inject
     HouseHoldBasicQueryPresenterImpl presenter;
 
@@ -90,7 +89,7 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
 
     private BasicQueryItemAdapter mAdapter;
 
-    public void setIdCard(String idcard){
+    public void setIdCard(String idcard) {
         mIdCard = idcard;
     }
 
@@ -98,7 +97,18 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
     private static long upTime;     //获取鼠标松开时的时间
 
 
+    private List<List<BaseAdapterItem>> itemsList = new ArrayList<List<BaseAdapterItem>>();
 
+    private void addList(List<BaseAdapterItem> list){
+        itemsList.add(list);
+    }
+
+    private void removeList(List<BaseAdapterItem> list){
+        itemsList.remove(list);
+    }
+
+
+    private int position = 0;
 
 
     @Override
@@ -116,7 +126,6 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
     public int getLayoutId() {
         return R.layout.fragment_household_basic_query;
     }
-
 
 
     @Override
@@ -145,89 +154,93 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
     @Override
     public void showHouseHoldBasicInfo(HouseHoldBasicInfo info) {
         List<BaseAdapterItem> list = new ArrayList<BaseAdapterItem>();
-        try{
+        try {
             Class clazz = info.getClass();
             //Class clazz = Class.forName("com.hacredition.xph.hacredition.mvp.entity.HouseHoldBasicInfo");
             Field[] fieldlist = clazz.getDeclaredFields();
-            for(int i=0;i<fieldlist.length;i++){
+            for (int i = 0; i < fieldlist.length; i++) {
                 Field f = fieldlist[i];
                 BaseAdapterItem item = new BaseAdapterItem();
                 String fieldName = f.getName();
                 item.setName(MyHashMaps.HOUSEHOLDBASICINFOMAP.get(fieldName));
-                Method m = clazz.getDeclaredMethod("get"+fieldName.substring(0,1).toUpperCase()+fieldName.substring(1,fieldName.length()));
+                Method m = clazz.getDeclaredMethod("get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1, fieldName.length()));
                 String s = String.valueOf(m.invoke(info));
                 item.setValue(s);
                 item.setShowSplitLine(true);
                 item.setSortId(MyHashMaps.HOUSEHOLDBASICSORTMAP.get(fieldName));
-                if(!s.equals("null")){
+                if (!s.equals("null")) {
                     list.add(item);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        mAdapter = new BasicQueryItemAdapter(list,activityContext);
+        mAdapter = new BasicQueryItemAdapter(list, activityContext);
         gridView.setAdapter(mAdapter);
-        gridView.setOnTouchListener(new View.OnTouchListener()
-        {
-            @Override
-            public boolean onTouch(View v, MotionEvent event)
-            {
-                int action = event.getAction();
-                switch (action)
-                {
-                    case MotionEvent.ACTION_DOWN:
-                        downTime = System.currentTimeMillis();
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        upTime = System.currentTimeMillis();
-                        if(upTime-downTime>2000){
-                            final Spinner spinner = new Spinner(activityContext);
-                            ArrayAdapter adapter = ArrayAdapter.createFromResource(activityContext,R.array.householdinfoquery,android.R.layout.simple_spinner_dropdown_item);
-                            spinner.setAdapter(adapter);
-                            new AlertDialog.Builder(activityContext)
-                                    .setTitle("请选择查看内容")
-                                    .setView(spinner)
-                                    .setPositiveButton("取消", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            dialogInterface.dismiss();
-                                        }
-                                    })
-                                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            queryHouseHoldBasicInfo(mIdCard,(String)spinner.getSelectedItem());
-                                        }
-                                    }).show();
-                        }
-                        break;
-                    default:
-                        break;
-                }
-
-                return false;
-            }
-        });
+        addList(list);
     }
 
     @Override
     public void queryHouseHoldBasicInfo(String idcard, String type) {
-        presenter.getHouseHoldOtherInfo(idcard,MyHashMaps.HOUSEHOLDQUERYTYPES.get(type));
+        presenter.getHouseHoldOtherInfo(idcard, MyHashMaps.HOUSEHOLDQUERYTYPES.get(type));
     }
 
     @Override
     public void updateHouseHoldBasicInfo(List<BaseAdapterItem> list) {
-        if(list!=null&&list.size()>0) {
+        if (list != null && list.size() > 0) {
             emptyDataText.setVisibility(View.GONE);
+            gridView.setVisibility(View.VISIBLE);
             mAdapter.setList(list);
-        }else{
+            addList(list);
+            position+=1;
+        } else {
             emptyDataText.setVisibility(View.VISIBLE);
             gridView.setVisibility(View.GONE);
+            addList(null);
+            position+=1;
         }
     }
+
+
+    @Override
+    public void onLeftFlingEvent() {
+
+        final Spinner spinner = new Spinner(activityContext);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(activityContext, R.array.householdinfoquery, android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        new AlertDialog.Builder(activityContext)
+                .setTitle("请选择查看内容")
+                .setView(spinner)
+                .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        queryHouseHoldBasicInfo(mIdCard, (String) spinner.getSelectedItem());
+                    }
+                }).show();
+    }
+
+    @Override
+    public void onRightFlingEvent() {
+        if(position>=1){
+            System.out.println("postion:"+position);
+            List<BaseAdapterItem> list = itemsList.get(position-1);
+            itemsList.remove(position);
+            updateHouseHoldBasicInfo(list);
+            position-=2;
+        }
+//        else{
+//            List<BaseAdapterItem> list = itemsList.get(0);
+//            updateHouseHoldBasicInfo(list);
+//        }
+
+    }
+
 
 
 }
