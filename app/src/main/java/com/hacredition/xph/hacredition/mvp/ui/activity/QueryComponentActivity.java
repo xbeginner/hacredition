@@ -1,13 +1,16 @@
 package com.hacredition.xph.hacredition.mvp.ui.activity;
 
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
 import android.view.KeyEvent;
@@ -28,6 +31,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.FiscalSpendFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.GuaranteeInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HonourInfoFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseHoldBasicQueryFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseHoldGradeFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.InsuranceInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.MachineInfoInputFragment;
@@ -69,13 +73,15 @@ public class QueryComponentActivity extends BaseActivity
         public void onRightFlingEvent();
     }
 
-    QueryFlingEventListener mListeners;
+    QueryFlingEventListener mListeners ;
+
 
 
 
     private static final Map<String,Integer> maps = new HashMap<String,Integer>(){
         {
              put("HouseHoldQuery",1);
+             put("HouseHoldGradeQuery",2);
         }
     };
 
@@ -115,11 +121,12 @@ public class QueryComponentActivity extends BaseActivity
                 QueryComponentActivity.this.finish();
             }
         });
+
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        if(DimenUtil.px2dip(event.getY())>60){
+        if(DimenUtil.px2dip(event.getY())>60&&fragmentName.equals("HouseHoldQuery")){
             return gestureDetector.onTouchEvent(event);
         }else{
             return super.dispatchTouchEvent(event);
@@ -156,6 +163,13 @@ public class QueryComponentActivity extends BaseActivity
                mListeners = fragment;
                break;
            }
+           case 2:{
+               HouseHoldGradeFragment fragment = new HouseHoldGradeFragment();
+               fragment.setIdCard(queryIdcard);
+               fragmentTransaction.add(R.id.query_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
        }
     }
 
@@ -167,6 +181,7 @@ public class QueryComponentActivity extends BaseActivity
      */
     @Override
     public boolean onDown(MotionEvent motionEvent) {
+
         return false;
     }
 
@@ -186,7 +201,6 @@ public class QueryComponentActivity extends BaseActivity
      */
     @Override
     public boolean onSingleTapUp(MotionEvent motionEvent) {
-        System.out.println("click:"+motionEvent.getX()+"-"+motionEvent.getY());
         return false;
     }
 
@@ -222,10 +236,13 @@ public class QueryComponentActivity extends BaseActivity
      */
     @Override
     public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float velocityX, float velocityY) {
-        if (motionEvent.getX() - motionEvent1.getX() > minDistance && Math.abs(velocityX) > minVelocity) {
-            mListeners.onLeftFlingEvent();
-        } else if (motionEvent1.getX() - motionEvent.getX() > minDistance && Math.abs(velocityX) > minVelocity) {
-            mListeners.onRightFlingEvent();
+        if(mListeners!=null){
+            if (motionEvent.getX() - motionEvent1.getX() > minDistance && Math.abs(velocityX) > minVelocity) {
+                mListeners.onLeftFlingEvent();
+            } else if (motionEvent1.getX() - motionEvent.getX() > minDistance && Math.abs(velocityX) > minVelocity) {
+                mListeners.onRightFlingEvent();
+            }
+
         }
         return false;
     }

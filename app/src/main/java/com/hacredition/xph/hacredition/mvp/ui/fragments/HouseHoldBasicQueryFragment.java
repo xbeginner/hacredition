@@ -233,16 +233,11 @@ public class HouseHoldBasicQueryFragment extends BaseFragment
     @Override
     public void onRightFlingEvent() {
         if(position>=1){
-            System.out.println("postion:"+position);
             List<BaseAdapterItem> list = itemsList.get(position-1);
             itemsList.remove(position);
             updateHouseHoldBasicInfo(list);
             position-=2;
         }
-//        else{
-//            List<BaseAdapterItem> list = itemsList.get(0);
-//            updateHouseHoldBasicInfo(list);
-//        }
 
     }
 

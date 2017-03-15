@@ -16,6 +16,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.FiscalSpendFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.GuaranteeInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HonourInfoFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseHoldBasicQueryFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseHoldGradeFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.InputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.InsuranceInfoInputFragment;
@@ -83,4 +84,7 @@ public interface FragmentComponent{
 
 
     void inject(HouseHoldBasicQueryFragment houseHoldBasicQueryFragment);
+
+
+    void inject(HouseHoldGradeFragment houseHoldGradeFragment);
 }

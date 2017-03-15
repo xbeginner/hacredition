@@ -126,7 +126,6 @@ public class App extends Application {
             StrictMode.setThreadPolicy(
                     new StrictMode.ThreadPolicy.Builder()
                             .detectAll()
-//                            .penaltyDialog() // 弹出违规提示对话框
                             .penaltyLog() // 在logcat中打印违规异常信息
                             .build());
             StrictMode.setVmPolicy(

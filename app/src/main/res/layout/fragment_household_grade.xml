@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/household_grade_all"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:text="0.00"
@@ -19,6 +20,7 @@
         android:layout_height="40dp">
 
         <TextView
+            android:id="@+id/household_grade_sum"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:text="加分:0.0"
@@ -29,6 +31,7 @@
             android:layout_height="match_parent" />
 
         <TextView
+            android:id="@+id/household_grade_del"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:text="减分:0.0"
@@ -39,5 +42,74 @@
             android:layout_height="match_parent" />
 
     </LinearLayout>
+
+ <ScrollView
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+
+
+     <LinearLayout
+         android:orientation="vertical"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+
+         <TextView
+             android:text="加分"
+             android:textColor="@color/colorPrimary"
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"/>
+
+         <lecho.lib.hellocharts.view.ColumnChartView
+             android:id="@+id/add_grade_columnview"
+             android:layout_width="match_parent"
+             android:layout_height="120dp"
+             />
+
+         <TextView
+             android:text="减分"
+             android:textColor="@color/black"
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"/>
+
+         <lecho.lib.hellocharts.view.ColumnChartView
+             android:id="@+id/del_grade_columnview"
+             android:layout_width="match_parent"
+             android:layout_height="120dp"
+             />
+
+         <TextView
+             android:text="资产负债"
+             android:textColor="@color/colorPrimary"
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"/>
+
+         <LinearLayout
+             android:orientation="horizontal"
+             android:layout_width="match_parent"
+             android:layout_weight="1"
+             android:layout_height="120dp">
+
+             <lecho.lib.hellocharts.view.PieChartView
+                 android:id="@+id/income_piechartview"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1"
+                 />
+
+             <lecho.lib.hellocharts.view.PieChartView
+                 android:id="@+id/spend_piechartview"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1"
+                 />
+
+         </LinearLayout>
+
+
+     </LinearLayout>
+
+
+ </ScrollView>
+
 
 </LinearLayout>

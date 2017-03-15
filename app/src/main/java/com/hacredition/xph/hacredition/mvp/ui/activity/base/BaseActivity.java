@@ -101,6 +101,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
         toolbar.setClipToPadding(true);
+
       //  toolbar.setFitsSystemWindows(true);
     }
 
