@@ -32,6 +32,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.GuaranteeInfoInputFragme
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HonourInfoFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseHoldBasicQueryFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseHoldGradeFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseHoldOrgGradeFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.InsuranceInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.MachineInfoInputFragment;
@@ -82,6 +83,7 @@ public class QueryComponentActivity extends BaseActivity
         {
              put("HouseHoldQuery",1);
              put("HouseHoldGradeQuery",2);
+             put("HouseHoldOrgQuery",3);
         }
     };
 
@@ -166,6 +168,13 @@ public class QueryComponentActivity extends BaseActivity
            case 2:{
                HouseHoldGradeFragment fragment = new HouseHoldGradeFragment();
                fragment.setIdCard(queryIdcard);
+               fragmentTransaction.add(R.id.query_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 3:{
+               HouseHoldOrgGradeFragment fragment = new HouseHoldOrgGradeFragment();
+             // fragment.setIdCard(queryIdcard);
                fragmentTransaction.add(R.id.query_component_layout,fragment);
                fragmentTransaction.commit();
                break;
