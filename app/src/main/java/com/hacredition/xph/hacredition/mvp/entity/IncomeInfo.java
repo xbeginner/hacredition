@@ -1,9 +1,13 @@
 package com.hacredition.xph.hacredition.mvp.entity;
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
+
 /**
  * Created by pc on 2017/3/16.
  */
 
+@Entity
 public class IncomeInfo {
 
     Float incomeSum;
@@ -13,6 +17,19 @@ public class IncomeInfo {
     String incomeType;
 
     String incomeInfo;
+
+    @Generated(hash = 1912592890)
+    public IncomeInfo(Float incomeSum, String incomeTime, String incomeType,
+            String incomeInfo) {
+        this.incomeSum = incomeSum;
+        this.incomeTime = incomeTime;
+        this.incomeType = incomeType;
+        this.incomeInfo = incomeInfo;
+    }
+
+    @Generated(hash = 2036155967)
+    public IncomeInfo() {
+    }
 
     public Float getIncomeSum() {
         return incomeSum;

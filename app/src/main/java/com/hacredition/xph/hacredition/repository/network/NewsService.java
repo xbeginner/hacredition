@@ -9,6 +9,7 @@ import com.hacredition.xph.hacredition.mvp.entity.FiscalSpend;
 import com.hacredition.xph.hacredition.mvp.entity.GuaranteeInfo;
 import com.hacredition.xph.hacredition.mvp.entity.HonourInfo;
 import com.hacredition.xph.hacredition.mvp.entity.HouseInfo;
+import com.hacredition.xph.hacredition.mvp.entity.IncomeInfo;
 import com.hacredition.xph.hacredition.mvp.entity.InputItem;
 import com.hacredition.xph.hacredition.mvp.entity.InsuranceInfo;
 import com.hacredition.xph.hacredition.mvp.entity.MachineInfo;
@@ -16,6 +17,7 @@ import com.hacredition.xph.hacredition.mvp.entity.MortgageInfo;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.entity.OperationalEntity;
+import com.hacredition.xph.hacredition.mvp.entity.OutputInfo;
 import com.hacredition.xph.hacredition.mvp.entity.OwnerShip;
 import com.hacredition.xph.hacredition.mvp.entity.PoliceInfo;
 import com.hacredition.xph.hacredition.mvp.entity.QueryItem;
@@ -142,6 +144,18 @@ public interface NewsService {
     @POST("servlet/saveInsuranceInfo")
     Observable<String> saveInsuranceInfo(
             @Body InsuranceInfo insuranceInfo);
+
+
+    @Headers("Content-Type:application/json")
+    @POST("servlet/saveIncomeInfo")
+    Observable<String> saveIncomeInfo(
+            @Body IncomeInfo incomeInfo);
+
+
+    @Headers("Content-Type:application/json")
+    @POST("servlet/saveOutputInfo")
+    Observable<String> saveOutputInfo(
+            @Body OutputInfo outputInfo);
 
 
     @GET("servlet/queryHouseHoldOtherInfo")

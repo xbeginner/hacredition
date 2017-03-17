@@ -3,38 +3,25 @@ package com.hacredition.xph.hacredition.mvp.ui.fragments;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v7.app.AlertDialog;
 import android.text.InputType;
-import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
-import com.hacredition.xph.hacredition.mvp.entity.CarInfo;
 import com.hacredition.xph.hacredition.mvp.entity.IncomeInfo;
-import com.hacredition.xph.hacredition.mvp.presenter.impl.CarInfoInputPresenterImpl;
+import com.hacredition.xph.hacredition.mvp.entity.OutputInfo;
 import com.hacredition.xph.hacredition.mvp.presenter.impl.IncomeInputPresenterImpl;
+import com.hacredition.xph.hacredition.mvp.presenter.impl.OutputInfoInputPresenterImpl;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
-import com.hacredition.xph.hacredition.utils.MyUtils;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -44,35 +31,39 @@ import javax.inject.Inject;
 import butterknife.BindView;
 
 
-public class IncomeInputFragment extends BaseFragment
-        implements InputInfoView<IncomeInfo>
+public class OutputInputFragment extends BaseFragment
+        implements InputInfoView<OutputInfo>
         ,View.OnFocusChangeListener
         ,View.OnClickListener
         ,DatePickerDialog.OnDateSetListener {
 
 
 
-    @BindView(R.id.income_sum_editview)
+    @BindView(R.id.output_sum_editview)
     EditText sumEditText;
 
-    @BindView(R.id.income_time_edit)
+    @BindView(R.id.output_time_edit)
     EditText timeEditText;
 
 
-    @BindView(R.id.income_info_editview)
+    @BindView(R.id.output_info_editview)
     EditText infoEditText;
 
 
-    @BindView(R.id.income_submit_button)
+    @BindView(R.id.output_submit_button)
     Button submitButton;
 
-    @BindView(R.id.income_type_spinner)
+    @BindView(R.id.output_type_spinner)
     Spinner typeSpinner;
+
+
+    @BindView(R.id.spend_type_spinner)
+    Spinner spendSpinner;
 
 
 
     @Inject
-    IncomeInputPresenterImpl incomeInputPresenter;
+    OutputInfoInputPresenterImpl outputInputPresenter;
 
     @Inject
     @ContextLife("Activity")
@@ -91,24 +82,26 @@ public class IncomeInputFragment extends BaseFragment
         initPresenter();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date now = new Date();
-        String  time = dateFormat.format(now);
+        String time = dateFormat.format(now);
         timeEditText.setText(time);
         timeEditText.setInputType(InputType.TYPE_NULL);
         timeEditText.setOnFocusChangeListener(this);
         addValidation();
         submitButton.setOnClickListener(this);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(activityContext,R.array.incomeType,android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(activityContext,R.array.outputType,android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(adapter);
+        ArrayAdapter adapter1 = ArrayAdapter.createFromResource(activityContext,R.array.spendType,android.R.layout.simple_spinner_dropdown_item);
+        spendSpinner.setAdapter(adapter);
     }
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_income_info;
+        return R.layout.fragment_output_info;
     }
 
     @Override
-    public void saveInfo(IncomeInfo incomeInfo) {
-        incomeInputPresenter.saveInputInfo(incomeInfo);
+    public void saveInfo(OutputInfo outputInfo) {
+        outputInputPresenter.saveInputInfo(outputInfo);
     }
 
 
@@ -129,15 +122,15 @@ public class IncomeInputFragment extends BaseFragment
 
     @Override
     public void initPresenter() {
-        mPresenter = incomeInputPresenter;
+        mPresenter = outputInputPresenter;
         mPresenter.attachView(this);
     }
 
     @Override
     public void onClick(View view) {
         if(awesomeValidation.validate()){
-            IncomeInfo incomeInfo = initIncomeInfo();
-            saveInfo(incomeInfo);
+            OutputInfo outputInfo = initOutputInfo();
+            saveInfo(outputInfo);
         }
     }
 
@@ -171,12 +164,13 @@ public class IncomeInputFragment extends BaseFragment
     }
 
 
-    private IncomeInfo initIncomeInfo(){
-        IncomeInfo info = new IncomeInfo();
-        info.setIncomeInfo(infoEditText.getText().toString());
-        info.setIncomeSum(Float.valueOf(sumEditText.getText().toString()));
-        info.setIncomeTime(timeEditText.getText().toString());
-        info.setIncomeType((String)typeSpinner.getSelectedItem());
+    private OutputInfo initOutputInfo(){
+        OutputInfo info = new OutputInfo();
+        info.setOutputInfo(infoEditText.getText().toString());
+        info.setOutputSum(Float.valueOf(sumEditText.getText().toString()));
+        info.setOutputTime(timeEditText.getText().toString());
+        info.setOutputType((String)typeSpinner.getSelectedItem());
+        info.setSpendType((String)spendSpinner.getSelectedItem());
         return info;
     }
 

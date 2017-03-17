@@ -144,4 +144,27 @@
         <item>保险情况</item>
         <item>房产情况</item>
     </string-array>
+
+
+
+    <string-array name="incomeType">
+        <item>工资收入</item>
+        <item>交易收入</item>
+        <item>理财收入</item>
+        <item>银行利息</item>
+        <item>分红收入</item>
+    </string-array>
+
+
+    <string-array name="outputType">
+        <item>日常支出</item>
+        <item>投资支出</item>
+    </string-array>
+
+
+    <string-array name="spendType">
+        <item>现金</item>
+        <item>信用卡</item>
+        <item>移动支付</item>
+    </string-array>
 </resources>

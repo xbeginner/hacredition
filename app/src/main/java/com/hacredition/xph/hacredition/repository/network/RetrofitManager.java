@@ -14,6 +14,7 @@ import com.hacredition.xph.hacredition.mvp.entity.FiscalSpend;
 import com.hacredition.xph.hacredition.mvp.entity.GuaranteeInfo;
 import com.hacredition.xph.hacredition.mvp.entity.HonourInfo;
 import com.hacredition.xph.hacredition.mvp.entity.HouseInfo;
+import com.hacredition.xph.hacredition.mvp.entity.IncomeInfo;
 import com.hacredition.xph.hacredition.mvp.entity.InputItem;
 import com.hacredition.xph.hacredition.mvp.entity.InsuranceInfo;
 import com.hacredition.xph.hacredition.mvp.entity.MachineInfo;
@@ -21,6 +22,7 @@ import com.hacredition.xph.hacredition.mvp.entity.MortgageInfo;
 import com.hacredition.xph.hacredition.mvp.entity.NewsDetail;
 import com.hacredition.xph.hacredition.mvp.entity.NewsSummary;
 import com.hacredition.xph.hacredition.mvp.entity.OperationalEntity;
+import com.hacredition.xph.hacredition.mvp.entity.OutputInfo;
 import com.hacredition.xph.hacredition.mvp.entity.OwnerShip;
 import com.hacredition.xph.hacredition.mvp.entity.PoliceInfo;
 import com.hacredition.xph.hacredition.mvp.entity.QueryItem;
@@ -221,5 +223,14 @@ public class RetrofitManager {
 
     public Observable<List<BaseAdapterItem>> getHouseHoldOtherInfoItems(String idcard, int type){
         return mNewsService.getHouseHoldOtherInfoItems(idcard,type);
+    }
+
+
+    public Observable<String> saveIncomeInfo(IncomeInfo incomeInfo){
+        return mNewsService.saveIncomeInfo(incomeInfo);
+    }
+
+    public Observable<String> saveOutputInfo(OutputInfo outputInfo){
+        return mNewsService.saveOutputInfo(outputInfo);
     }
 }
