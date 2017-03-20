@@ -66,6 +66,10 @@ public class QueryFragment extends BaseFragment
 
     private static boolean isInit = false;
 
+    private final static String MYQUERY = "MyHouseHoldQuery";
+
+    private final static String MYGRADEQUERY = "MyHouseHoldGradeQuery";
+
 
     @Override
     public void initInjector() {
@@ -152,27 +156,38 @@ public class QueryFragment extends BaseFragment
     @Override
     public void onItemClick(View view, String FragmentName) {
         final String fragmentName = FragmentName;
-        final EditText et = new EditText(activityContext);
-        new AlertDialog.Builder(activityContext)
-                .setTitle("请输入证件号")
-                .setView(et)
-                .setPositiveButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                })
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Bundle bundle = new Bundle();
-                        bundle.putString("queryfragmentName",fragmentName);
-                        bundle.putString("idcard",et.getText().toString());
-                        Intent intent = new Intent(activityContext, QueryComponentActivity.class);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-                    }
-                }).show();
+        if(fragmentName.equals(MYQUERY)||fragmentName.equals(MYGRADEQUERY)){
+            Bundle bundle = new Bundle();
+            bundle.putString("queryfragmentName",fragmentName);
+            bundle.putString("idcard",MainActivity.mUserInfo.getIdcard());
+            Intent intent = new Intent(activityContext, QueryComponentActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }else{
+
+            final EditText et = new EditText(activityContext);
+            new AlertDialog.Builder(activityContext)
+                    .setTitle("请输入证件号")
+                    .setView(et)
+                    .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    })
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("queryfragmentName",fragmentName);
+                            bundle.putString("idcard",et.getText().toString());
+                            Intent intent = new Intent(activityContext, QueryComponentActivity.class);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }
+                    }).show();
+        }
+
     }
 
     @Override

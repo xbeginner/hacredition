@@ -2,11 +2,9 @@ package com.hacredition.xph.hacredition.mvp.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -14,13 +12,11 @@ import com.hacredition.xph.hacredition.App;
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.mvp.entity.UserInfo;
-import com.hacredition.xph.hacredition.mvp.presenter.base.BasePresenter;
 import com.hacredition.xph.hacredition.mvp.ui.activity.base.BaseActivity;
 import com.hacredition.xph.hacredition.mvp.ui.adapter.MyViewPagerAdatper;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.InputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.NewsFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.QueryFragment;
-import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +24,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements
         BottomNavigationBar.OnTabSelectedListener
         ,ViewPager.OnPageChangeListener {
 
-
-   // @BindView(R.id.toolbar) Toolbar toolbar;
 
     @BindView(R.id.viewpager_id)  ViewPager viewPager;
 
@@ -96,6 +89,7 @@ public class MainActivity extends BaseActivity implements
                 .addItem(new BottomNavigationItem(R.drawable.home_page, "主页"))
                 .addItem(new BottomNavigationItem(R.drawable.pen_book, "录入"))
                 .addItem(new BottomNavigationItem(R.drawable.graphique_statistics, "统计"))
+                .addItem(new BottomNavigationItem(R.drawable.service, "服务"))
                 .addItem(new BottomNavigationItem(R.drawable.config_set, "设置"))
                 .initialise();
         bottomNavigationBar.setTabSelectedListener(this);

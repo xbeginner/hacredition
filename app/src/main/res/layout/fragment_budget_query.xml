@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/budget_button_layout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/top_bar_height"
+        >
+
+        <Button
+            android:layout_width="0dp"
+            android:background="@color/colorPrimary"
+            android:layout_height="match_parent"
+            android:text="收入"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:background="@color/colorPrimary"
+            android:layout_height="match_parent"
+            android:text="支出"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/household_budget_sum"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:text="0.00"
+        android:textSize="80sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/budget_value_layout"
+        android:layout_below="@id/household_budget_sum"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:id="@+id/household_budget_income"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="收入:0.0"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/household_budget_output"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="支出:0.0"
+            android:textSize="20sp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/budget_refresh_layout_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/budget_button_layout"
+        android:layout_below="@id/budget_value_layout">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/budget_recyclerview_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/container_background"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

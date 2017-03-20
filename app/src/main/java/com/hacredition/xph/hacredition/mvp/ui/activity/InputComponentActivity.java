@@ -26,10 +26,12 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.FiscalSpendFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.GuaranteeInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HonourInfoFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.HouseInfoInputFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.IncomeInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.InsuranceInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.MachineInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.MortgageInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.OperationalEntityFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.OutputInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.OwnerShipFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.PoliceInfoFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
@@ -62,6 +64,8 @@ public class InputComponentActivity extends BaseActivity  {
              put("CourtInfoInput",12);
              put("CarInfoInput",13);
              put("InsuranceInfoInput",14);
+             put("IncomeInfoInput",15);
+             put("OutputInfoInput",16);
         }
     };
 
@@ -197,6 +201,18 @@ public class InputComponentActivity extends BaseActivity  {
            }
            case 14:{
                InsuranceInfoInputFragment fragment = new InsuranceInfoInputFragment();
+               fragmentTransaction.add(R.id.input_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 15:{
+               IncomeInputFragment fragment = new IncomeInputFragment();
+               fragmentTransaction.add(R.id.input_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 16:{
+               OutputInputFragment fragment = new OutputInputFragment();
                fragmentTransaction.add(R.id.input_component_layout,fragment);
                fragmentTransaction.commit();
                break;

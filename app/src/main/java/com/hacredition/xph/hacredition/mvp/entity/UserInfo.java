@@ -32,9 +32,12 @@ public class UserInfo implements Serializable {
 
     private Date lastLoginTime;
 
-    @Generated(hash = 2034020735)
+    private String idcard;
+
+
+    @Generated(hash = 80122674)
     public UserInfo(int userId, String userName, int orgId, String orgName,
-            String tel, String imgSrc, Date lastLoginTime) {
+            String tel, String imgSrc, Date lastLoginTime, String idcard) {
         this.userId = userId;
         this.userName = userName;
         this.orgId = orgId;
@@ -42,11 +45,13 @@ public class UserInfo implements Serializable {
         this.tel = tel;
         this.imgSrc = imgSrc;
         this.lastLoginTime = lastLoginTime;
+        this.idcard = idcard;
     }
 
     @Generated(hash = 1279772520)
     public UserInfo() {
     }
+
 
     public Date getLastLoginTime() {
         return lastLoginTime;
@@ -104,4 +109,11 @@ public class UserInfo implements Serializable {
         this.imgSrc = imgSrc;
     }
 
+    public String getIdcard() {
+        return idcard;
+    }
+
+    public void setIdcard(String idcard) {
+        this.idcard = idcard;
+    }
 }

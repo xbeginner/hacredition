@@ -84,6 +84,8 @@ public class QueryComponentActivity extends BaseActivity
              put("HouseHoldQuery",1);
              put("HouseHoldGradeQuery",2);
              put("HouseHoldOrgQuery",3);
+             put("MyHouseHoldQuery",4);
+             put("MyHouseHoldGradeQuery",5);
         }
     };
 
@@ -156,8 +158,11 @@ public class QueryComponentActivity extends BaseActivity
                            }
                        })
                        .show();
+               break;
            }
-           case 1:{
+           case 1:
+           case 4:{
+
                HouseHoldBasicQueryFragment fragment = new HouseHoldBasicQueryFragment();
                fragment.setIdCard(queryIdcard);
                fragmentTransaction.add(R.id.query_component_layout,fragment);
@@ -165,7 +170,8 @@ public class QueryComponentActivity extends BaseActivity
                mListeners = fragment;
                break;
            }
-           case 2:{
+           case 2:
+           case 5:{
                HouseHoldGradeFragment fragment = new HouseHoldGradeFragment();
                fragment.setIdCard(queryIdcard);
                fragmentTransaction.add(R.id.query_component_layout,fragment);
@@ -174,7 +180,7 @@ public class QueryComponentActivity extends BaseActivity
            }
            case 3:{
                HouseHoldOrgGradeFragment fragment = new HouseHoldOrgGradeFragment();
-             // fragment.setIdCard(queryIdcard);
+               fragment.setIdcard(queryIdcard);
                fragmentTransaction.add(R.id.query_component_layout,fragment);
                fragmentTransaction.commit();
                break;
