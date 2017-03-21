@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.mvp.ui.activity.base.BaseActivity;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.BudgetQueryFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.CarInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.CourtInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.CreditInfoInputFragment;
@@ -86,6 +87,7 @@ public class QueryComponentActivity extends BaseActivity
              put("HouseHoldOrgQuery",3);
              put("MyHouseHoldQuery",4);
              put("MyHouseHoldGradeQuery",5);
+             put("MyBudgetQuery",6);
         }
     };
 
@@ -181,6 +183,12 @@ public class QueryComponentActivity extends BaseActivity
            case 3:{
                HouseHoldOrgGradeFragment fragment = new HouseHoldOrgGradeFragment();
                fragment.setIdcard(queryIdcard);
+               fragmentTransaction.add(R.id.query_component_layout,fragment);
+               fragmentTransaction.commit();
+               break;
+           }
+           case 6:{
+               BudgetQueryFragment fragment = new BudgetQueryFragment();
                fragmentTransaction.add(R.id.query_component_layout,fragment);
                fragmentTransaction.commit();
                break;

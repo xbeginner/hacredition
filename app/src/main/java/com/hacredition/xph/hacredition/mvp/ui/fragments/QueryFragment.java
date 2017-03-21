@@ -70,6 +70,7 @@ public class QueryFragment extends BaseFragment
 
     private final static String MYGRADEQUERY = "MyHouseHoldGradeQuery";
 
+    private final static String MYBUDGETQUERY = "MyBudgetQuery";
 
     @Override
     public void initInjector() {
@@ -156,7 +157,7 @@ public class QueryFragment extends BaseFragment
     @Override
     public void onItemClick(View view, String FragmentName) {
         final String fragmentName = FragmentName;
-        if(fragmentName.equals(MYQUERY)||fragmentName.equals(MYGRADEQUERY)){
+        if(fragmentName.equals(MYQUERY)||fragmentName.equals(MYGRADEQUERY)||fragmentName.equals(MYBUDGETQUERY)){
             Bundle bundle = new Bundle();
             bundle.putString("queryfragmentName",fragmentName);
             bundle.putString("idcard",MainActivity.mUserInfo.getIdcard());

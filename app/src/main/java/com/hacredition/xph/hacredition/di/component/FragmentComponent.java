@@ -8,6 +8,7 @@ import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.di.scope.PerFragment;
 import com.hacredition.xph.hacredition.mvp.entity.CreditInfo;
 import com.hacredition.xph.hacredition.mvp.entity.InsuranceInfo;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.BudgetQueryFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.CarInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.CourtInfoInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.CreditInfoInputFragment;
@@ -96,4 +97,6 @@ public interface FragmentComponent{
     void inject(IncomeInputFragment incomeInputFragment);
 
     void inject(OutputInputFragment outputInputFragment);
+
+    void inject(BudgetQueryFragment budgetQueryFragment);
 }

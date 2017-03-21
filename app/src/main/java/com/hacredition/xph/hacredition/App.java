@@ -95,7 +95,6 @@ public class App extends Application {
     }
 
     private boolean isTimeOut(Date time){
-        System.out.println(time);
         return true;
     }
 
