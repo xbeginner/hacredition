@@ -58,7 +58,7 @@ public class HouseInfoInputFragment extends BaseFragment
         ,RadioGroup.OnCheckedChangeListener {
 
 
-    private boolean isValidate = false;
+
 
     @BindView(R.id.idcard_editview)
     EditText idcardEditText;

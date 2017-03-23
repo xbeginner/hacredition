@@ -8,8 +8,10 @@ import java.util.Date;
 
 public interface BudgetQueryPresenter {
 
-    void getBudgetInfo();
+    void getBudgetInfo(String idcard);
 
-    void getBudgetInfoByTime(Date time);
+    void getBudgetInfoByTime(String idcard,int year,int month);
+
+    void getBudgetInfoByType(String idcard,int type);
 
 }

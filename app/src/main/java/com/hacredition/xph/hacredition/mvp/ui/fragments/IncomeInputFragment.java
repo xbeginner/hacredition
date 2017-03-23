@@ -22,6 +22,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.bumptech.glide.Glide;
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
@@ -135,6 +137,7 @@ public class IncomeInputFragment extends BaseFragment
 
     @Override
     public void onClick(View view) {
+
         if(awesomeValidation.validate()){
             IncomeInfo incomeInfo = initIncomeInfo();
             saveInfo(incomeInfo);
@@ -182,6 +185,7 @@ public class IncomeInputFragment extends BaseFragment
 
     @Override
     public void addValidation(){
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         awesomeValidation.addValidation(sumEditText, MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
         awesomeValidation.addValidation(timeEditText, MyRegex.DATE,getResources().getString(R.string.validation_error_pattern));
     }

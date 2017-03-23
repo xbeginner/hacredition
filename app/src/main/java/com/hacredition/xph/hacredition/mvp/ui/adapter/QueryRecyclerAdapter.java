@@ -13,6 +13,8 @@ import com.hacredition.xph.hacredition.mvp.entity.InputItem;
 import com.hacredition.xph.hacredition.mvp.entity.QueryItem;
 import com.hacredition.xph.hacredition.mvp.ui.adapter.base.BaseRecyclerViewAdapter;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;

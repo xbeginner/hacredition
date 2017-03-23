@@ -31,34 +31,35 @@ public class IncomeInfoInputInfo implements InputInfoInterface {
     @Override
     public void save(final SaveCallback saveCallback) {
         saveIncomeInfoToDB(incomeInfo);
+        saveCallback.saveSuccessfully();
          //保存
-        RetrofitManager manager = RetrofitManager.getInstance();
-        manager.saveIncomeInfo(incomeInfo)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<String>() {
-
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(String value) {
-                        saveCallback.saveSuccessfully();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                        saveCallback.saveFially();
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+//        RetrofitManager manager = RetrofitManager.getInstance();
+//        manager.saveIncomeInfo(incomeInfo)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<String>() {
+//
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(String value) {
+//                        saveCallback.saveSuccessfully();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        e.printStackTrace();
+//                        saveCallback.saveFially();
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//
+//                    }
+//                });
     }
 
 

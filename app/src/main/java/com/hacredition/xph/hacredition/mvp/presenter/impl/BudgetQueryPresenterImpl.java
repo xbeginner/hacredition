@@ -51,12 +51,17 @@ public class BudgetQueryPresenterImpl extends BasePresenterImpl<BudgetQueryView,
 
 
     @Override
-    public void getBudgetInfo() {
-        mInteractor.getBudgetQueryInfo();
+    public void getBudgetInfo(String idcard) {
+        mInteractor.getBudgetQueryInfo(this,idcard);
     }
 
     @Override
-    public void getBudgetInfoByTime(Date time) {
-        mInteractor.getBudgetQueryInfoByTime(time);
+    public void getBudgetInfoByTime(String idcard,int year,int month) {
+        mInteractor.getBudgetQueryInfoByTime(this,idcard,year,month);
+    }
+
+    @Override
+    public void getBudgetInfoByType(String idcard, int type) {
+        mInteractor.getBudgetQueryInfoByType(this,idcard,type);
     }
 }

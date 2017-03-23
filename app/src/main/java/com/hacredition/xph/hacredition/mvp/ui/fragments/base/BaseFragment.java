@@ -51,7 +51,9 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     public abstract int getLayoutId();
 
     protected void initValidation(){
-        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+        if(awesomeValidation==null) {
+            awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+        }
         addValidation();
     }
 
@@ -71,7 +73,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
                 .fragmentModule(new FragmentModule(this))
                 .build();
         initInjector();
-        initValidation();
+        //initValidation();
     }
 
     @Nullable
@@ -88,7 +90,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        destroyValidation();
+        //destroyValidation();
         RefWatcher refWatcher = App.getRefWatcher(getActivity());
         refWatcher.watch(this);
 

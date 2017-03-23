@@ -60,9 +60,9 @@ public class App extends Application {
         super.onCreate();
         mApplicationContext = this;
         //初始化监控
-        initUnCatchException();
-        initLeakCanary();
-        initStrictMode();
+        //initUnCatchException();
+        //initLeakCanary();
+        //initStrictMode();
         //初始化夜晚模式
         initDayNightMode();
         //初始化注入

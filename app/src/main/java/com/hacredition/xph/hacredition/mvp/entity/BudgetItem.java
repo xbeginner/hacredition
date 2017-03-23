@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by pc on 2017/3/21.
  */
 
-public class BudgetItem {
+public class BudgetItem implements Comparable<BudgetItem>{
 
     float sum;
 
@@ -56,5 +56,11 @@ public class BudgetItem {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+
+    @Override
+    public int compareTo(BudgetItem budgetItem) {
+        return this.getTime().compareTo(budgetItem.getTime());
     }
 }

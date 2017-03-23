@@ -1,5 +1,7 @@
 package com.hacredition.xph.hacredition.mvp.interactor;
 
+import com.hacredition.xph.hacredition.listener.RequestCallBack;
+
 import java.util.Date;
 
 /**
@@ -8,8 +10,10 @@ import java.util.Date;
 
 public interface BudgetQueryInteractor {
 
-    void getBudgetQueryInfo();
+    void getBudgetQueryInfo(final RequestCallBack callBack, String idcard);
 
-    void getBudgetQueryInfoByTime(Date time);
+    void getBudgetQueryInfoByTime(final RequestCallBack callBack,String idcard,int year,int month);
+
+    void getBudgetQueryInfoByType(final RequestCallBack callBack,final String idcard,final int type);
 
 }

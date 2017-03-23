@@ -28,6 +28,7 @@ public class OutputInfoInputPresenterImpl extends BasePresenterImpl<InputInfoVie
 
     @Override
     public void saveInputInfo(OutputInfo outputInfo) {
+        System.out.println("outputInfo:"+outputInfo.getOutputInfo());
         OutputInfoInputInfo info = new OutputInfoInputInfo(outputInfo);
         mInputInfoImpl.setInputInfoInterface(info);
         mInputInfoImpl.saveInputInfo(this);

@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.hacredition.xph.hacredition.R;
 import com.hacredition.xph.hacredition.di.scope.ContextLife;
 import com.hacredition.xph.hacredition.mvp.entity.IncomeInfo;
@@ -86,12 +88,13 @@ public class OutputInputFragment extends BaseFragment
         timeEditText.setText(time);
         timeEditText.setInputType(InputType.TYPE_NULL);
         timeEditText.setOnFocusChangeListener(this);
-        addValidation();
+        //addValidation();
         submitButton.setOnClickListener(this);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(activityContext,R.array.outputType,android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(adapter);
         ArrayAdapter adapter1 = ArrayAdapter.createFromResource(activityContext,R.array.spendType,android.R.layout.simple_spinner_dropdown_item);
-        spendSpinner.setAdapter(adapter);
+        spendSpinner.setAdapter(adapter1);
+
     }
 
     @Override
@@ -128,10 +131,10 @@ public class OutputInputFragment extends BaseFragment
 
     @Override
     public void onClick(View view) {
-        if(awesomeValidation.validate()){
+        //if(awesomeValidation.validate()){
             OutputInfo outputInfo = initOutputInfo();
             saveInfo(outputInfo);
-        }
+       // }
     }
 
 
@@ -176,6 +179,7 @@ public class OutputInputFragment extends BaseFragment
 
     @Override
     public void addValidation(){
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         awesomeValidation.addValidation(sumEditText, MyRegex.NOTNULL,getResources().getString(R.string.validation_error_null));
         awesomeValidation.addValidation(timeEditText, MyRegex.DATE,getResources().getString(R.string.validation_error_pattern));
     }

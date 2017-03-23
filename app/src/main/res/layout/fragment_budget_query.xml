@@ -30,21 +30,52 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/household_budget_sum"
+    <LinearLayout
+        android:id="@+id/top_linear_layout"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:text="0.00"
-        android:textSize="80sp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:background="@color/colorPrimary"
-        />
+        android:background="@color/colorPrimary">
+
+        <ImageButton
+            android:id="@+id/time_select_image"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/calendar"
+            android:background="@color/colorPrimary"/>
+
+
+        <TextView
+            android:id="@+id/household_budget_sum"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:text="0.00"
+            android:textSize="80sp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary"
+            android:layout_weight="8"
+            />
+
+        <ImageButton
+            android:id="@+id/graph_select_image"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chart"
+            android:background="@color/colorPrimary"/>
+
+    </LinearLayout>
+
+
 
 
     <LinearLayout
         android:id="@+id/budget_value_layout"
-        android:layout_below="@id/household_budget_sum"
+        android:layout_below="@id/top_linear_layout"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="40dp">
@@ -53,7 +84,7 @@
             android:id="@+id/household_budget_income"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:text="收入:0.0"
+            android:text="收入:1.0"
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:textSize="20sp"
@@ -64,7 +95,7 @@
             android:id="@+id/household_budget_output"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:text="支出:0.0"
+            android:text="支出:1.0"
             android:textSize="20sp"
             android:background="@color/colorPrimary"
             android:gravity="center"
@@ -74,19 +105,15 @@
     </LinearLayout>
 
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/budget_refresh_layout_id"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/budget_button_layout"
-        android:layout_below="@id/budget_value_layout">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/budget_recyclerview_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@id/budget_button_layout"
+            android:layout_below="@id/budget_value_layout"
             android:background="@color/container_background"/>
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+
 
 </RelativeLayout>
