@@ -159,7 +159,9 @@ public class IncomeInputFragment extends BaseFragment
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-        timeEditText.setText(year+"-"+month+"-"+day);
+        String mStr = month<10?"0"+month:month+"";
+        String mDay = day<10?"0"+day:day+"";
+        timeEditText.setText(year+"-"+mStr+"-"+mDay);
     }
 
     @Override

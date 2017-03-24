@@ -45,7 +45,7 @@ public class BudgetItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Inject
     @Singleton
     public BudgetItemAdapter() {
-
+        mItems = new ArrayList<BudgetItem>();
     }
 
     @Override
@@ -103,8 +103,6 @@ public class BudgetItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public void setList(List<BudgetItem> list){
-        System.out.println("setList:"+Thread.currentThread().getName());
         mItems = list;
-
     }
 }

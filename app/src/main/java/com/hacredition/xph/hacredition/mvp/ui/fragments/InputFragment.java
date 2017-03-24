@@ -41,7 +41,8 @@ import javax.inject.Inject;
 import butterknife.BindView;
 
 public class InputFragment extends BaseFragment
-        implements InputView,InputRecyclerAdapter.OnInputItemClickListener{
+        implements InputView,
+        InputRecyclerAdapter.OnInputItemClickListener{
 
     @BindView(R.id.input_item_recyclerview_id)
     RecyclerView recyclerView;

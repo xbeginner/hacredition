@@ -14,7 +14,7 @@ public class MonPickDialog extends DatePickerDialog {
     public MonPickDialog(Context context,int themeRes,OnDateSetListener listener,int year,int month,int day) {
         super(context,themeRes,listener,year,month,day);
         this.setTitle(year + "年" + (month + 1) + "月");
-        ((ViewGroup) ((ViewGroup) this.getDatePicker().getChildAt(0)).getChildAt(0)).getChildAt(2).setVisibility(View.GONE);
+        ((ViewGroup) ((ViewGroup) this.getDatePicker().getChildAt(0)).getChildAt(0)).getChildAt(1).setVisibility(View.GONE);
     }
 
     @Override

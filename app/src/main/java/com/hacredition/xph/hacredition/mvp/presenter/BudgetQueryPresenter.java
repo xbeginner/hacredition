@@ -10,7 +10,7 @@ public interface BudgetQueryPresenter {
 
     void getBudgetInfo(String idcard);
 
-    void getBudgetInfoByTime(String idcard,int year,int month);
+    void getBudgetInfoByTime(String idcard,Date time);
 
     void getBudgetInfoByType(String idcard,int type);
 

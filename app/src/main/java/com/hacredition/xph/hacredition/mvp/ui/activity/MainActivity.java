@@ -17,6 +17,7 @@ import com.hacredition.xph.hacredition.mvp.ui.adapter.MyViewPagerAdatper;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.InputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.NewsFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.QueryFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.ServerFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +49,8 @@ public class MainActivity extends BaseActivity implements
     private InputFragment inputFragment;
 
     private QueryFragment queryFragment;
+
+    private ServerFragment serverFragment;
 
     public static UserInfo mUserInfo;
 
@@ -106,9 +109,11 @@ public class MainActivity extends BaseActivity implements
         NewsFragment newsFragment = new NewsFragment();
         inputFragment = new InputFragment();
         queryFragment = new QueryFragment();
+        serverFragment = new ServerFragment();
         viewList.add(newsFragment);
         viewList.add(inputFragment);
         viewList.add(queryFragment);
+        viewList.add(serverFragment);
         return viewList;
     }
 
@@ -153,6 +158,9 @@ public class MainActivity extends BaseActivity implements
                     case 2:
                         queryFragment.showQueryItems();
                         break;
+                    case 3:
+                        serverFragment.showServerItems();
+
                 }
             }
         }

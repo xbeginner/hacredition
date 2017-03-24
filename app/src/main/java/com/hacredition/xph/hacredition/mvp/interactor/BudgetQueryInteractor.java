@@ -12,7 +12,7 @@ public interface BudgetQueryInteractor {
 
     void getBudgetQueryInfo(final RequestCallBack callBack, String idcard);
 
-    void getBudgetQueryInfoByTime(final RequestCallBack callBack,String idcard,int year,int month);
+    void getBudgetQueryInfoByTime(final RequestCallBack callBack,String idcard,Date time);
 
     void getBudgetQueryInfoByType(final RequestCallBack callBack,final String idcard,final int type);
 

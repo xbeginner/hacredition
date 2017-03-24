@@ -31,6 +31,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.OutputInputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.OwnerShipFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.PoliceInfoFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.QueryFragment;
+import com.hacredition.xph.hacredition.mvp.ui.fragments.ServerFragment;
 import com.hacredition.xph.hacredition.mvp.view.HouseHoldBasicQueryView;
 
 import dagger.Component;
@@ -99,4 +100,6 @@ public interface FragmentComponent{
     void inject(OutputInputFragment outputInputFragment);
 
     void inject(BudgetQueryFragment budgetQueryFragment);
+
+    void inject(ServerFragment serverFragment);
 }

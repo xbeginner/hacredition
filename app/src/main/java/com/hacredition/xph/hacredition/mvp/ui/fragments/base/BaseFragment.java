@@ -91,8 +91,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         //destroyValidation();
-        RefWatcher refWatcher = App.getRefWatcher(getActivity());
-        refWatcher.watch(this);
+//        RefWatcher refWatcher = App.getRefWatcher(getActivity());
+//        refWatcher.watch(this);
 
         if(mPresenter!=null){
             mPresenter.onDestory();

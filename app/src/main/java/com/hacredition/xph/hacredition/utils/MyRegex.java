@@ -16,7 +16,7 @@ public  class MyRegex {
 
     public static final String PHONENUMBER = "^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
 
-    public static final String DATE = "^(\\d{4})-(\\d{1}|1[0-2])-(\\d{1}|[12]\\d{1}|3[01])$";
+    public static final String DATE = "^(\\d{4})-(\\d{1}|1[0-2]|0[1-9])-(\\d{1}|[12]\\d{1}|3[01]|0[1-9])$";
 
     public static final String TIME = "^(0\\d{1}|1\\d{1}|2[0-3]):[0-5]\\d{1}:([0-5]\\d{1})$";
 
