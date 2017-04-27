@@ -28,10 +28,13 @@ import com.hacredition.xph.hacredition.mvp.view.LoginView;
 import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 import com.hacredition.xph.hacredition.utils.MyUtils;
 
+import net.steamcrafted.materialiconlib.MaterialIconView;
+
 import javax.inject.Inject;
 
 import butterknife.BindDimen;
 import butterknife.BindView;
+import info.hoang8f.widget.FButton;
 
 public class LoginActivity extends BaseActivity
         implements LoginView,View.OnClickListener
@@ -53,13 +56,13 @@ public class LoginActivity extends BaseActivity
     Button registerButton;
 
     @BindView(R.id.login_button)
-    Button loginButton;
+    FButton loginButton;
 
     @BindView(R.id.forget_password_text)
     TextView forgetPasswordText;
 
     @BindView(R.id.back_image_view_id)
-    ImageView backButton;
+    MaterialIconView backButton;
 
     @Inject
     LoginPresenterImpl loginPresenter;

@@ -18,13 +18,24 @@
             app:layout_scrollFlags="scroll|enterAlways"
             >
 
-            <android.support.v7.widget.AppCompatImageView
+            <!--<android.support.v7.widget.AppCompatImageView-->
+                <!--android:id="@+id/back_image_view_id"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/back_32px"-->
+                <!--android:visibility="gone"-->
+                <!--/>-->
+
+            <net.steamcrafted.materialiconlib.MaterialIconView
                 android:id="@+id/back_image_view_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/back_32px"
-                android:visibility="gone"
-                />
+                app:materialIcon="arrow_left"
+                app:materialIconColor="#fff"
+                app:materialIconSize="24dp"
+                android:scaleType="center"
+                android:background="@color/colorPrimary"
+            />
 
         </android.support.v7.widget.Toolbar>
 
