@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
@@ -17,23 +19,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/operationalentity_idcard_editview"
                 android:hint="证件号"
                 android:maxLines="1"
                 android:padding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="410702983789293868"/>
+                app:met_baseColor="@color/black"
+                app:met_primaryColor="@color/colorPrimary"
+                app:met_errorColor="@color/red"
+                app:met_floatingLabel="highlight" />
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/operationalentity_name_editview"
                 android:hint="姓名"
                 android:maxLines="1"
                 android:padding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="张三"/>
+                app:met_baseColor="@color/black"
+                app:met_primaryColor="@color/colorPrimary"
+                app:met_errorColor="@color/red"
+                app:met_floatingLabel="highlight" />
+
 
 
 
@@ -42,25 +51,32 @@
                 android:padding="16dp"
                 android:layout_height="wrap_content"></Spinner>
 
-
-
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/operationalentity_xiangmu_edit"
                 android:hint="经营项目"
                 android:maxLines="1"
                 android:padding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="经营项目"/>
+                app:met_baseColor="@color/black"
+                app:met_primaryColor="@color/colorPrimary"
+                app:met_errorColor="@color/red"
+                app:met_floatingLabel="highlight" />
 
-            <EditText
+
+
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/operationalentity_guimo_edit"
                 android:hint="经营规模"
                 android:maxLines="1"
                 android:padding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="130万"/>
+                app:met_baseColor="@color/black"
+                app:met_primaryColor="@color/colorPrimary"
+                app:met_errorColor="@color/red"
+                app:met_floatingLabel="highlight" />
+
 
         </LinearLayout>
 

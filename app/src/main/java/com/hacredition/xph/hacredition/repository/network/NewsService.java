@@ -43,24 +43,24 @@ import retrofit2.http.Query;
 
 public interface NewsService {
 
-    @GET("servlet/test")
+    @GET("test")
     Observable<List<NewsSummary>> getNewsList(
             @Query("existNewsId") int existNewsId);
 
-    @GET("servlet/test1")
+    @GET("test1")
     Observable<NewsDetail> getNewsDetail(
          @Query("newsId") int newsId);
 
-    @GET("servlet/login")
+    @GET("login")
     Observable<UserInfo> getUserInfo(
             @Query("username") String username,@Query("password") String password);
 
 
-    @GET("servlet/input")
+    @GET("input")
     Observable<List<InputItem>> getInputItems(
             @Query("userId") int userId);
 
-    @GET("servlet/query")
+    @GET("query")
     Observable<List<QueryItem>> getQueryItems(
             @Query("userId") int userId);
 
@@ -77,30 +77,30 @@ public interface NewsService {
             @Body FiscalSpend fiscalSpend);
 
     @Headers("Content-Type:application/json")
-    @POST("servlet/saveOperationalEntity")
+    @POST("saveOperationalEntity")
     Observable<String> saveOperationalEntity(
             @Body OperationalEntity operationalEntity);
 
     @Headers("Content-Type:application/json")
-    @POST("servlet/saveEntrepreneurship")
+    @POST("saveEntrepreneurship")
     Observable<String> saveEntrepreneurship(
             @Body Entrepreneurship entrepreneurship);
 
 
     @Headers("Content-Type:application/json")
-    @POST("servlet/saveOwnerShip")
+    @POST("saveOwnerShip")
     Observable<String> saveOwnerShip(
             @Body OwnerShip ownerShip);
 
 
     @Headers("Content-Type:application/json")
-    @POST("servlet/saveHonourInfo")
+    @POST("saveHonourInfo")
     Observable<String> saveHonourInfo(
             @Body HonourInfo honourInfo);
 
 
     @Headers("Content-Type:application/json")
-    @POST("servlet/saveMachineInfo")
+    @POST("saveMachineInfo")
     Observable<String> saveMachine(
             @Body MachineInfo machineInfo);
 
@@ -112,7 +112,7 @@ public interface NewsService {
 
 
     @Headers("Content-Type:application/json")
-    @POST("servlet/saveCreditInfo")
+    @POST("saveCreditInfo")
     Observable<String> saveCreditInfo(
             @Body CreditInfo creditInfo);
 
@@ -136,7 +136,7 @@ public interface NewsService {
 
 
     @Headers("Content-Type:application/json")
-    @POST("servlet/saveCarInfo")
+    @POST("saveCarInfo")
     Observable<String> saveCarInfo(
             @Body CarInfo carInfo);
 
@@ -147,18 +147,18 @@ public interface NewsService {
 
 
     @Headers("Content-Type:application/json")
-    @POST("servlet/saveIncomeInfo")
+    @POST("saveIncomeInfo")
     Observable<String> saveIncomeInfo(
             @Body IncomeInfo incomeInfo);
 
 
     @Headers("Content-Type:application/json")
-    @POST("servlet/saveOutputInfo")
+    @POST("saveOutputInfo")
     Observable<String> saveOutputInfo(
             @Body OutputInfo outputInfo);
 
 
-    @GET("servlet/queryHouseHoldOtherInfo")
+    @GET("queryHouseHoldOtherInfo")
     Observable<List<BaseAdapterItem>> getHouseHoldOtherInfoItems(
             @Query("idcard") String idcard,@Query("type") int type);
 }

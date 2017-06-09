@@ -38,6 +38,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.io.File;
 import java.util.Calendar;
@@ -57,25 +58,25 @@ public class CreditInfoInputFragment extends BaseFragment
 
 
     @BindView(R.id.creditinfo_idcard_editview)
-    EditText idcardEditText;
+    MaterialEditText idcardEditText;
 
     @BindView(R.id.creditinfo_name_editview)
-    EditText nameEditText;
+    MaterialEditText nameEditText;
 
     @BindView(R.id.creditinfo_yongtu_editview)
-    EditText yongtuEditText;
+    MaterialEditText yongtuEditText;
 
     @BindView(R.id.creditinfo_shouxin_edit)
-    EditText shouxinEditText;
+    MaterialEditText shouxinEditText;
 
     @BindView(R.id.creditinfo_fafang_edit)
-    EditText fafangEditText;
+    MaterialEditText fafangEditText;
 
     @BindView(R.id.creditinfo_fafangtime_edit)
-    EditText fafangTimeEditText;
+    MaterialEditText fafangTimeEditText;
 
     @BindView(R.id.creditinfo_daoqitime_edit)
-    EditText daoqiTimeEditText;
+    MaterialEditText daoqiTimeEditText;
 
     @BindView(R.id.creditinfo_anqifuxi_radiogroup)
     RadioGroup anqifuxiRadioGroup;

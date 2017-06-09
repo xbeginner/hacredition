@@ -17,47 +17,48 @@
     app:cardCornerRadius="10dp"
     app:cardElevation="10dp">
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:weightSum="1">-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/input_image_id"-->
+            <!--android:layout_width="74dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--tools:src="@drawable/no_action"-->
+            <!--android:contentDescription="" />-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_weight="0.8"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content">-->
+
+
+    <TextView
+        android:id="@+id/input_title_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="1">
+        android:textSize="@dimen/big_large"
+        android:gravity="center"
+        tools:text="录入信息"/>
 
-        <ImageView
-            android:id="@+id/input_image_id"
-            android:layout_width="74dp"
-            android:layout_height="match_parent"
-            tools:src="@drawable/no_action"
-            android:contentDescription="" />
-
-        <LinearLayout
-            android:layout_weight="0.8"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+    <!--<TextView-->
+                <!--android:id="@+id/input_info_id"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:textSize="10sp"-->
+                <!--android:textColor="#545454"-->
+                <!--tools:text="录入XXXX信息"/>-->
 
 
-            <TextView
-                android:id="@+id/input_title_id"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="@dimen/big_large"
-                tools:text="录入信息"/>
-
-            <TextView
-                android:id="@+id/input_info_id"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="10sp"
-                android:textColor="#545454"
-                tools:text="录入XXXX信息"/>
-
-
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
 
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
  </android.support.v7.widget.CardView>
 

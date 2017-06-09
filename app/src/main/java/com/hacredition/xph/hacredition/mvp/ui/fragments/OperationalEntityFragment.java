@@ -24,6 +24,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.Calendar;
 
@@ -40,16 +41,16 @@ public class OperationalEntityFragment extends BaseFragment
     private boolean isValidate = false;
 
     @BindView(R.id.operationalentity_idcard_editview)
-    EditText idcardEditText;
+    MaterialEditText idcardEditText;
 
     @BindView(R.id.operationalentity_name_editview)
-    EditText nameEditText;
+    MaterialEditText nameEditText;
 
     @BindView(R.id.operationalentity_xiangmu_edit)
-    EditText xiangmuEditText;
+    MaterialEditText xiangmuEditText;
 
     @BindView(R.id.operationalentity_guimo_edit)
-    EditText guimoEditText;
+    MaterialEditText guimoEditText;
 
     @BindView(R.id.operationalentity_type_spinner)
     Spinner typeSpinner;

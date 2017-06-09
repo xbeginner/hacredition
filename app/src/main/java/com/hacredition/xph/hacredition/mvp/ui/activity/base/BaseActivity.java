@@ -28,6 +28,7 @@ import com.hacredition.xph.hacredition.utils.NetUtil;
 import java.util.Collection;
 
 import butterknife.ButterKnife;
+import devlight.io.library.ntb.NavigationTabBar;
 
 /**
  * 定义一个基础的Activity，包含一些公用方法
@@ -60,7 +61,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     protected  Toolbar toolbar;
 
-    protected BottomNavigationBar bottomNavigationBar;
+    protected NavigationTabBar bottomNavigationBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

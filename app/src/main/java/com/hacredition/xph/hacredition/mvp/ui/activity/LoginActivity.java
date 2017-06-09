@@ -8,6 +8,7 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -28,7 +29,7 @@ import com.hacredition.xph.hacredition.mvp.view.LoginView;
 import com.hacredition.xph.hacredition.mvp.view.base.BaseView;
 import com.hacredition.xph.hacredition.utils.MyUtils;
 
-import net.steamcrafted.materialiconlib.MaterialIconView;
+
 
 import javax.inject.Inject;
 
@@ -62,7 +63,7 @@ public class LoginActivity extends BaseActivity
     TextView forgetPasswordText;
 
     @BindView(R.id.back_image_view_id)
-    MaterialIconView backButton;
+    AppCompatImageView backButton;
 
     @Inject
     LoginPresenterImpl loginPresenter;

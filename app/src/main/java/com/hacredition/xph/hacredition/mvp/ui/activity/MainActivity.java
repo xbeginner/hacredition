@@ -2,6 +2,7 @@ package com.hacredition.xph.hacredition.mvp.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -18,6 +19,8 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.InputFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.NewsFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.QueryFragment;
 import com.hacredition.xph.hacredition.mvp.ui.fragments.ServerFragment;
+
+import devlight.io.library.ntb.NavigationTabBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,15 +90,56 @@ public class MainActivity extends BaseActivity implements
 
 
     private void initBottomBar(){
-        bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar_id);
-        bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.drawable.home_page, "主页"))
-                .addItem(new BottomNavigationItem(R.drawable.pen_book, "录入"))
-                .addItem(new BottomNavigationItem(R.drawable.graphique_statistics, "统计"))
-                .addItem(new BottomNavigationItem(R.drawable.service, "服务"))
-                .addItem(new BottomNavigationItem(R.drawable.config_set, "设置"))
-                .initialise();
-        bottomNavigationBar.setTabSelectedListener(this);
+//        bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar_id);
+//        bottomNavigationBar
+//                .addItem(new BottomNavigationItem(R.drawable.home_page, "主页"))
+//                .addItem(new BottomNavigationItem(R.drawable.pen_book, "录入"))
+//                .addItem(new BottomNavigationItem(R.drawable.graphique_statistics, "统计"))
+//                .addItem(new BottomNavigationItem(R.drawable.service, "服务"))
+//                .addItem(new BottomNavigationItem(R.drawable.config_set, "设置"))
+//                .initialise();
+//        bottomNavigationBar.setTabSelectedListener(this);
+         final String[] colors = getResources().getStringArray(R.array.nbt_color);
+        final NavigationTabBar navigationTabBar = (NavigationTabBar) findViewById(R.id.ntb);
+        final ArrayList<NavigationTabBar.Model> models = new ArrayList<>();
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.home_page),
+                        Color.parseColor(colors[0])
+                ).title("主页")
+                        .build()
+        );
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.pen_book),
+                        Color.parseColor(colors[1])
+                ).title("录入")
+                        .build()
+        );
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.graphique_statistics),
+                        Color.parseColor(colors[2])
+                ).title("统计")
+                        .build()
+        );
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.service),
+                        Color.parseColor(colors[3])
+                ).title("服务")
+                        .build()
+        );
+        models.add(
+                new NavigationTabBar.Model.Builder(
+                        getResources().getDrawable(R.drawable.config_set),
+                        Color.parseColor(colors[4])
+                ).title("设置")
+                        .build()
+        );
+        navigationTabBar.setModels(models);
+        navigationTabBar.setViewPager(viewPager, 0);
+
     }
 
 
@@ -191,7 +235,7 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onPageSelected(int position) {
-         bottomNavigationBar.selectTab(position);
+       //  bottomNavigationBar.selectTab(position);
     }
 
     @Override
