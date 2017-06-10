@@ -24,6 +24,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.Calendar;
 
@@ -41,22 +42,22 @@ public class HonourInfoFragment extends BaseFragment
 
 
     @BindView(R.id.honourinfo_idcard_editview)
-    EditText idcardEditText;
+    MaterialEditText idcardEditText;
 
     @BindView(R.id.honourinfo_name_editview)
-    EditText nameEditText;
+    MaterialEditText nameEditText;
 
     @BindView(R.id.honourinfo_shixiang_edit)
-    EditText shixiangEditText;
+    MaterialEditText shixiangEditText;
 
     @BindView(R.id.honourinfo_org_editview)
-    EditText orgEditText;
+    MaterialEditText orgEditText;
 
     @BindView(R.id.honourinfo_time_editview)
-    EditText timeEditText;
+    MaterialEditText timeEditText;
 
     @BindView(R.id.honourinfo_number_editview)
-    EditText numberEditText;
+    MaterialEditText numberEditText;
 
     @BindView(R.id.honourinfo_level_spinner)
     Spinner levelSpinner;

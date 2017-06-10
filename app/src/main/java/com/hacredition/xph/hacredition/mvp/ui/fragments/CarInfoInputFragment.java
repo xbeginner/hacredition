@@ -32,6 +32,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.io.File;
 import java.util.Calendar;
@@ -50,23 +51,23 @@ public class CarInfoInputFragment extends BaseFragment
 
 
     @BindView(R.id.car_name_editview)
-    EditText nameEditText;
+    MaterialEditText nameEditText;
 
     @BindView(R.id.car_idcard_editview)
-    EditText idcardEditText;
+    MaterialEditText idcardEditText;
 
 
     @BindView(R.id.car_pinpai_editview)
-    EditText pinpaiEditText;
+    MaterialEditText pinpaiEditText;
 
     @BindView(R.id.car_chexing_editview)
-    EditText chexingEditText;
+    MaterialEditText chexingEditText;
 
     @BindView(R.id.car_time_edit)
-    EditText timeEditText;
+    MaterialEditText timeEditText;
 
     @BindView(R.id.car_number_editview)
-    EditText numberEditText;
+    MaterialEditText numberEditText;
 
 
     @BindView(R.id.car_submit_button)

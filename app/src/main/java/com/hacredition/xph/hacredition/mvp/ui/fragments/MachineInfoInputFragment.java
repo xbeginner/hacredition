@@ -36,6 +36,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.io.File;
 import java.util.Calendar;
@@ -54,26 +55,26 @@ public class MachineInfoInputFragment extends BaseFragment
 
 
     @BindView(R.id.machine_name_editview)
-    EditText nameEditText;
+    MaterialEditText nameEditText;
 
     @BindView(R.id.machine_idcard_editview)
-    EditText idcardEditText;
+    MaterialEditText idcardEditText;
 
 
     @BindView(R.id.machine_type_editview)
-    EditText typeEditText;
+    MaterialEditText typeEditText;
 
     @BindView(R.id.machine_time_edit)
-    EditText timeEditText;
+    MaterialEditText timeEditText;
 
     @BindView(R.id.machine_value_edit)
-    EditText valueEditText;
+    MaterialEditText valueEditText;
 
     @BindView(R.id.machine_currentValue_edit)
-    EditText currentValueEditText;
+    MaterialEditText currentValueEditText;
 
     @BindView(R.id.machine_number_editview)
-    EditText numberEditText;
+    MaterialEditText numberEditText;
 
 
 

@@ -21,6 +21,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.security.acl.Owner;
 
@@ -35,22 +36,22 @@ public class OwnerShipFragment extends BaseFragment
 
 
     @BindView(R.id.ownership_idcard_editview)
-    EditText idcardEditText;
+    MaterialEditText idcardEditText;
 
     @BindView(R.id.ownership_name_editview)
-    EditText nameEditText;
+    MaterialEditText nameEditText;
 
     @BindView(R.id.ownership_number_edit)
-    EditText numberEditText;
+    MaterialEditText numberEditText;
 
     @BindView(R.id.ownership_eara_edit)
-    EditText earaEditText;
+    MaterialEditText earaEditText;
 
     @BindView(R.id.ownership_value_edit)
-    EditText valueEditText;
+    MaterialEditText valueEditText;
 
     @BindView(R.id.ownership_qixian_edit)
-    EditText qixianEditText;
+    MaterialEditText qixianEditText;
 
     @BindView(R.id.ownership_type_spinner)
     Spinner typeSpinner;

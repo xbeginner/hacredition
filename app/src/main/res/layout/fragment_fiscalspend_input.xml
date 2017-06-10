@@ -17,51 +17,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/fiscalspend_idcard_editview"
                 android:hint="证件号"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="410702983789293868"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/fiscalspend_name_editview"
                 android:hint="姓名"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="张三"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/fiscalspend_time_edit"
                 android:hint="参加工作时间"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="2017-01-01"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/fiscalspend_org_edit"
                 android:hint="单位名称"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="人民银行"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/fiscalspend_zhiwu_edit"
                 android:hint="职务"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="职务"/>
+                style="@style/materialEditTextStyle"/>
 
             <Spinner android:id="@+id/fiscalspend_jibie_spinner"
                 android:layout_width="match_parent"
@@ -75,14 +54,10 @@
 
 
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/fiscalspend_location_edit"
                 android:hint="单位地址"
-                android:maxLines="2"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="100"/>
+                style="@style/materialEditTextStyle"/>
 
         </LinearLayout>
 

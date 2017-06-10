@@ -25,6 +25,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.Calendar;
 
@@ -43,29 +44,29 @@ public class GuaranteeInfoInputFragment extends BaseFragment
 
 
     @BindView(R.id.guarantee_idcard_editview)
-    EditText idcardEditText;
+    MaterialEditText idcardEditText;
 
     @BindView(R.id.guarantee_name_editview)
-    EditText nameEditText;
+    MaterialEditText nameEditText;
 
     @BindView(R.id.guaranted_idcard_editview)
-    EditText guarantedIdcardEditText;
+    MaterialEditText guarantedIdcardEditText;
 
     @BindView(R.id.guaranted_name_editview)
-    EditText guarantedNameEditText;
+    MaterialEditText guarantedNameEditText;
 
 
     @BindView(R.id.guarantee_jine_edit)
-    EditText jineEditText;
+    MaterialEditText jineEditText;
 
     @BindView(R.id.guarantee_weijieqing_edit)
-    EditText weijieqingEditText;
+    MaterialEditText weijieqingEditText;
 
     @BindView(R.id.guarantee_fafangtime_edit)
-    EditText fafangTimeEditText;
+    MaterialEditText fafangTimeEditText;
 
     @BindView(R.id.guarantee_daoqitime_edit)
-    EditText daoqiTimeEditText;
+    MaterialEditText daoqiTimeEditText;
 
 
 

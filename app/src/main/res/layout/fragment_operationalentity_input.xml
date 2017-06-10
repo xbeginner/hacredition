@@ -22,26 +22,12 @@
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/operationalentity_idcard_editview"
                 android:hint="证件号"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:met_baseColor="@color/black"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_errorColor="@color/red"
-                app:met_floatingLabel="highlight" />
+                style="@style/materialEditTextStyle"  />
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/operationalentity_name_editview"
                 android:hint="姓名"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:met_baseColor="@color/black"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_errorColor="@color/red"
-                app:met_floatingLabel="highlight" />
+                style="@style/materialEditTextStyle"  />
 
 
 
@@ -54,28 +40,14 @@
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/operationalentity_xiangmu_edit"
                 android:hint="经营项目"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:met_baseColor="@color/black"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_errorColor="@color/red"
-                app:met_floatingLabel="highlight" />
+                style="@style/materialEditTextStyle" />
 
 
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/operationalentity_guimo_edit"
                 android:hint="经营规模"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:met_baseColor="@color/black"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_errorColor="@color/red"
-                app:met_floatingLabel="highlight" />
+                style="@style/materialEditTextStyle" />
 
 
         </LinearLayout>

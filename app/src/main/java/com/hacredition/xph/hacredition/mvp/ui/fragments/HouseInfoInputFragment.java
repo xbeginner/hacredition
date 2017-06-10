@@ -37,6 +37,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.greenrobot.greendao.annotation.NotNull;
 
@@ -61,22 +62,22 @@ public class HouseInfoInputFragment extends BaseFragment
 
 
     @BindView(R.id.idcard_editview)
-    EditText idcardEditText;
+    MaterialEditText idcardEditText;
 
     @BindView(R.id.houseinfo_buildtime_edit)
-    EditText buildTimeEditText;
+    MaterialEditText buildTimeEditText;
 
     @BindView(R.id.houseinfo_area_edit)
-    EditText areaEditText;
+    MaterialEditText areaEditText;
 
     @BindView(R.id.fangchanzhenghao_editview)
-    EditText fangchanzhenghaoEditText;
+    MaterialEditText fangchanzhenghaoEditText;
 
     @BindView(R.id.houseinfo_location_edit)
-    EditText locationEditText;
+    MaterialEditText locationEditText;
 
     @BindView(R.id.houseinfo_value_edit)
-    EditText valueEditText;
+    MaterialEditText valueEditText;
 
     @BindView(R.id.houseinfo_radiogroup)
     RadioGroup metalogRadioGroup;

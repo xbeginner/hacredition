@@ -23,42 +23,29 @@
                 android:layout_height="wrap_content"></Spinner>
 
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/policeinfo_idcard_editview"
                 android:hint="涉事人证件号"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="410702983789293868"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/policeinfo_name_editview"
                 android:hint="涉事人姓名"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="张三"/>
+                style="@style/materialEditTextStyle"/>
 
 
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/policeinfo_time_editview"
                 android:hint="涉事时间"
                 android:inputType="date"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/materialEditTextStyle"
                 />
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/policeinfo_xianzhuang_editview"
                 android:hint="现状"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/materialEditTextStyle"
                 />
 
 

@@ -25,6 +25,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.Calendar;
 
@@ -42,16 +43,16 @@ public class CourtInfoInputFragment extends BaseFragment
 
 
     @BindView(R.id.courtinfo_idcard_editview)
-    EditText idcardEditText;
+    MaterialEditText idcardEditText;
 
     @BindView(R.id.courtinfo_name_editview)
-    EditText nameEditText;
+    MaterialEditText nameEditText;
 
     @BindView(R.id.courtinfo_time_editview)
-    EditText timeEditText;
+    MaterialEditText timeEditText;
 
     @BindView(R.id.courtinfo_shiyou_editview)
-    EditText shiyouEditText;
+    MaterialEditText shiyouEditText;
 
 
     @BindView(R.id.courtinfo_type_spinner)

@@ -21,6 +21,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import javax.inject.Inject;
 
@@ -35,19 +36,19 @@ public class EntrepreneurshipFragment extends BaseFragment
     private boolean isValidate = false;
 
     @BindView(R.id.entrepreneurship_idcard_editview)
-    EditText idcardEditText;
+    MaterialEditText idcardEditText;
 
     @BindView(R.id.entrepreneurship_name_editview)
-    EditText nameEditText;
+    MaterialEditText nameEditText;
 
     @BindView(R.id.entrepreneurship_xiangmu_edit)
-    EditText xiangmuEditText;
+    MaterialEditText xiangmuEditText;
 
     @BindView(R.id.entrepreneurship_guimo_edit)
-    EditText guimoEditText;
+    MaterialEditText guimoEditText;
 
     @BindView(R.id.entrepreneurship_jindu_edit)
-    EditText jinduEditText;
+    MaterialEditText jinduEditText;
 
     @BindView(R.id.entrepreneurship_type_spinner)
     Spinner typeSpinner;

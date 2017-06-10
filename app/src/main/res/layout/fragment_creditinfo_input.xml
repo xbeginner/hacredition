@@ -20,78 +20,35 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!--<EditText-->
-                <!--android:id="@+id/creditinfo_idcard_editview"-->
-                <!--android:hint="贷款人证件号"-->
-                <!--android:maxLines="1"-->
-                <!--android:padding="16dp"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--tools:text="410702983789293868"/>-->
+
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/creditinfo_idcard_editview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:padding="16dp"
+                style="@style/materialEditTextStyle"
                 android:hint="贷款人证件号"
-                app:met_baseColor="@color/black"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_errorColor="@color/red"
-                app:met_floatingLabel="highlight" />
+              />
 
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/creditinfo_name_editview"
                 android:hint="贷款人姓名"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:met_baseColor="@color/black"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_errorColor="@color/red"
-                app:met_floatingLabel="highlight" />
+                style="@style/materialEditTextStyle"  />
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/creditinfo_yongtu_editview"
                 android:hint="贷款用途"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:met_baseColor="@color/black"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_errorColor="@color/red"
-                app:met_floatingLabel="highlight" />
+                style="@style/materialEditTextStyle"  />
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/creditinfo_shouxin_edit"
                 android:hint="授信金额(万元)"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:met_baseColor="@color/black"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_errorColor="@color/red"
-                app:met_floatingLabel="highlight" />
+                style="@style/materialEditTextStyle"  />
 
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/creditinfo_fafang_edit"
                 android:hint="发放金额(万元)"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:met_baseColor="@color/black"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_errorColor="@color/red"
-                app:met_floatingLabel="highlight" />
+                style="@style/materialEditTextStyle"  />
 
 
             <Spinner android:id="@+id/creditinfo_fangshi_spinner"
@@ -102,28 +59,12 @@
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/creditinfo_fafangtime_edit"
                 android:hint="发放时间"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:met_baseColor="@color/black"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_errorColor="@color/red"
-                app:met_floatingLabel="highlight" />
+                style="@style/materialEditTextStyle" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/creditinfo_daoqitime_edit"
                 android:hint="到期时间"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:met_baseColor="@color/black"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_errorColor="@color/red"
-                app:met_floatingLabel="highlight" />
+                style="@style/materialEditTextStyle"  />
 
 
 

@@ -19,63 +19,42 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/car_idcard_editview"
                 android:hint="所有人证件号"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="410702983789293868"/>
+                style="@style/materialEditTextStyle" />
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/car_name_editview"
                 android:hint="所有人姓名"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/materialEditTextStyle"
                 />
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/car_pinpai_editview"
                 android:hint="车辆品牌"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/materialEditTextStyle"
                 />
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/car_chexing_editview"
                 android:hint="车型"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/materialEditTextStyle"
                 />
 
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/car_time_edit"
                 android:hint="购买时间"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="2017-01-01"/>
+                style="@style/materialEditTextStyle" />
 
 
 
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/car_number_editview"
                 android:hint="行车证号"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/materialEditTextStyle"
                 />
 
 

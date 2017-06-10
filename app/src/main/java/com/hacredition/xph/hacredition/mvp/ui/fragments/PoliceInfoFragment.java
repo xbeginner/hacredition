@@ -25,6 +25,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.Calendar;
 
@@ -40,17 +41,17 @@ public class PoliceInfoFragment extends BaseFragment
         ,View.OnFocusChangeListener{
 
     @BindView(R.id.policeinfo_idcard_editview)
-    EditText idcardEditText;
+    MaterialEditText idcardEditText;
 
     @BindView(R.id.policeinfo_name_editview)
-    EditText nameEditText;
+    MaterialEditText nameEditText;
 
 
     @BindView(R.id.policeinfo_time_editview)
-    EditText timeEditText;
+    MaterialEditText timeEditText;
 
     @BindView(R.id.policeinfo_xianzhuang_editview)
-    EditText xianzhuangEditText;
+    MaterialEditText xianzhuangEditText;
 
     @BindView(R.id.policeinfo_type_spinner)
     Spinner typeSpinner;

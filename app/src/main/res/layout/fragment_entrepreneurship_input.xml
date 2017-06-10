@@ -17,23 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/entrepreneurship_idcard_editview"
                 android:hint="证件号"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="410702983789293868"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/entrepreneurship_name_editview"
                 android:hint="姓名"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="张三"/>
+                style="@style/materialEditTextStyle"/>
 
 
 
@@ -44,32 +36,20 @@
 
 
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/entrepreneurship_xiangmu_edit"
                 android:hint="经营项目"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="经营项目"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/entrepreneurship_guimo_edit"
                 android:hint="拟建规模"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="130万"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/entrepreneurship_jindu_edit"
                 android:hint="当前进度"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="100"/>
+                style="@style/materialEditTextStyle"/>
 
         </LinearLayout>
 

@@ -17,83 +17,47 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/guarantee_idcard_editview"
                 android:hint="担保人证件号"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="410702983789293868"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/guarantee_name_editview"
                 android:hint="担保人姓名"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="张三"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/guaranted_idcard_editview"
                 android:hint="被担保人证件号"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="410702983789293868"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/guaranted_name_editview"
                 android:hint="被担保人姓名"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="张三"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/guarantee_jine_edit"
                 android:hint="担保金额(万元)"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="100"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/guarantee_weijieqing_edit"
                 android:hint="未结清金额(万元)"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="100"/>
+                style="@style/materialEditTextStyle"/>
 
 
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/guarantee_fafangtime_edit"
                 android:hint="发放时间"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="2017-01-01"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/guarantee_daoqitime_edit"
                 android:hint="到期时间"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="2017-01-01"/>
+                style="@style/materialEditTextStyle"/>
 
 
 

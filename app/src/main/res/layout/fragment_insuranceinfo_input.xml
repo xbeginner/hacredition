@@ -17,23 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/insurance_idcard_editview"
                 android:hint="投保人证件号"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="410702983789293868"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/insurance_name_editview"
                 android:hint="投保人姓名"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="张三"/>
+                style="@style/materialEditTextStyle"/>
 
             <Spinner android:id="@+id/insurance_leixing_spinner"
                 android:layout_width="match_parent"
@@ -41,50 +33,30 @@
                 android:layout_height="wrap_content"></Spinner>
 
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/insurance_toubaojine_edit"
                 android:hint="投保金额(万元)"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="100"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/insurance_baofeijine_edit"
                 android:hint="保费金额(万元)"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="100"/>
+                style="@style/materialEditTextStyle"/>
 
             <Spinner android:id="@+id/insurance_jiaofei_spinner"
                 android:layout_width="match_parent"
                 android:padding="16dp"
                 android:layout_height="wrap_content"></Spinner>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/insurance_canbaotime_edit"
                 android:hint="参保时间"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="2017-01-01"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/insurance_daoqitime_edit"
                 android:hint="到期时间"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="2017-01-01"/>
+                style="@style/materialEditTextStyle"/>
 
         </LinearLayout>
 

@@ -15,14 +15,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/idcard_editview"
                 android:hint="户主证件号"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="410702983789293868"/>
+                style="@style/materialEditTextStyle"/>
 
             <Spinner android:id="@+id/houseinfo_spinner_id"
                 android:layout_width="match_parent"
@@ -30,37 +26,22 @@
 
                 android:layout_height="wrap_content"></Spinner>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/houseinfo_buildtime_edit"
                 android:hint="修建时间"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="2017-01-01"/>
+                style="@style/materialEditTextStyle"/>
 
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/houseinfo_area_edit"
                 android:hint="房屋面积"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="100"/>
+                style="@style/materialEditTextStyle"/>
 
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/houseinfo_value_edit"
                 android:hint="当前估值"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="100"/>
+                style="@style/materialEditTextStyle"/>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -101,13 +82,10 @@
 
             </LinearLayout>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/houseinfo_location_edit"
                 android:hint="房屋所在地"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="沁阳市"/>
+                style="@style/materialEditTextStyle"/>
 
             <ImageView
                 android:id="@+id/houseinfo_pic_img"
@@ -124,14 +102,10 @@
 
         </LinearLayout>
 
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/fangchanzhenghao_editview"
             android:hint="房产证号"
-            android:maxLines="1"
-            android:padding="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="410702983789293868"/>
+            style="@style/materialEditTextStyle"/>
 
         <Button
             android:id="@+id/houseinfo_submit_button"

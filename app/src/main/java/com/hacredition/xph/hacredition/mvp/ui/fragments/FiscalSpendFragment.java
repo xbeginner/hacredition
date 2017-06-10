@@ -35,6 +35,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.io.File;
 import java.util.Calendar;
@@ -54,22 +55,22 @@ public class FiscalSpendFragment extends BaseFragment
     private boolean isValidate = false;
 
     @BindView(R.id.fiscalspend_idcard_editview)
-    EditText idcardEditText;
+    MaterialEditText idcardEditText;
 
     @BindView(R.id.fiscalspend_name_editview)
-    EditText nameEditText;
+    MaterialEditText nameEditText;
 
     @BindView(R.id.fiscalspend_time_edit)
-    EditText timeEditText;
+    MaterialEditText timeEditText;
 
     @BindView(R.id.fiscalspend_org_edit)
-    EditText orgNameEditText;
+    MaterialEditText orgNameEditText;
 
     @BindView(R.id.fiscalspend_zhiwu_edit)
-    EditText zhiwuEditText;
+    MaterialEditText zhiwuEditText;
 
     @BindView(R.id.fiscalspend_location_edit)
-    EditText orgLocationEditText;
+    MaterialEditText orgLocationEditText;
 
     @BindView(R.id.fiscalspend_jibie_spinner)
     Spinner jibieSpinner;

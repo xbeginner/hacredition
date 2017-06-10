@@ -24,6 +24,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.Calendar;
 
@@ -41,22 +42,22 @@ public class InsuranceInfoInputFragment extends BaseFragment
 
 
     @BindView(R.id.insurance_idcard_editview)
-    EditText idcardEditText;
+    MaterialEditText idcardEditText;
 
     @BindView(R.id.insurance_name_editview)
-    EditText nameEditText;
+    MaterialEditText nameEditText;
 
     @BindView(R.id.insurance_toubaojine_edit)
-    EditText toubaojineEditText;
+    MaterialEditText toubaojineEditText;
 
     @BindView(R.id.insurance_baofeijine_edit)
-    EditText baofeijineEditText;
+    MaterialEditText baofeijineEditText;
 
     @BindView(R.id.insurance_canbaotime_edit)
-    EditText canbaotimeEditText;
+    MaterialEditText canbaotimeEditText;
 
     @BindView(R.id.insurance_daoqitime_edit)
-    EditText daoqitimeEditText;
+    MaterialEditText daoqitimeEditText;
 
 
     @BindView(R.id.insurance_leixing_spinner)

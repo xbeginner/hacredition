@@ -25,6 +25,7 @@ import com.hacredition.xph.hacredition.mvp.ui.fragments.base.BaseFragment;
 import com.hacredition.xph.hacredition.mvp.view.InputInfoView;
 import com.hacredition.xph.hacredition.utils.MyRegex;
 import com.hacredition.xph.hacredition.utils.MyUtils;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.Calendar;
 
@@ -42,20 +43,20 @@ public class MortgageInfoInputFragment extends BaseFragment
 
 
     @BindView(R.id.mortgage_idcard_editview)
-    EditText idcardEditText;
+    MaterialEditText idcardEditText;
 
     @BindView(R.id.mortgage_name_editview)
-    EditText nameEditText;
+    MaterialEditText nameEditText;
 
     @BindView(R.id.mortgage_diyawu_editview)
-    EditText diyawuEditText;
+    MaterialEditText diyawuEditText;
 
     @BindView(R.id.mortgage_jine_edit)
-    EditText jineEditText;
+    MaterialEditText jineEditText;
 
 
     @BindView(R.id.mortgage_jiezhiriqi_edit)
-    EditText jiezhiriqiEditText;
+    MaterialEditText jiezhiriqiEditText;
 
     @BindView(R.id.mortgage_submit_button)
     Button submitButton;

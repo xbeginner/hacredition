@@ -17,23 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/ownership_idcard_editview"
                 android:hint="使用人证件号"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="410702983789293868"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/ownership_name_editview"
                 android:hint="使用人姓名"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="张三"/>
+                style="@style/materialEditTextStyle"/>
 
             <Spinner android:id="@+id/ownership_type_spinner"
                 android:layout_width="match_parent"
@@ -41,44 +33,25 @@
                 android:layout_height="wrap_content"></Spinner>
 
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/ownership_number_edit"
                 android:hint="权证编号"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="编号"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/ownership_eara_edit"
                 android:hint="使用权面积(平方米)"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="130"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/ownership_qixian_edit"
                 android:hint="使用期限(年份)"
-                android:maxLines="1"
-                android:inputType="number"
-                android:padding="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="100"/>
+                style="@style/materialEditTextStyle"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/ownership_value_edit"
                 android:hint="评估价格(万元)"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="130"/>
+                style="@style/materialEditTextStyle"/>
 
         </LinearLayout>
 
