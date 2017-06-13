@@ -69,7 +69,6 @@ public class NewsRecyclerAdapter extends BaseRecyclerViewAdapter<NewsSummary>{
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println("holder:"+holder.getLayoutPosition());
                      ((OnNewsItemClickListener) mOnItemClickListener).onItemClick(v, mList.get(holder.getLayoutPosition()).getNewsId(), hasImg);
                 }
             });
@@ -121,8 +120,6 @@ public class NewsRecyclerAdapter extends BaseRecyclerViewAdapter<NewsSummary>{
 
         @BindView(R.id.news_title_id)
         TextView newsTitle;
-        @BindView(R.id.news_subtitle_id)
-        TextView newsSubTitle;
         @BindView(R.id.news_time_id)
         TextView newsTime;
         public NewsItemViewHolder(View view){
@@ -136,8 +133,6 @@ public class NewsRecyclerAdapter extends BaseRecyclerViewAdapter<NewsSummary>{
 
         @BindView(R.id.news_img_title_id)
         TextView newsImgTitle;
-        @BindView(R.id.news_img_subtitle_id)
-        TextView newsImgSubTitle;
         @BindView(R.id.news_img_time_id)
         TextView newsImgTime;
         @BindView(R.id.news_img_id)
@@ -166,7 +161,6 @@ public class NewsRecyclerAdapter extends BaseRecyclerViewAdapter<NewsSummary>{
     private void setNewsItemValues(NewsItemViewHolder holder, int position) {
         NewsSummary summary = mList.get(position);
         holder.newsTime.setText(summary.getTime());
-        holder.newsSubTitle.setText(summary.getSubTitle());
         holder.newsTitle.setText(summary.getTitle());
 
     }
@@ -174,11 +168,10 @@ public class NewsRecyclerAdapter extends BaseRecyclerViewAdapter<NewsSummary>{
     private void setNewsImgItemValues(NewsImgItemViewHolder holder, int position) {
         NewsSummary summary = mList.get(position);
         holder.newsImgTime.setText(summary.getTime());
-        holder.newsImgSubTitle.setText(summary.getSubTitle());
         holder.newsImgTitle.setText(summary.getTitle());
         Glide.with(holder.itemView.getContext())
                 .load(summary.getImgSrc())
-                .placeholder(R.drawable.no_pic)
+                .placeholder(R.drawable.ic_placeholder)
                 .fitCenter()
                 .into(holder.newsImg);
     }

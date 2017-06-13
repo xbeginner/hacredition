@@ -1,64 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv_item"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginLeft="@dimen/spacing_medium"
+    android:layout_marginRight="@dimen/spacing_medium"
+    android:layout_marginTop="@dimen/spacing_medium"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    app:cardBackgroundColor="@color/white"
-    android:orientation="horizontal"
-    app:contentPadding="8dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="10dp">
+    app:cardBackgroundColor="@color/background_Day"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="2dp">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/news_img_id"
-            android:layout_width="120dp"
-            android:layout_height="90dp"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="6dp"
-            android:scaleType="centerCrop"/>
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentLeft="true"
+            android:scaleType="fitCenter"
+            />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/news_img_title_id"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/spacing_medium"
+            android:layout_toRightOf="@id/news_img_id"
+            android:lineSpacingExtra="2dp"
+            android:maxLines="3"
+            android:padding="3dp"
+            android:textColor="@color/textColorFirst_Day"
+            android:textSize="18sp"
+            tools:text="新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题,不忘初心,方得始终." />
+
+        <TextView
+            android:id="@+id/news_img_time_id"
+            android:textColor="#545454"
+            android:textSize="10sp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="center_vertical"
-            android:orientation="vertical">
+            tools:text="2017-01-01"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            />
 
-            <TextView
-                android:id="@+id/news_img_title_id"
-                android:layout_width="wrap_content"
-                android:textColor="#383838"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"
-                />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/news_img_subtitle_id"
-                android:textColor="#545454"
-                android:textSize="16sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                />
-
-            <TextView
-                android:id="@+id/news_img_time_id"
-                android:textColor="#545454"
-                android:textSize="10sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                />
-
-        </LinearLayout>
-
-    </LinearLayout>
+</android.support.v7.widget.CardView>

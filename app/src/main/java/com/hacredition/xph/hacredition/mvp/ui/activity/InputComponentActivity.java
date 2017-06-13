@@ -218,7 +218,6 @@ public class InputComponentActivity extends BaseActivity  {
                break;
            }
        }
-
     }
 
 
