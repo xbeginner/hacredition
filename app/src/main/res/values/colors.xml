@@ -104,6 +104,7 @@
     <color name="textColorSecond_Night">#89FFFFFF</color>
     <color name="textColorThird_Night">#42FFFFFF</color>
     <color name="background_Night">#FF424242</color>
+    <color name="colorAccent_Night">#FF4081</color>
     <!--Toolbar字体颜色  -->
     <color name="toolbar_Text_Color_Night">#DDFFFFFF</color>
     <!--Toolbar-Menu字体颜色-->

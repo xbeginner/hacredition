@@ -14,10 +14,10 @@
         android:icon="@mipmap/ic_launcher"
         android:largeHeap="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/DayTheme">
         <activity
             android:name=".mvp.ui.activity.MainActivity"
-            android:theme="@style/StatusBarTranslucentTheme">
+           >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,18 +25,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".mvp.ui.activity.NewsDetailActivity"
-            android:theme="@style/StatusBarTranslucentTheme"/>
+             />
         <activity android:name=".mvp.ui.activity.LoginActivity"
-            android:theme="@style/StatusBarTranslucentTheme"/>
+             />
         <activity android:name=".mvp.ui.activity.RegisterActivity"
-            android:theme="@style/StatusBarTranslucentTheme"/>
+            />
         <activity
             android:name=".mvp.ui.activity.InputComponentActivity"
-            android:theme="@style/StatusBarTranslucentTheme"
+
             android:launchMode="singleTask"></activity>
         <activity
             android:name=".mvp.ui.activity.QueryComponentActivity"
-            android:theme="@style/StatusBarTranslucentTheme"
+
             android:launchMode="singleTask"></activity>
     </application>
 

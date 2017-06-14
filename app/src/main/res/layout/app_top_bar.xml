@@ -6,15 +6,16 @@
         android:layout_width="match_parent"
         app:elevation="0dp"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/toolbar_padding_top"
+
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         >
 
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/top_bar_height"
-            android:background="@color/colorPrimary"
+            android:layout_height="?attr/actionBarSize"
+            app:theme="@style/MyToolbar"
             app:layout_scrollFlags="scroll|enterAlways"
             >
 
@@ -22,24 +23,14 @@
                 android:id="@+id/back_image_view_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/back_32px"
+                android:background="@drawable/back"
                 android:visibility="gone"
                 />
 
-            <!--<net.steamcrafted.materialiconlib.MaterialIconView-->
-                <!--android:id="@+id/back_image_view_id"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--app:materialIcon="arrow_left"-->
-                <!--app:materialIconColor="#fff"-->
-                <!--app:materialIconSize="24dp"-->
-                <!--android:scaleType="center"-->
-                <!--android:background="@color/colorPrimary"-->
-            <!--/>-->
+
 
         </android.support.v7.widget.Toolbar>
 
 
-
-</android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.AppBarLayout>
 

@@ -69,7 +69,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         //如果没有网络连接弹出提示
         NetUtil.isNetworkErrThenShowMsg();
         initActivityComponent();
-        setNightOrDayMode();
+        //setNightOrDayMode();
         int layoutId = getLayoutId();
         setContentView(layoutId);
 
@@ -103,7 +103,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         }
         toolbar.setClipToPadding(true);
 
-      //  toolbar.setFitsSystemWindows(true);
+        toolbar.setFitsSystemWindows(true);
     }
 
 
