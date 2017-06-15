@@ -20,23 +20,21 @@
            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".mvp.ui.activity.NewsDetailActivity"
              />
         <activity android:name=".mvp.ui.activity.LoginActivity"
+            android:theme="@style/DayTheme"
              />
         <activity android:name=".mvp.ui.activity.RegisterActivity"
             />
         <activity
             android:name=".mvp.ui.activity.InputComponentActivity"
-
             android:launchMode="singleTask"></activity>
         <activity
             android:name=".mvp.ui.activity.QueryComponentActivity"
-
             android:launchMode="singleTask"></activity>
     </application>
 

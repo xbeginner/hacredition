@@ -90,15 +90,7 @@ public class MainActivity extends BaseActivity implements
 
 
     private void initBottomBar(){
-//        bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar_id);
-//        bottomNavigationBar
-//                .addItem(new BottomNavigationItem(R.drawable.home_page, "主页"))
-//                .addItem(new BottomNavigationItem(R.drawable.pen_book, "录入"))
-//                .addItem(new BottomNavigationItem(R.drawable.graphique_statistics, "统计"))
-//                .addItem(new BottomNavigationItem(R.drawable.service, "服务"))
-//                .addItem(new BottomNavigationItem(R.drawable.config_set, "设置"))
-//                .initialise();
-//        bottomNavigationBar.setTabSelectedListener(this);
+
          final String[] colors = getResources().getStringArray(R.array.nbt_color);
         final NavigationTabBar navigationTabBar = (NavigationTabBar) findViewById(R.id.ntb);
         final ArrayList<NavigationTabBar.Model> models = new ArrayList<>();

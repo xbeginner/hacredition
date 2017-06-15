@@ -6,14 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="1"
+    android:background="?android:attr/windowBackground"
    >
 
-    <include
-        layout="@layout/app_top_bar"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:fitsSystemWindows="true">
+
+        <include
+            layout="@layout/app_top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </FrameLayout>
+
+
 
     <ImageView
         android:id="@+id/login_top_imageview"
@@ -72,22 +81,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <!--<Button-->
-                <!--android:id="@+id/login_button"-->
-                <!--android:layout_weight="0.6"-->
-                <!--android:background="@color/colorPrimary"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:text="登录"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content" />-->
+
 
         <info.hoang8f.widget.FButton
             android:id="@+id/login_button"
             android:layout_weight="0.6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            fbutton:buttonColor="@color/colorPrimary"
-            fbutton:shadowColor="@color/colorPrimaryDark"
+            fbutton:buttonColor="?attr/colorPrimary"
+            fbutton:shadowColor="?attr/colorPrimaryDark"
             android:text="登录"
             fbutton:shadowEnabled="true"
             fbutton:shadowHeight="5dp"
